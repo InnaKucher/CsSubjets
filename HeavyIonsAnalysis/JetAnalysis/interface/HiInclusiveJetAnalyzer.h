@@ -33,6 +33,11 @@
 #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerObjectMap.h"
 #include "SimDataFormats/GeneratorProducts/interface/GenEventInfoProduct.h"
 
+#include "RecoBTag/SecondaryVertex/interface/TrackKinematics.h"
+#include "DataFormats/Common/interface/View.h"
+
+#include "DataFormats/PatCandidates/interface/PackedCandidate.h"
+
 #include "SimDataFormats/JetMatching/interface/JetFlavourInfo.h"
 #include "SimDataFormats/JetMatching/interface/JetFlavourInfoMatching.h"
 
@@ -84,7 +89,7 @@ private:
   math::XYZPoint getPosition(const DetId &id, reco::Vertex::Point vtx = reco::Vertex::Point(0,0,0));
   int TaggedJet(reco::Jet calojet, edm::Handle<reco::JetTagCollection > jetTags );
   float getTau(unsigned num, const reco::GenJet object) const;
-  void analyzeSubjets(const reco::Jet jet, int idx, edm::Handle<reco::JetFlavourInfoMatchingCollection>, edm::Handle<edm::View<reco::Jet> >);
+  void analyzeSubjets(const reco::Jet jet, int idx, edm::Handle<reco::JetFlavourInfoMatchingCollection>, edm::Handle<edm::View<reco::Jet> >, edm::Handle<reco::JetTagCollection> jetTags_CombinedSvtxV2);
   void fillNewJetVarsRecoJet(const reco::Jet jet);
   void fillNewJetVarsRefJet(const reco::GenJet jet);
   void fillNewJetVarsGenJet(const reco::GenJet jet);
@@ -210,6 +215,7 @@ private:
   edm::EDGetTokenT<reco::JetTagCollection> PositiveCombinedSecondaryVertexV2BJetTags_;
   edm::EDGetTokenT<reco::JetTagCollection> NegativeSoftPFMuonByPtBJetTags_;
   edm::EDGetTokenT<reco::JetTagCollection> PositiveSoftPFMuonByPtBJetTags_;
+  edm::EDGetTokenT<reco::JetTagCollection> CombinedSubjetSecondaryVertexV2BJetTags_;
 
   bool doExtendedFlavorTagging_;
   edm::EDGetTokenT<reco::JetFlavourInfoMatchingCollection> jetFlavourInfosToken_;
@@ -340,6 +346,7 @@ private:
     std::vector<std::vector<float>> jtSubJetM;
     std::vector<std::vector<float>> jtSubJetHadronFlavor;
     std::vector<std::vector<float>> jtSubJetPartonFlavor; 
+    std::vector<std::vector<float>> jtSubJetcsvV2;
     std::vector<std::vector<std::vector<float>>> jtSubJetHadronDR;
     std::vector<std::vector<std::vector<float>>> jtSubJetHadronPt;
     std::vector<std::vector<std::vector<float>>> jtSubJetHadronEta;
