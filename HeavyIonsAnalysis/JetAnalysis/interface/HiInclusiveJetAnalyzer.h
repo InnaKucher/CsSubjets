@@ -97,6 +97,9 @@ private:
   void analyzeRefSubjets(const reco::GenJet jet);
   void analyzeGenSubjets(const reco::GenJet jet);
   float getAboveCharmThresh(reco::TrackRefVector& selTracks, const reco::TrackIPTagInfo& ipData, int sigOrVal);
+
+  int findMatchedParton(float eta, float phi, float maxDr, edm::Handle<reco::GenParticleCollection > genparts, int partonFlavor);
+  int getFlavorProcess(int index, edm::Handle<reco::GenParticleCollection > genparts);
  
   std::auto_ptr<fastjet::contrib::Njettiness>   routine_;
 
@@ -159,6 +162,8 @@ private:
   bool doTrigger_;
   bool useQuality_;
   std::string trackQuality_;
+
+  bool isPythia6_;
 
   bool doSubEvent_;
   double genPtMin_;
@@ -532,6 +537,23 @@ private:
     float discr_fr01[MAXJETS];
     float discr_jetID_cuts[MAXJETS];
     float discr_jetID_bdt[MAXJETS];
+
+    int refparton_flavorProcess[MAXJETS];
+    float	refGSP_gpt [MAXJETS];
+    float refGSP_geta [MAXJETS];
+    float refGSP_gphi [MAXJETS];
+    float refGSP_gidx [MAXJETS];
+    float refGSP_b1pt [MAXJETS];
+    float refGSP_b1eta [MAXJETS];
+    float refGSP_b1phi [MAXJETS];
+    float refGSP_b2pt [MAXJETS];
+    float refGSP_b2eta [MAXJETS];
+    float refGSP_b2phi [MAXJETS];
+    float refGSP_b1Match_jtdR [MAXJETS];
+    float refGSP_b2Match_jtdR [MAXJETS];
+    float refGSP_bbdR [MAXJETS];
+    float refGSP_bbzg [MAXJETS];
+    int refGSP_SubJtMatched [MAXJETS];
 
     float refpt[MAXJETS];
     float refeta[MAXJETS];

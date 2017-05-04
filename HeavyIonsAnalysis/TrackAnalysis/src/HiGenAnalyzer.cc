@@ -205,7 +205,7 @@ HiGenAnalyzer::~HiGenAnalyzer()
 vector<int> HiGenAnalyzer::getMotherIdx(edm::Handle<reco::GenParticleCollection> parts, const reco::GenParticle pin){
 
   vector<int> motherArr;
-  if(motherDaughterPDGsToSave_.size() != 0 ) {
+  //if(motherDaughterPDGsToSave_.size() != 0 ) {
     for(UInt_t i = 0; i < parts->size(); ++i){
       const reco::GenParticle& p = (*parts)[i];
       if (stableOnly_ && p.status()!=1) continue;
@@ -222,7 +222,7 @@ vector<int> HiGenAnalyzer::getMotherIdx(edm::Handle<reco::GenParticleCollection>
 	if(fabs(p.daughter(idx)->pt()-pin.pt())<0.001 && fabs(p.daughter(idx)->eta()-pin.eta())<0.001 && fabs(p.daughter(idx)->phi()-pin.phi())<0.001) motherArr.push_back(i);
       }
     }
-  }
+  //}
   if(motherArr.size()==0) motherArr.push_back(-999);
   return motherArr;
 }
@@ -232,7 +232,7 @@ vector<int> HiGenAnalyzer::getMotherIdx(edm::Handle<reco::GenParticleCollection>
 vector<int> HiGenAnalyzer::getDaughterIdx(edm::Handle<reco::GenParticleCollection> parts, const reco::GenParticle pin){
 
   vector<int> daughterArr;
-  if(motherDaughterPDGsToSave_.size() != 0 ) {
+  //if(motherDaughterPDGsToSave_.size() != 0 ) {
     for(UInt_t i = 0; i < parts->size(); ++i){
       const reco::GenParticle& p = (*parts)[i];
       if (stableOnly_ && p.status()!=1) continue;
@@ -249,7 +249,7 @@ vector<int> HiGenAnalyzer::getDaughterIdx(edm::Handle<reco::GenParticleCollectio
 	if(fabs(p.mother(idx)->pt()-pin.pt())<0.001 && fabs(p.mother(idx)->eta()-pin.eta())<0.001 && fabs(p.mother(idx)->phi()-pin.phi())<0.001) daughterArr.push_back(i);
       }
     }
-  }
+  //}
   if(daughterArr.size()==0) daughterArr.push_back(-999);
   return daughterArr;
 }

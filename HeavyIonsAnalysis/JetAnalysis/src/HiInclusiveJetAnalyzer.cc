@@ -104,7 +104,9 @@ HiInclusiveJetAnalyzer::HiInclusiveJetAnalyzer(const edm::ParameterSet& iConfig)
   // if (iConfig.exists("genTau3"))
   //   tokenGenTau3_          = consumes<edm::ValueMap<float> >(iConfig.getParameter<edm::InputTag>("genTau3"));
   // else useGenTaus = false;
-  
+ 
+  isPythia6_ = iConfig.getUntrackedParameter<bool>("isPythia6",false);  
+  cout<<"isPythia6 = "<<isPythia6_<<endl; 
   isMC_ = iConfig.getUntrackedParameter<bool>("isMC",false);
   useHepMC_ = iConfig.getUntrackedParameter<bool> ("useHepMC",false);
   fillGenJets_ = iConfig.getUntrackedParameter<bool>("fillGenJets",false);
@@ -669,6 +671,37 @@ HiInclusiveJetAnalyzer::beginJob() {
     t->Branch("refparton_pt",jets_.refparton_pt,"refparton_pt[nref]/F");
     t->Branch("refparton_flavor",jets_.refparton_flavor,"refparton_flavor[nref]/I");
     t->Branch("refparton_flavorForB",jets_.refparton_flavorForB,"refparton_flavorForB[nref]/I");
+
+    if(isPythia6_){
+	    t->Branch("refparton_flavorProcess",jets_.refparton_flavorProcess,"refparton_flavorProcess[nref]/I");			
+    }
+
+    if(isPythia6_){ // for GSP to bb identify for a event, not for a jet
+	    //			t->Branch("refGSP_Channel"             ,jets_.refGSP_Channel,            "refGSP_Channel/I");
+	    t->Branch("refGSP_gpt"                 ,jets_.refGSP_gpt,                "refGSP_gpt[nref]/F");
+	    t->Branch("refGSP_geta"                ,jets_.refGSP_geta,               "refGSP_geta[nref]/F");
+	    t->Branch("refGSP_gphi"                ,jets_.refGSP_gphi,               "refGSP_gphi[nref]/F");
+	    t->Branch("refGSP_gidx"                ,jets_.refGSP_gidx,               "refGSP_gidx[nref]/F");
+	    t->Branch("refGSP_b1pt"                ,jets_.refGSP_b1pt,               "refGSP_b1pt[nref]/F");
+	    t->Branch("refGSP_b1eta"               ,jets_.refGSP_b1eta,              "refGSP_b1eta[nref]/F");
+	    t->Branch("refGSP_b1phi"               ,jets_.refGSP_b1phi,              "refGSP_b1phi[nref]/F");
+	    t->Branch("refGSP_b2pt"                ,jets_.refGSP_b2pt,               "refGSP_b2pt[nref]/F");
+	    t->Branch("refGSP_b2eta"               ,jets_.refGSP_b2eta,              "refGSP_b2eta[nref]/F");
+	    t->Branch("refGSP_b2phi"               ,jets_.refGSP_b2phi,              "refGSP_b2phi[nref]/F");
+	    //			t->Branch("refGSP_b1Match_jtIdx"       ,jets_.refGSP_b1Match_jtIdx,      "refGSP_b1Match_jtIdx/I");
+	    t->Branch("refGSP_b1Match_jtdR"        ,jets_.refGSP_b1Match_jtdR,       "refGSP_b1Match_jtdR[nref]/F");
+	    //			t->Branch("refGSP_b1Match_Subjt1dR"    ,jets_.refGSP_b1Match_Subjt1dR,   "refGSP_b1Match_Subjt1dR/F");
+	    //			t->Branch("refGSP_b1Match_Subjt2dR"    ,jets_.refGSP_b1Match_Subjt2dR,   "refGSP_b1Match_Subjt2dR/F");
+	    //			t->Branch("refGSP_b2Match_jtIdx"       ,jets_.refGSP_b2Match_jtIdx,      "refGSP_b2Match_jtIdx/I");
+	    t->Branch("refGSP_b2Match_jtdR"        ,jets_.refGSP_b2Match_jtdR,       "refGSP_b2Match_jtdR[nref]/F");
+	    //			t->Branch("refGSP_b1Match_Subjt1dR"    ,jets_.refGSP_b1Match_Subjt1dR,   "refGSP_b1Match_Subjt1dR/F");
+	    //			t->Branch("refGSP_b1Match_Subjt2dR"    ,jets_.refGSP_b1Match_Subjt2dR,   "refGSP_b1Match_Subjt2dR/F");
+	    t->Branch("refGSP_bbdR"                ,jets_.refGSP_bbdR,               "refGSP_bbdR[nref]/F");
+	    //			t->Branch("refGSP_bbdxy"               ,jets_.refGSP_bbdxy,              "refGSP_bbdxy/F");
+	    //			t->Branch("refGSP_bbdz"                ,jets_.refGSP_bbdz,               "refGSP_bbdz/F");
+	    t->Branch("refGSP_bbzg"                ,jets_.refGSP_bbzg,               "refGSP_bbzg[nref]/F");
+	    t->Branch("refGSP_SubJtMatched"        ,jets_.refGSP_SubJtMatched,       "refGSP_SubJtMatched[nref]/I");     
+    }
 
     if(doGenSubJets_) {
       t->Branch("refptG",jets_.refptG,"refptG[nref]/F");
@@ -1789,6 +1822,92 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
       jets_.reftau3[jets_.nref] = -999.;
       
       jets_.refparton_flavorForB[jets_.nref] = (*patjets)[j].partonFlavour();
+      
+	//Matt's flavor production code
+      if(isPythia6_){
+	      //int partonFlavor = (*patjets)[j].partonFlavour();
+	      //      jets_.refparton_flavorForB[jets_.nref] = partonFlavor;
+
+	      if(jets_.jtHadronFlavor[jets_.nref]==4||jets_.jtHadronFlavor[jets_.nref]==5){
+
+		      int partonMatchIndex = findMatchedParton(jet.eta(), jet.phi(), 0.3, genparts, jets_.jtHadronFlavor[jets_.nref]);
+		      if(partonMatchIndex<0){
+			      cout<< " couldn't find the parton "<<endl;
+			      jets_.refparton_flavorProcess[jets_.nref] = 0;
+		      }
+		      else{
+			      int flavorProcess =  getFlavorProcess(partonMatchIndex, genparts);
+			      jets_.refparton_flavorProcess[jets_.nref] = flavorProcess;
+		      }
+
+		      // GSP-bbbar tag
+		      if( jets_.refparton_flavorProcess[jets_.nref] == 6){
+			      int MatchedPartonId= (*genparts)[partonMatchIndex].pdgId();
+			      int partonPairIndex=-1;
+			      int momIndex = findMatchedParton( (float)(*genparts)[partonMatchIndex].mother(0)->eta() , (float)(*genparts)[partonMatchIndex].mother(0)->phi(),(float)0.001,genparts, 0);
+			      if (momIndex >=0 && (*genparts)[momIndex].pdgId()==21){ // double check momidex && momId = gluon
+				      for( UInt_t i_dau =0; i_dau < (*genparts)[momIndex].numberOfDaughters(); i_dau++){
+					      if( (*genparts)[momIndex].daughter(i_dau)->pdgId()== -MatchedPartonId ){       
+						      partonPairIndex=findMatchedParton( (*genparts)[momIndex].daughter(i_dau)->eta(), (*genparts)[momIndex].daughter(i_dau)->phi(),0.001,genparts , 0);
+						      break; // terminate for i_dau
+					      } 
+				      } // end i_dau < (*genparts)[momIndex].numberOfDaughters()
+			      } // end if momIndex >=0 && (*genparts)[momIndex].pdgId()==21
+
+			      if(partonPairIndex<=0) {cout<<"event : "<<event<<" ,partonPairIndex = "<<partonPairIndex<<" , momIndex = "<<momIndex<<endl;}
+			      if(partonMatchIndex >0 && momIndex >0 && partonPairIndex >0){
+				      jets_.refGSP_gpt[jets_.nref]          			=(*genparts)[momIndex].pt();
+				      jets_.refGSP_geta [jets_.nref]        			=(*genparts)[momIndex].eta();
+				      jets_.refGSP_gphi [jets_.nref]              =(*genparts)[momIndex].phi();
+				      jets_.refGSP_gidx [jets_.nref]              =momIndex;
+				      jets_.refGSP_b1pt [jets_.nref]              =(*genparts)[partonMatchIndex].pt();
+				      jets_.refGSP_b1eta [jets_.nref]				      =(*genparts)[partonMatchIndex].eta();
+				      jets_.refGSP_b1phi [jets_.nref]				      =(*genparts)[partonMatchIndex].phi();
+				      jets_.refGSP_b2pt [jets_.nref]				      =(*genparts)[partonPairIndex].pt();
+				      jets_.refGSP_b2eta [jets_.nref]				      =(*genparts)[partonPairIndex].eta();
+				      jets_.refGSP_b2phi [jets_.nref]				      =(*genparts)[partonPairIndex].phi();
+
+				      float b1eta=jets_.refGSP_b1eta [jets_.nref];
+				      float b1phi=jets_.refGSP_b1phi [jets_.nref];
+				      float b2eta=jets_.refGSP_b2eta [jets_.nref];
+				      float b2phi=jets_.refGSP_b2phi [jets_.nref];
+
+				      // jets_.refGSP_b1Match_jtIdx [jets_.nref];
+
+				      jets_.refGSP_b1Match_jtdR [jets_.nref]= pow( pow(b1eta-jet.eta(),2) + pow(deltaPhi(b1phi,jet.phi()),2) , 0.5 ) ;
+				      //							jets_.refGSP_b1Match_Subjt1dR [jets_.nref];
+				      //							jets_.refGSP_b1Match_Subjt2dR [jets_.nref];
+
+				      // jets_.refGSP_b2Match_jtIdx [jets_.nref];
+				      jets_.refGSP_b2Match_jtdR [jets_.nref]= pow( pow(b2eta-jet.eta(),2) + pow(deltaPhi(b2phi,jet.phi()),2) , 0.5 );
+				      //							jets_.refGSP_b1Match_Subjt1dR [jets_.nref];
+				      //							jets_.refGSP_b1Match_Subjt2dR [jets_.nref];
+
+				      float bbdphi=deltaPhi(b1phi,b2phi);
+
+				      jets_.refGSP_bbdR [jets_.nref] = pow( pow(b1eta-b2eta,2) + pow(bbdphi,2), 0.5);
+				      // jets_.refGSP_bbdxy [jets_.nref];
+				      // jets_.refGSP_bbdz [jets_.nref];
+				      jets_.refGSP_bbzg [jets_.nref] = jets_.refGSP_b2pt[jets_.nref] / (jets_.refGSP_b1pt[jets_.nref]+jets_.refGSP_b2pt[jets_.nref]);
+				      if (jets_.refGSP_b2pt[jets_.nref] >jets_.refGSP_b1pt[jets_.nref]){
+					      jets_.refGSP_bbzg [jets_.nref] =  jets_.refGSP_b1pt[jets_.nref] / (jets_.refGSP_b1pt[jets_.nref]+jets_.refGSP_b2pt[jets_.nref]);
+				      }
+
+				      jets_.refGSP_SubJtMatched [jets_.nref]=-1;
+				      if(jets_.refGSP_b1Match_jtdR [jets_.nref] <0.4 && jets_.refGSP_b2Match_jtdR [jets_.nref] <0.4){
+					      jets_.refGSP_SubJtMatched [jets_.nref]=1;
+				      }
+
+			      } // end if MatchedPartonId >0 && momIndex >0 && partonPairIndex >0  // index check
+			      else {jets_.refGSP_SubJtMatched [jets_.nref]=-2;}
+
+		      } // end GSP-bbbar tag
+
+	      } // end if abs(partonFlavor)==4||abs(partonFlavor)==5
+	      else jets_.refparton_flavorProcess[jets_.nref] = 0;
+      }
+
+
       // matched partons
       const reco::GenParticle & parton = *(*patjets)[j].genParton();
 
@@ -2151,7 +2270,77 @@ int HiInclusiveJetAnalyzer::TaggedJet(Jet calojet, Handle<JetTagCollection > jet
   }
   return result;
 }
+// Matt Flavor Production Identification
+// //-------------------------------------------------------------------------------------------------
+int HiInclusiveJetAnalyzer::findMatchedParton(float eta, float phi, float maxDr, Handle<GenParticleCollection > genparts, int partonFlavor=0){
 
+	float highestPartonPt =-1.;
+	int matchIndex =-1;
+	for( size_t i = 0; i < genparts->size(); ++ i ) {
+		const GenParticle & genCand = (*genparts)[ i ];
+
+		if(partonFlavor!=0){
+//			cout << " candidate " << i << " pdg: "<< genCand.pdgId() << " status: "<< genCand.status() << " dr: "<< deltaR(eta,phi,genCand.eta(),genCand.phi()) << " flavorToMatch: "<< partonFlavor << endl;
+			if(abs(genCand.pdgId())!=partonFlavor) continue;
+			if(genCand.status()<20) continue;
+		}
+		double dr = deltaR(eta,phi,genCand.eta(),genCand.phi());
+		if(dr>maxDr) continue;
+		if(genCand.pt() > highestPartonPt){
+			matchIndex = i;
+			highestPartonPt = genCand.pt();
+		}
+	}
+	return matchIndex;
+}
+
+int HiInclusiveJetAnalyzer::getFlavorProcess(int index, Handle<GenParticleCollection > genparts){
+
+	const GenParticle & constParton = (*genparts)[ index ];
+	GenParticle *matchedParton = const_cast<reco::GenParticle*>(&constParton);
+	if(matchedParton->numberOfMothers()>1) cout<<" too many parents "<<endl;
+	if(matchedParton->numberOfMothers()==0){ cout <<" found primary quark of pdg: " << matchedParton->pdgId() << endl; return 1;}
+	int momID = matchedParton->mother(0)->pdgId();
+	int momIndex = findMatchedParton(matchedParton->mother(0)->eta(),matchedParton->mother(0)->phi(),0.001,genparts);
+	if(momIndex==index){ cout << " WARNING! Particle is its own mother??" << endl; return -1; }
+	int gmomIdx=-1;
+	if(matchedParton->mother(0)->numberOfMothers()>0){
+		gmomIdx = findMatchedParton(matchedParton->mother(0)->mother(0)->eta(),matchedParton->mother(0)->mother(0)->phi(),0.001,genparts);
+		if(gmomIdx==index) { cout << "WARNING! Particle is its own grandmother" << endl; return -1; }
+	}
+	cout << "particle idx: "<< index << " pdg:" << matchedParton->pdgId() << " nmothers: "<< matchedParton->numberOfMothers() << " momIdx: "<< momIndex << " gmom idx: "<< gmomIdx << endl;
+
+	while(abs(matchedParton->mother(0)->pdgId())==5 && matchedParton->numberOfMothers()>0){
+		cout << "particle idx: "<< index << " pdg:" << matchedParton->pdgId() << " nmothers: "<< matchedParton->numberOfMothers() << " momPdg: "<< matchedParton->mother(0)->pdgId() << " mom eta: "<< matchedParton->mother(0)->eta() << endl;
+		if(matchedParton->mother(0)->status()==21) return 1;  // primary b-quark
+		else {
+			matchedParton = (reco::GenParticle*)(reco::LeafCandidate*)(matchedParton->mother(0));
+			//return getFlavorProcess(momIndex,genparts);
+		}
+	}
+	if(abs(momID)==5 && matchedParton->numberOfMothers()==0){ cout << "warning - found orphaned b-quark!" << endl; return -1; }
+	
+	if(matchedParton->status()>20 && matchedParton->status()<30) return 2;
+	if(matchedParton->status()>30 && matchedParton->status()<40) return 3;
+	if(matchedParton->status()>40 && matchedParton->status()<50) return 4;
+	if(matchedParton->status()>50){
+		if(abs(momID)==21) return 5;
+		 return 6;
+	}
+
+	/*if(momIndex<2) return 4; // initial state GSP
+	else if(momIndex<4) return 3; // sometimes GSP, sometimes associated to FEX
+	else if(momIndex<6) return 2; // primaries
+	else if(momIndex<8){
+		if(momID==21) return 6;  // final state hard GSP
+		else return 5; // final state soft GSP
+	}*/
+	//else cout<<" should never get here "<<" momID "<<momID<<" momIndex "<<momIndex<<endl;
+
+
+	return -1;
+
+}
 
 //--------------------------------------------------------------------------------------------------
 float HiInclusiveJetAnalyzer::getTau(unsigned num, const reco::GenJet object) const

@@ -34,7 +34,7 @@ process.source = cms.Source("PoolSource",
 
 # Number of events we want to process, -1 = all events
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10000))
+    input = cms.untracked.int32(5000))
 
 
 #####################################################################################
@@ -97,6 +97,9 @@ process.hiEvtAnalyzer.doHiMC = cms.bool(False) #HI specific MC info
 process.load('HeavyIonsAnalysis.JetAnalysis.HiGenAnalyzer_cfi')
 process.HiGenParticleAna.genParticleSrc = cms.untracked.InputTag("genParticles")
 process.HiGenParticleAna.doHI = False
+process.HiGenParticleAna.stableOnly = False
+process.HiGenParticleAna.etaMax = cms.untracked.double(999)
+process.HiGenParticleAna.ptMin = cms.untracked.double(0)
 process.load('HeavyIonsAnalysis.EventAnalysis.runanalyzer_cff')
 process.load("HeavyIonsAnalysis.JetAnalysis.pfcandAnalyzer_pp_cfi")
 process.pfcandAnalyzer.skipCharged = False
@@ -228,6 +231,7 @@ process.akSoftDrop4PFJetAnalyzer.doExtendedFlavorTagging = cms.untracked.bool(Tr
 process.akSoftDrop4PFJetAnalyzer.jetFlavourInfos    = cms.InputTag("akSoftDrop4PFPatJetFlavourAssociation")
 process.akSoftDrop4PFJetAnalyzer.subjetFlavourInfos = cms.InputTag("akSoftDrop4PFPatJetFlavourAssociation","SubJets")
 process.akSoftDrop4PFJetAnalyzer.groomedJets        = cms.InputTag("akSoftDrop4PFJets")
+process.akSoftDrop4PFJetAnalyzer.isPythia6 = cms.untracked.bool(True)
 
 process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex = process.akSoftDrop4PFJetTracksAssociatorAtVertex.clone()
 process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex.jets = cms.InputTag('akSoftDrop4PFJets','SubJets')
