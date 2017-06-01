@@ -28,13 +28,13 @@ process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
         #"root://eoscms.cern.ch//eos/cms/store/cmst3/group/hintt/CMSSW_7_5_8_patch2/TTbar/RECO/Events_1.root"
                             #    'file:/afs/cern.ch/work/k/kjung/holdingCell/Pythia6_pp_HLTReco.root'
-                           '/store/himc/HINppWinter16DR/Pythia8_bJet120_pp502_TuneCUETP8M1/AODSIM/75X_mcRun2_asymptotic_ppAt5TeV_v3-v1/80000/02C10805-D6E4-E511-9C81-0CC47A4D9A10.root' 
-			   )
+                           '/store/himc/HINppWinter16DR/Pythia8_bJet120_pp502_TuneCUETP8M1/AODSIM/75X_mcRun2_asymptotic_ppAt5TeV_v3-v1/80000/02C10805-D6E4-E511-9C81-0CC47A4D9A10.root'), 
+#			   eventsToProcess = cms.untracked.VEventRange('1:56455','1:56784','1:59534','1:60355','1:61915','1:136969','1:137291')
 )
 
 # Number of events we want to process, -1 = all events
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(5000))
+    input = cms.untracked.int32(10000))
 
 
 #####################################################################################
@@ -176,8 +176,8 @@ process.ana_step = cms.Path(#process.hltanalysis *
                             process.pfcandAnalyzer +
                             process.HiForest +
 			    process.trackSequencesPP +
-                            process.runAnalyzer +
-                            process.tupelPatSequence
+                            process.runAnalyzer 
+  #                          process.tupelPatSequence
 )
 
 #####################################################################################
@@ -222,7 +222,7 @@ process.pVertexFilterCutEandG = cms.Path(process.pileupVertexFilterCutEandG)
 process.pAna = cms.EndPath(process.skimanalysis)
 
 # Customization
-process.akSoftDrop4PFPatJetFlavourAssociation.jets="akSoftDrop4PFJets"
+process.akSoftDrop4PFPatJetFlavourAssociation.jets="ak4PFJets"
 process.akSoftDrop4PFPatJetFlavourAssociation.groomedJets=cms.InputTag("akSoftDrop4PFJets")
 process.akSoftDrop4PFPatJetFlavourAssociation.subjets= cms.InputTag('akSoftDrop4PFJets','SubJets')
 process.akSoftDrop4PFJets.useSoftDrop = True
@@ -235,10 +235,14 @@ process.akSoftDrop4PFJetAnalyzer.isPythia6 = cms.untracked.bool(True)
 
 process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex = process.akSoftDrop4PFJetTracksAssociatorAtVertex.clone()
 process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex.jets = cms.InputTag('akSoftDrop4PFJets','SubJets')
+process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex.coneSize = cms.double(0.25)
 process.akSoftDrop4PFSubjetImpactParameterTagInfos = process.akSoftDrop4PFImpactParameterTagInfos.clone()
 process.akSoftDrop4PFSubjetImpactParameterTagInfos.jetTracks = cms.InputTag("akSoftDrop4PFSubjetJetTracksAssociatorAtVertex")
 process.akSoftDrop4PFSubjetSecondaryVertexTagInfos = process.akSoftDrop4PFSecondaryVertexTagInfos.clone()
 process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.trackIPTagInfos = cms.InputTag('akSoftDrop4PFSubjetImpactParameterTagInfos')
+
+
+#process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.maxDeltaRToJetAxis = cms.double(0.15)
 process.akSoftDrop4PFCombinedSubjetSecondaryVertexV2BJetTags = process.akSoftDrop4PFCombinedSecondaryVertexV2BJetTags.clone(
 	tagInfos = cms.VInputTag(cms.InputTag("akSoftDrop4PFSubjetImpactParameterTagInfos"),
                 cms.InputTag("akSoftDrop4PFSubjetSecondaryVertexTagInfos"))

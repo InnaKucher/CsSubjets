@@ -89,7 +89,7 @@ private:
   math::XYZPoint getPosition(const DetId &id, reco::Vertex::Point vtx = reco::Vertex::Point(0,0,0));
   int TaggedJet(reco::Jet calojet, edm::Handle<reco::JetTagCollection > jetTags );
   float getTau(unsigned num, const reco::GenJet object) const;
-  void analyzeSubjets(const reco::Jet jet, int idx, edm::Handle<reco::JetFlavourInfoMatchingCollection>, edm::Handle<edm::View<reco::Jet> >, edm::Handle<reco::JetTagCollection> jetTags_CombinedSvtxV2);
+  void analyzeSubjets(const reco::Jet jet, int idx, edm::Handle<reco::JetFlavourInfoMatchingCollection>, edm::Handle<edm::View<reco::Jet> >, edm::Handle<reco::JetTagCollection> jetTags_CombinedSvtxV2, edm::Handle<std::vector<reco::SecondaryVertexTagInfo> > subjetSV);
   void fillNewJetVarsRecoJet(const reco::Jet jet);
   void fillNewJetVarsRefJet(const reco::GenJet jet);
   void fillNewJetVarsGenJet(const reco::GenJet jet);
@@ -220,6 +220,7 @@ private:
   edm::EDGetTokenT<reco::JetTagCollection> PositiveCombinedSecondaryVertexV2BJetTags_;
   edm::EDGetTokenT<reco::JetTagCollection> NegativeSoftPFMuonByPtBJetTags_;
   edm::EDGetTokenT<reco::JetTagCollection> PositiveSoftPFMuonByPtBJetTags_;
+  edm::EDGetTokenT<std::vector<reco::SecondaryVertexTagInfo> > svSubjetTagInfos_;
   edm::EDGetTokenT<reco::JetTagCollection> CombinedSubjetSecondaryVertexV2BJetTags_;
 
   bool doExtendedFlavorTagging_;
@@ -352,6 +353,14 @@ private:
     std::vector<std::vector<float>> jtSubJetHadronFlavor;
     std::vector<std::vector<float>> jtSubJetPartonFlavor; 
     std::vector<std::vector<float>> jtSubJetcsvV2;
+    std::vector<std::vector<std::vector<float>>> jtSubJetSvtxm;
+    std::vector<std::vector<std::vector<float>>> jtSubJetSvtxpt;
+    std::vector<std::vector<std::vector<float>>> jtSubJetSvtxeta;    
+    std::vector<std::vector<std::vector<float>>> jtSubJetSvtxphi;
+    std::vector<std::vector<std::vector<float>>> jtSubJetSvtxNtrk;
+    std::vector<std::vector<std::vector<float>>> jtSubJetSvtxdl;
+    std::vector<std::vector<std::vector<float>>> jtSubJetSvtxdls;
+
     std::vector<std::vector<std::vector<float>>> jtSubJetHadronDR;
     std::vector<std::vector<std::vector<float>>> jtSubJetHadronPt;
     std::vector<std::vector<std::vector<float>>> jtSubJetHadronEta;
@@ -476,16 +485,16 @@ private:
     float pdiscr_csvV2[MAXJETS];
 
     int nsvtx[MAXJETS];
-    int svtxntrk[MAXJETS];
-    float svtxdl[MAXJETS];
-    float svtxdls[MAXJETS];
-    float svtxdl2d[MAXJETS];
-    float svtxdls2d[MAXJETS];
-    float svtxm[MAXJETS];
-    float svtxpt[MAXJETS];
+    std::vector<std::vector<int> >svtxntrk;
+    std::vector<std::vector<float> >svtxdl;
+    std::vector<std::vector<float> >svtxdls;
+    std::vector<std::vector<float> >svtxdl2d;
+    std::vector<std::vector<float> >svtxdls2d;
+    std::vector<std::vector<float> >svtxm;
+    std::vector<std::vector<float> >svtxpt;
     float svtxmcorr[MAXJETS];
     float svtxnormchi2[MAXJETS];
-    float svJetDeltaR[MAXJETS];
+    std::vector<std::vector<float> >svJetDeltaR;
     float svtxTrkSumChi2[MAXJETS];
     int svtxTrkNetCharge[MAXJETS];
     int svtxNtrkInCone[MAXJETS];
