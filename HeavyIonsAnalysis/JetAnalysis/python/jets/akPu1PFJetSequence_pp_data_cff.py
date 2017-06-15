@@ -83,9 +83,9 @@ akPu1PFSoftPFMuonByPtBJetTags = akPu1PFbTagger.SoftPFMuonByPtBJetTags
 akPu1PFNegativeSoftPFMuonByPtBJetTags = akPu1PFbTagger.NegativeSoftPFMuonByPtBJetTags
 akPu1PFPositiveSoftPFMuonByPtBJetTags = akPu1PFbTagger.PositiveSoftPFMuonByPtBJetTags
 akPu1PFPatJetFlavourIdLegacy = cms.Sequence(akPu1PFPatJetPartonAssociationLegacy*akPu1PFPatJetFlavourAssociationLegacy)
-#Not working with our PU sub, but keep it here for reference
-#akPu1PFPatJetFlavourAssociation = akPu1PFbTagger.PatJetFlavourAssociation
-#akPu1PFPatJetFlavourId = cms.Sequence(akPu1PFPatJetPartons*akPu1PFPatJetFlavourAssociation)
+#Not working with our PU sub
+akPu1PFPatJetFlavourAssociation = akPu1PFbTagger.PatJetFlavourAssociation
+akPu1PFPatJetFlavourId = cms.Sequence(akPu1PFPatJetPartons*akPu1PFPatJetFlavourAssociation)
 
 akPu1PFJetBtaggingIP       = cms.Sequence(akPu1PFImpactParameterTagInfos *
             (akPu1PFTrackCountingHighEffBJetTags +
@@ -139,10 +139,11 @@ akPu1PFpatJetsWithBtagging = patJets.clone(jetSource = cms.InputTag("akPu1PFJets
         genJetMatch          = cms.InputTag("akPu1PFmatch"),
         genPartonMatch       = cms.InputTag("akPu1PFparton"),
         jetCorrFactorsSource = cms.VInputTag(cms.InputTag("akPu1PFcorr")),
-        JetPartonMapSource   = cms.InputTag("akPu1PFPatJetFlavourAssociationLegacy"),
+        #JetPartonMapSource   = cms.InputTag("akPu1PFPatJetFlavourAssociationLegacy"),
+        JetPartonMapSource   = cms.InputTag("akPu1PFPatJetFlavourAssociation"),
 	JetFlavourInfoSource   = cms.InputTag("akPu1PFPatJetFlavourAssociation"),
         trackAssociationSource = cms.InputTag("akPu1PFJetTracksAssociatorAtVertex"),
-	useLegacyJetMCFlavour = True,
+	useLegacyJetMCFlavour = False,
         discriminatorSources = cms.VInputTag(cms.InputTag("akPu1PFSimpleSecondaryVertexHighEffBJetTags"),
             cms.InputTag("akPu1PFSimpleSecondaryVertexHighPurBJetTags"),
             cms.InputTag("akPu1PFCombinedSecondaryVertexBJetTags"),
@@ -215,15 +216,15 @@ akPu1PFJetSequence_mc = cms.Sequence(
                                                   *
                                                   #akPu1PFJetID
                                                   #*
-                                                  akPu1PFPatJetFlavourIdLegacy
+                                                  #akPu1PFPatJetFlavourIdLegacy  # works for PbPb
                                                   #*
-			                          #akPu1PFPatJetFlavourId  # Use legacy algo till PU implemented
+			                          akPu1PFPatJetFlavourId  # doesn't work for PbPb yet
                                                   *
                                                   akPu1PFJetTracksAssociatorAtVertex
                                                   *
                                                   akPu1PFJetBtagging
                                                   *
-                                                  akPu1PFNjettiness
+                                                  akPu1PFNjettiness #No constituents for calo jets in pp. Must be removed for pp calo jets but I'm not sure how to do this transparently (Marta)
                                                   *
                                                   akPu1PFpatJetsWithBtagging
                                                   *

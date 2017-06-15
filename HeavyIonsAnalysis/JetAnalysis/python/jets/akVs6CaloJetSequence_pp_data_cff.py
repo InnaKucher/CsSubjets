@@ -83,9 +83,9 @@ akVs6CaloSoftPFMuonByPtBJetTags = akVs6CalobTagger.SoftPFMuonByPtBJetTags
 akVs6CaloNegativeSoftPFMuonByPtBJetTags = akVs6CalobTagger.NegativeSoftPFMuonByPtBJetTags
 akVs6CaloPositiveSoftPFMuonByPtBJetTags = akVs6CalobTagger.PositiveSoftPFMuonByPtBJetTags
 akVs6CaloPatJetFlavourIdLegacy = cms.Sequence(akVs6CaloPatJetPartonAssociationLegacy*akVs6CaloPatJetFlavourAssociationLegacy)
-#Not working with our PU sub, but keep it here for reference
-#akVs6CaloPatJetFlavourAssociation = akVs6CalobTagger.PatJetFlavourAssociation
-#akVs6CaloPatJetFlavourId = cms.Sequence(akVs6CaloPatJetPartons*akVs6CaloPatJetFlavourAssociation)
+#Not working with our PU sub
+akVs6CaloPatJetFlavourAssociation = akVs6CalobTagger.PatJetFlavourAssociation
+akVs6CaloPatJetFlavourId = cms.Sequence(akVs6CaloPatJetPartons*akVs6CaloPatJetFlavourAssociation)
 
 akVs6CaloJetBtaggingIP       = cms.Sequence(akVs6CaloImpactParameterTagInfos *
             (akVs6CaloTrackCountingHighEffBJetTags +
@@ -139,10 +139,11 @@ akVs6CalopatJetsWithBtagging = patJets.clone(jetSource = cms.InputTag("akVs6Calo
         genJetMatch          = cms.InputTag("akVs6Calomatch"),
         genPartonMatch       = cms.InputTag("akVs6Caloparton"),
         jetCorrFactorsSource = cms.VInputTag(cms.InputTag("akVs6Calocorr")),
-        JetPartonMapSource   = cms.InputTag("akVs6CaloPatJetFlavourAssociationLegacy"),
+        #JetPartonMapSource   = cms.InputTag("akVs6CaloPatJetFlavourAssociationLegacy"),
+        JetPartonMapSource   = cms.InputTag("akVs6CaloPatJetFlavourAssociation"),
 	JetFlavourInfoSource   = cms.InputTag("akVs6CaloPatJetFlavourAssociation"),
         trackAssociationSource = cms.InputTag("akVs6CaloJetTracksAssociatorAtVertex"),
-	useLegacyJetMCFlavour = True,
+	useLegacyJetMCFlavour = False,
         discriminatorSources = cms.VInputTag(cms.InputTag("akVs6CaloSimpleSecondaryVertexHighEffBJetTags"),
             cms.InputTag("akVs6CaloSimpleSecondaryVertexHighPurBJetTags"),
             cms.InputTag("akVs6CaloCombinedSecondaryVertexBJetTags"),
@@ -215,15 +216,15 @@ akVs6CaloJetSequence_mc = cms.Sequence(
                                                   *
                                                   #akVs6CaloJetID
                                                   #*
-                                                  akVs6CaloPatJetFlavourIdLegacy
+                                                  #akVs6CaloPatJetFlavourIdLegacy  # works for PbPb
                                                   #*
-			                          #akVs6CaloPatJetFlavourId  # Use legacy algo till PU implemented
+			                          akVs6CaloPatJetFlavourId  # doesn't work for PbPb yet
                                                   *
                                                   akVs6CaloJetTracksAssociatorAtVertex
                                                   *
                                                   akVs6CaloJetBtagging
                                                   *
-                                                  akVs6CaloNjettiness
+                                                  akVs6CaloNjettiness #No constituents for calo jets in pp. Must be removed for pp calo jets but I'm not sure how to do this transparently (Marta)
                                                   *
                                                   akVs6CalopatJetsWithBtagging
                                                   *

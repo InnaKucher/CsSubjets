@@ -83,9 +83,9 @@ akPuSoftDrop5PFSoftPFMuonByPtBJetTags = akPuSoftDrop5PFbTagger.SoftPFMuonByPtBJe
 akPuSoftDrop5PFNegativeSoftPFMuonByPtBJetTags = akPuSoftDrop5PFbTagger.NegativeSoftPFMuonByPtBJetTags
 akPuSoftDrop5PFPositiveSoftPFMuonByPtBJetTags = akPuSoftDrop5PFbTagger.PositiveSoftPFMuonByPtBJetTags
 akPuSoftDrop5PFPatJetFlavourIdLegacy = cms.Sequence(akPuSoftDrop5PFPatJetPartonAssociationLegacy*akPuSoftDrop5PFPatJetFlavourAssociationLegacy)
-#Not working with our PU sub, but keep it here for reference
-#akPuSoftDrop5PFPatJetFlavourAssociation = akPuSoftDrop5PFbTagger.PatJetFlavourAssociation
-#akPuSoftDrop5PFPatJetFlavourId = cms.Sequence(akPuSoftDrop5PFPatJetPartons*akPuSoftDrop5PFPatJetFlavourAssociation)
+#Not working with our PU sub
+akPuSoftDrop5PFPatJetFlavourAssociation = akPuSoftDrop5PFbTagger.PatJetFlavourAssociation
+akPuSoftDrop5PFPatJetFlavourId = cms.Sequence(akPuSoftDrop5PFPatJetPartons*akPuSoftDrop5PFPatJetFlavourAssociation)
 
 akPuSoftDrop5PFJetBtaggingIP       = cms.Sequence(akPuSoftDrop5PFImpactParameterTagInfos *
             (akPuSoftDrop5PFTrackCountingHighEffBJetTags +
@@ -139,10 +139,11 @@ akPuSoftDrop5PFpatJetsWithBtagging = patJets.clone(jetSource = cms.InputTag("akP
         genJetMatch          = cms.InputTag("akPuSoftDrop5PFmatch"),
         genPartonMatch       = cms.InputTag("akPuSoftDrop5PFparton"),
         jetCorrFactorsSource = cms.VInputTag(cms.InputTag("akPuSoftDrop5PFcorr")),
-        JetPartonMapSource   = cms.InputTag("akPuSoftDrop5PFPatJetFlavourAssociationLegacy"),
+        #JetPartonMapSource   = cms.InputTag("akPuSoftDrop5PFPatJetFlavourAssociationLegacy"),
+        JetPartonMapSource   = cms.InputTag("akPuSoftDrop5PFPatJetFlavourAssociation"),
 	JetFlavourInfoSource   = cms.InputTag("akPuSoftDrop5PFPatJetFlavourAssociation"),
         trackAssociationSource = cms.InputTag("akPuSoftDrop5PFJetTracksAssociatorAtVertex"),
-	useLegacyJetMCFlavour = True,
+	useLegacyJetMCFlavour = False,
         discriminatorSources = cms.VInputTag(cms.InputTag("akPuSoftDrop5PFSimpleSecondaryVertexHighEffBJetTags"),
             cms.InputTag("akPuSoftDrop5PFSimpleSecondaryVertexHighPurBJetTags"),
             cms.InputTag("akPuSoftDrop5PFCombinedSecondaryVertexBJetTags"),
@@ -215,15 +216,15 @@ akPuSoftDrop5PFJetSequence_mc = cms.Sequence(
                                                   *
                                                   #akPuSoftDrop5PFJetID
                                                   #*
-                                                  akPuSoftDrop5PFPatJetFlavourIdLegacy
+                                                  #akPuSoftDrop5PFPatJetFlavourIdLegacy  # works for PbPb
                                                   #*
-			                          #akPuSoftDrop5PFPatJetFlavourId  # Use legacy algo till PU implemented
+			                          akPuSoftDrop5PFPatJetFlavourId  # doesn't work for PbPb yet
                                                   *
                                                   akPuSoftDrop5PFJetTracksAssociatorAtVertex
                                                   *
                                                   akPuSoftDrop5PFJetBtagging
                                                   *
-                                                  akPuSoftDrop5PFNjettiness
+                                                  akPuSoftDrop5PFNjettiness #No constituents for calo jets in pp. Must be removed for pp calo jets but I'm not sure how to do this transparently (Marta)
                                                   *
                                                   akPuSoftDrop5PFpatJetsWithBtagging
                                                   *

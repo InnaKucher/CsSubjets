@@ -26,7 +26,7 @@ process.HiForest.HiForestVersion = cms.string(version)
 process.source = cms.Source("PoolSource",
                             duplicateCheckMode = cms.untracked.string("noDuplicateCheck"),
                             fileNames = cms.untracked.vstring(
-                                "file:samples/PbPb_MC_RECODEBUG.root"
+                                "/store/himc/HINPbPbWinter16DR/Pythia6_Dijet120_pp502_Hydjet_MB/AODSIM/75X_mcRun2_HeavyIon_v13-v1/00000/04A04E01-A80D-E611-835A-02163E012AD1.root"
                                 )
                             )
 
@@ -193,8 +193,8 @@ process.ana_step = cms.Path(
                             process.hiSignalGenFilters + 
                             process.jetSequences +
                             process.hiFJRhoAnalyzer +
-                            process.ggHiNtuplizer +
-                            process.ggHiNtuplizerGED +
+#                            process.ggHiNtuplizer +
+#                            process.ggHiNtuplizerGED +
                             process.pfcandAnalyzer +
                             process.pfcandAnalyzerCS +
                             process.HiForest +
@@ -230,6 +230,35 @@ process.pclusterCompatibilityFilter = cms.Path(process.clusterCompatibilityFilte
 process.pAna = cms.EndPath(process.skimanalysis)
 
 # Customization
+process.akCsSoftDrop4PFPatJetFlavourAssociation.jets="akCs4PFJets"
+process.akCsSoftDrop4PFPatJetFlavourAssociation.groomedJets=cms.InputTag("akCs4PFJets")
+process.akCsSoftDrop4PFPatJetFlavourAssociation.subjets= cms.InputTag('akCs4PFJets','SubJets')
+process.akCsSoftDrop4PFJets.useSoftDrop = True
+process.akCsSoftDrop4PFpatJetsWithBtagging.getJetMCFlavour = cms.bool(False)
+process.akCsSoftDrop4PFJetAnalyzer.doExtendedFlavorTagging = cms.untracked.bool(True)
+process.akCsSoftDrop4PFJetAnalyzer.jetFlavourInfos    = cms.InputTag("akCsSoftDrop4PFPatJetFlavourAssociation")
+process.akCsSoftDrop4PFJetAnalyzer.subjetFlavourInfos = cms.InputTag("akCsSoftDrop4PFPatJetFlavourAssociation","SubJets")
+process.akCsSoftDrop4PFJetAnalyzer.groomedJets        = cms.InputTag("akCsSoftDrop4PFJets")
+process.akCsSoftDrop4PFJetAnalyzer.isPythia6 = cms.untracked.bool(True)
+
+process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex = process.akCsSoftDrop4PFJetTracksAssociatorAtVertex.clone()
+process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex.jets = cms.InputTag('akCsSoftDrop4PFJets','SubJets')
+process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex.coneSize = cms.double(0.25)
+process.akCsSoftDrop4PFSubjetImpactParameterTagInfos = process.akCsSoftDrop4PFImpactParameterTagInfos.clone()
+process.akCsSoftDrop4PFSubjetImpactParameterTagInfos.jetTracks = cms.InputTag("akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex")
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos = process.akCsSoftDrop4PFSecondaryVertexTagInfos.clone()
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.trackIPTagInfos = cms.InputTag('akCsSoftDrop4PFSubjetImpactParameterTagInfos')
+
+
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.maxDeltaRToJetAxis = cms.double(0.1)
+process.akCsSoftDrop4PFCombinedSubjetSecondaryVertexV2BJetTags = process.akCsSoftDrop4PFCombinedSecondaryVertexV2BJetTags.clone(
+        tagInfos = cms.VInputTag(cms.InputTag("akCsSoftDrop4PFSubjetImpactParameterTagInfos"),
+                cms.InputTag("akCsSoftDrop4PFSubjetSecondaryVertexTagInfos"))
+)
+process.akCsSoftDrop4PFJetBtaggingSV *= process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex+process.akCsSoftDrop4PFSubjetImpactParameterTagInfos+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos+process.akCsSoftDrop4PFCombinedSubjetSecondaryVertexV2BJetTags
+
+
+
 ##########################################UE##########################################
 from CondCore.DBCommon.CondDBSetup_cfi import *
 process.uetable = cms.ESSource("PoolDBESSource",

@@ -52,64 +52,64 @@ jetSequences = cms.Sequence(
     hiFJRhoProducer +
     hiFJGridEmptyAreaCalculator +
 
-    akPu2CaloJets +
-    akPu2PFJets +
-    akVs2CaloJets +
-    akVs2PFJets +
-    akCs2PFJets +
-
-    #akPu3CaloJets +
-    #akPu3PFJets +
-    akVs3CaloJets +
-    akVs3PFJets +
-    akCs3PFJets +
-
-    #akPu4CaloJets +
-    #akPu4PFJets +
-    akVs4CaloJets +
-    akVs4PFJets +
+#    akPu2CaloJets +
+#    akPu2PFJets +
+#    akVs2CaloJets +
+#    akVs2PFJets +
+#    akCs2PFJets +
+#
+#    #akPu3CaloJets +
+#    #akPu3PFJets +
+#    akVs3CaloJets +
+#    akVs3PFJets +
+#    akCs3PFJets +
+#
+#    #akPu4CaloJets +
+#    #akPu4PFJets +
+#    akVs4CaloJets +
+#    akVs4PFJets +
     akCs4PFJets +
-
-    akPu5CaloJets +
-    akPu5PFJets +
-    akVs5CaloJets +
-    akVs5PFJets +
-    akCs5PFJets +
-
-    akCsFilter4PFJets +
-    akCsFilter5PFJets +
-    akCsSoftDrop4PFJets +
-    akCsSoftDrop5PFJets +
+#
+#    akPu5CaloJets +
+#    akPu5PFJets +
+#    akVs5CaloJets +
+#    akVs5PFJets +
+#    akCs5PFJets +
+#
+#    akCsFilter4PFJets +
+#    akCsFilter5PFJets +
+#    akCsSoftDrop4PFJets +
+#    akCsSoftDrop5PFJets +
 
     highPurityTracks +
     offlinePrimaryVertices +
 
-    akPu2CaloJetSequence +
-    akVs2CaloJetSequence +
-    akVs2PFJetSequence +
-    akPu2PFJetSequence +
-    akCs2PFJetSequence +
-
-    akPu3CaloJetSequence +
-    akVs3CaloJetSequence +
-    akVs3PFJetSequence +
-    akPu3PFJetSequence +
-    akCs3PFJetSequence +
-
+#    akPu2CaloJetSequence +
+#    akVs2CaloJetSequence +
+#    akVs2PFJetSequence +
+#    akPu2PFJetSequence +
+#    akCs2PFJetSequence +
+#
+#    akPu3CaloJetSequence +
+#    akVs3CaloJetSequence +
+#    akVs3PFJetSequence +
+#    akPu3PFJetSequence +
+#    akCs3PFJetSequence +
+#
     akPu4CaloJetSequence +
-    akVs4CaloJetSequence +
-    akVs4PFJetSequence +
-    akPu4PFJetSequence +
-    akCs4PFJetSequence +
-
-    akPu5CaloJetSequence +
-    akVs5CaloJetSequence +
-    akVs5PFJetSequence +
-    akPu5PFJetSequence +
-    akCs5PFJetSequence +
-
-    akCsFilter4PFJetSequence +
-    akCsFilter5PFJetSequence +
-    akCsSoftDrop4PFJetSequence +
-    akCsSoftDrop5PFJetSequence
+#    akVs4CaloJetSequence +
+#    akVs4PFJetSequence +
+    akPu4PFJetSequence
+#    akCs4PFJetSequence +
+#
+#    akPu5CaloJetSequence +
+#    akVs5CaloJetSequence +
+#    akVs5PFJetSequence +
+#    akPu5PFJetSequence +
+#    akCs5PFJetSequence +
+#
+#    akCsFilter4PFJetSequence +
+#    akCsFilter5PFJetSequence +
+#    akCsSoftDrop4PFJetSequence +
+#    akCsSoftDrop5PFJetSequence
 )
