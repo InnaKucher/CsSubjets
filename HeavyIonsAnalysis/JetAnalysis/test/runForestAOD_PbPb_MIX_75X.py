@@ -231,8 +231,9 @@ process.pAna = cms.EndPath(process.skimanalysis)
 
 # Customization
 process.akCsSoftDrop4PFPatJetFlavourAssociation.jets="akCs4PFJets"
-process.akCsSoftDrop4PFPatJetFlavourAssociation.groomedJets=cms.InputTag("akCs4PFJets")
-process.akCsSoftDrop4PFPatJetFlavourAssociation.subjets= cms.InputTag('akCs4PFJets','SubJets')
+process.akCsSoftDrop4PFPatJetFlavourAssociation.groomedJets=cms.InputTag("akCsSoftDrop4PFJets")
+process.akCsSoftDrop4PFPatJetFlavourAssociation.subjets= cms.InputTag('akCsSoftDrop4PFJets','SubJets')
+#process.akCsSoftDrop4PFPatJetFlavourAssociation.jetAlgorithm = cms.string('CambridgeAachen')
 process.akCsSoftDrop4PFJets.useSoftDrop = True
 process.akCsSoftDrop4PFpatJetsWithBtagging.getJetMCFlavour = cms.bool(False)
 process.akCsSoftDrop4PFJetAnalyzer.doExtendedFlavorTagging = cms.untracked.bool(True)

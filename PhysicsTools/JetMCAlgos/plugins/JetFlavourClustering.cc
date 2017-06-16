@@ -289,10 +289,14 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    // vector of constituents for reclustering jets and "ghosts"
    std::vector<fastjet::PseudoJet> fjInputs;
    // loop over all input jets and collect all their constituents
+   int ijet=0;
    for(edm::View<reco::Jet>::const_iterator it = jets->begin(); it != jets->end(); ++it)
    {
+     if(it->pt() < jetPtMin_) continue;
+     else std::cout << " at jet: "<< ijet++ << std::endl;
      std::vector<edm::Ptr<reco::Candidate> > constituents = it->getJetConstituents();
      std::vector<edm::Ptr<reco::Candidate> >::const_iterator m;
+     int icand=0;
      for( m = constituents.begin(); m != constituents.end(); ++m )
      {
        reco::CandidatePtr constit = *m;
@@ -302,6 +306,7 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
          continue;
        }
        fjInputs.push_back(fastjet::PseudoJet(constit->px(),constit->py(),constit->pz(),constit->energy()));
+	std::cout << "pushing back candidate " << icand++ << " pt: "<< constit->pt() << " eta: "<< constit->eta() << std::endl;
      }
    }
    // insert "ghost" b hadrons in the vector of constituents
@@ -318,6 +323,8 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    fjClusterSeq_ = ClusterSequencePtr( new fastjet::ClusterSequence( fjInputs, *fjJetDefinition_ ) );
    // recluster jet constituents and inserted "ghosts"
    std::vector<fastjet::PseudoJet> inclusiveJets = fastjet::sorted_by_pt( fjClusterSeq_->inclusive_jets(jetPtMin_) );
+
+   std::cout << " ******************************** STARTING RECLUSTERED ************************ "<< std::endl;
 
    if( inclusiveJets.size() < jets->size() )
      edm::LogError("TooFewReclusteredJets") << "There are fewer reclustered (" << inclusiveJets.size() << ") than original jets (" << jets->size() << "). Please check that the jet algorithm and jet size match those used for the original jet collection.";
@@ -343,6 +350,7 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
      matchSubjets(groomedIndices,groomedJets,subjets,subjetIndices);
    }
 
+   std::cout << " ******************************** STARTING RECLUSTERED ************************ "<< std::endl;
    // determine jet flavour
    for(size_t i=0; i<jets->size(); ++i)
    {
@@ -395,8 +403,11 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
        std::vector<fastjet::PseudoJet> constituents = fastjet::sorted_by_pt( inclusiveJets.at(reclusteredIndices.at(i)).constituents() );
 
        // loop over jet constituents and try to find "ghosts"
-       for(std::vector<fastjet::PseudoJet>::const_iterator it = constituents.begin(); it != constituents.end(); ++it)
+       std::cout << " at jet : " << i << std::endl;
+       int icand=0;
+	for(std::vector<fastjet::PseudoJet>::const_iterator it = constituents.begin(); it != constituents.end(); ++it)
        {
+    	std::cout << "echoing candidate " << icand++ << " pt: "<< it->pt() << " eta: "<< it->eta() << std::endl;
          if( !it->has_user_info() ) continue; // skip if not a "ghost"
 
          // "ghost" hadron
