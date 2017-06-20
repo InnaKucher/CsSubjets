@@ -102,6 +102,10 @@
 #include "fastjet/Selector.hh"
 #include "fastjet/PseudoJet.hh"
 
+#include "fastjet/contrib/SoftDrop.hh"
+#include "fastjet/tools/Filter.hh"
+#include "fastjet/tools/Pruner.hh"
+
 //
 // constants, enums and typedefs
 //
@@ -320,10 +324,30 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
      insertGhosts(leptons, ghostRescaling_, false, false, false, true, fjInputs);
 
    // define jet clustering sequence
+   std::cout << "starting clustering using settings: " << fjJetDefinition_->description() << std::endl; 
    fjClusterSeq_ = ClusterSequencePtr( new fastjet::ClusterSequence( fjInputs, *fjJetDefinition_ ) );
    // recluster jet constituents and inserted "ghosts"
-   std::vector<fastjet::PseudoJet> inclusiveJets = fastjet::sorted_by_pt( fjClusterSeq_->inclusive_jets(jetPtMin_) );
+   std::vector<fastjet::PseudoJet> inclusiveJetsTmp = fastjet::sorted_by_pt( fjClusterSeq_->inclusive_jets(jetPtMin_) );
 
+   std::cout << "redoing soft-drop again..." << std::endl;
+   std::vector<fastjet::PseudoJet> inclusiveJets;
+   //copy-pasted from https://github.com/cms-sw/cmssw/blob/CMSSW_7_5_X/RecoJets/JetProducers/plugins/FastjetJetProducer.cc#483
+   transformer_coll transformers;
+   fastjet::contrib::SoftDrop * sd = new fastjet::contrib::SoftDrop(0, 0.1, 0.5); //beta, zcut, R0
+   transformers.push_back( transformer_ptr(sd) );
+
+   for(std::vector<fastjet::PseudoJet>::const_iterator ijet = inclusiveJetsTmp.begin(); ijetEnd = inclusiveJetsTmp.end(); ijet != ijetEnd; ijet++ ){
+
+	   fastjet::PseudoJet transformedJet = *ijet;
+	   for ( transformer_coll::const_iterator itransf = transformers.begin(),
+			   itransfEnd = transformers.end(); itransf != itransfEnd; ++itransf ) {
+		   if ( transformedJet != 0 ) {
+			   transformedJet = (**itransf)(transformedJet);
+		   }
+	   }
+	   inclusiveJets.push_back(transformedJet);
+   }
+   
    std::cout << " ******************************** STARTING RECLUSTERED ************************ "<< std::endl;
 
    if( inclusiveJets.size() < jets->size() )
@@ -337,6 +361,7 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    std::vector<int> groomedIndices;
    if( useSubjets_ )
    {
+   std::cout << "Using the subjets!!" << std::endl;
      if( groomedJets->size() > jets->size() )
        edm::LogError("TooManyGroomedJets") << "There are more groomed (" << groomedJets->size() << ") than original jets (" << jets->size() << "). Please check that the two jet collections belong to each other.";
 
@@ -386,8 +411,11 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
      else
      {
        // since the "ghosts" are extremely soft, the configuration and ordering of the reclustered and original jets should in principle stay the same
-       if( ( std::abs( inclusiveJets.at(reclusteredIndices.at(i)).pt() - jets->at(i).pt() ) / jets->at(i).pt() ) > relPtTolerance_ )
-       {
+       if(useSubjets_ && groomedIndices.at(i) > 0) std::cout << "orig jet pt: "<< jets->at(i).pt() << " softDrop pt: " <<  groomedJets->at(groomedIndices.at(i)).pt() << " reclustered pt: "<< inclusiveJets.at(reclusteredIndices.at(i)).pt() << std::endl; 
+       else if(useSubjets_) std::cout << "no groomed match to index "<< i << std::endl;
+       if( (!useSubjets_ && ( std::abs( inclusiveJets.at(reclusteredIndices.at(i)).pt() - jets->at(i).pt() ) / jets->at(i).pt() ) > relPtTolerance_ ) || (useSubjets_ && groomedIndices.at(i)>0)) 
+     	{
+	if( useSubjets_ && std::abs( inclusiveJets.at(reclusteredIndices.at(i)).pt() - groomedJets->at(groomedIndices.at(i)).pt() ) / groomedJets->at(groomedIndices.at(i)).pt() < relPtTolerance_ ) continue;
          if( jets->at(i).pt() < 10. )  // special handling for low-Pt jets (Pt<10 GeV)
            edm::LogWarning("JetPtMismatchAtLowPt") << "The reclustered and original jet " << i << " have different Pt's (" << inclusiveJets.at(reclusteredIndices.at(i)).pt() << " vs " << jets->at(i).pt() << " GeV, respectively).\n"
                                                    << "Please check that the jet algorithm and jet size match those used for the original jet collection and also make sure the original jets are uncorrected. In addition, make sure you are not using CaloJets which are presently not supported.\n"
