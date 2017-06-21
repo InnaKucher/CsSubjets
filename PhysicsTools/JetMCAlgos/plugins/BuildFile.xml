@@ -9,5 +9,6 @@
 <use name="SimDataFormats/GeneratorProducts"/>
 <use name="DataFormats/HepMCCandidate"/>
 <use name="fastjet"/>
+<use name="fastjet-contrib"/>
 <library file="*.cc" name="PhysicsToolsJetMCAlgosPlugins">
 </library>
