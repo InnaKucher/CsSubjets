@@ -78,7 +78,7 @@ jetSequences = cms.Sequence(
 #
 #    akCsFilter4PFJets +
 #    akCsFilter5PFJets +
-#    akCsSoftDrop4PFJets +
+    akCsSoftDrop4PFJets +
 #    akCsSoftDrop5PFJets +
 
     highPurityTracks +
@@ -96,10 +96,10 @@ jetSequences = cms.Sequence(
 #    akPu3PFJetSequence +
 #    akCs3PFJetSequence +
 #
-    akPu4CaloJetSequence +
+#    akPu4CaloJetSequence +
 #    akVs4CaloJetSequence +
 #    akVs4PFJetSequence +
-    akPu4PFJetSequence +
+#    akPu4PFJetSequence +
 #    akCs4PFJetSequence +
 #
 #    akPu5CaloJetSequence +

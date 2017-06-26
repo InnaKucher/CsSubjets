@@ -112,6 +112,10 @@
 typedef boost::shared_ptr<fastjet::ClusterSequence>  ClusterSequencePtr;
 typedef boost::shared_ptr<fastjet::JetDefinition>    JetDefPtr;
 
+typedef fastjet::Transformer         transformer;
+typedef std::unique_ptr<transformer> transformer_ptr;
+typedef std::vector<transformer_ptr> transformer_coll;
+
 //
 // class declaration
 //
@@ -327,16 +331,16 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    std::cout << "starting clustering using settings: " << fjJetDefinition_->description() << std::endl; 
    fjClusterSeq_ = ClusterSequencePtr( new fastjet::ClusterSequence( fjInputs, *fjJetDefinition_ ) );
    // recluster jet constituents and inserted "ghosts"
-   std::vector<fastjet::PseudoJet> inclusiveJetsTmp = fastjet::sorted_by_pt( fjClusterSeq_->inclusive_jets(jetPtMin_) );
+   std::vector<fastjet::PseudoJet> inclusiveJets = fastjet::sorted_by_pt( fjClusterSeq_->inclusive_jets(jetPtMin_) );
 
-   std::cout << "redoing soft-drop again..." << std::endl;
+/*   std::cout << "redoing soft-drop again..." << std::endl;
    std::vector<fastjet::PseudoJet> inclusiveJets;
    //copy-pasted from https://github.com/cms-sw/cmssw/blob/CMSSW_7_5_X/RecoJets/JetProducers/plugins/FastjetJetProducer.cc#483
    transformer_coll transformers;
    fastjet::contrib::SoftDrop * sd = new fastjet::contrib::SoftDrop(0, 0.1, 0.5); //beta, zcut, R0
    transformers.push_back( transformer_ptr(sd) );
 
-   for(std::vector<fastjet::PseudoJet>::const_iterator ijet = inclusiveJetsTmp.begin(); ijetEnd = inclusiveJetsTmp.end(); ijet != ijetEnd; ijet++ ){
+   for(std::vector<fastjet::PseudoJet>::const_iterator ijet = inclusiveJetsTmp.begin(), ijetEnd = inclusiveJetsTmp.end(); ijet != ijetEnd; ijet++ ){
 
 	   fastjet::PseudoJet transformedJet = *ijet;
 	   for ( transformer_coll::const_iterator itransf = transformers.begin(),
@@ -346,7 +350,7 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 		   }
 	   }
 	   inclusiveJets.push_back(transformedJet);
-   }
+   }*/
    
    std::cout << " ******************************** STARTING RECLUSTERED ************************ "<< std::endl;
 
