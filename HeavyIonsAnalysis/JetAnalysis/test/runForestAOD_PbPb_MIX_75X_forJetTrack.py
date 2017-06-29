@@ -33,7 +33,7 @@ process.source = cms.Source("PoolSource",
 
 # Number of events we want to process, -1 = all events
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000)
+    input = cms.untracked.int32(100)
 )
 
 process.output = cms.OutputModule("PoolOutputModule",
@@ -41,7 +41,8 @@ process.output = cms.OutputModule("PoolOutputModule",
                                                                          'keep *_particleFlow_*_*',
                                                                          'keep *_particleFlowTmp_*_*',
                                                                          'keep *_mapEtaEdges_*_*',
-                                                                         'keep *_*_*_HiForest'),
+                                                                         'keep *_*_*_HiForest',
+									 'keep *_*_*_*'),
                                   fileName       = cms.untracked.string ("OutputMC.root")
 )
 #process.outpath  = cms.EndPath(process.output)
@@ -267,13 +268,29 @@ process.akCsSoftDrop4PFSubjetImpactParameterTagInfos.jetTracks = cms.InputTag("a
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos = process.akCsSoftDrop4PFSecondaryVertexTagInfos.clone()
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.trackIPTagInfos = cms.InputTag('akCsSoftDrop4PFSubjetImpactParameterTagInfos')
 
+#doing ghost-vertex reclustering for subjets
+from RecoVertex.AdaptiveVertexFinder.inclusiveVertexing_cff import *
+process.inclusiveVertexFinder.primaryVertices = cms.InputTag("hiSelectedVertex")
+process.inclusiveVertexFinder.tracks = cms.InputTag("highPurityTracks")
+process.trackVertexArbitrator.primaryVertices = cms.InputTag("hiSelectedVertex")
+process.trackVertexArbitrator.tracks = cms.InputTag("highPurityTracks")
+process.inclusiveSecondaryVertices.tracks = cms.InputTag("highPurityTracks")
+process.inclusiveSecondaryVertices.primaryVertices= cms.InputTag("hiSelectedVertex")
 
-process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.maxDeltaRToJetAxis = cms.double(0.1)
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.useExternalSV = cms.bool(True)
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.extSVCollection = cms.InputTag("inclusiveSecondaryVertices")
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.useSVClustering = cms.bool(True)
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.fatJets = cms.InputTag("akCs4PFJets")
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.groomedFatJets = cms.InputTag("akCsSoftDrop4PFJets")
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.jetAlgorithm = cms.string("AntiKt")
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.rParam = cms.double(0.4)
+
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.maxDeltaRToJetAxis = cms.double(0.2)
 process.akCsSoftDrop4PFCombinedSubjetSecondaryVertexV2BJetTags = process.akCsSoftDrop4PFCombinedSecondaryVertexV2BJetTags.clone(
         tagInfos = cms.VInputTag(cms.InputTag("akCsSoftDrop4PFSubjetImpactParameterTagInfos"),
                 cms.InputTag("akCsSoftDrop4PFSubjetSecondaryVertexTagInfos"))
 )
-process.akCsSoftDrop4PFJetBtaggingSV *= process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex+process.akCsSoftDrop4PFSubjetImpactParameterTagInfos+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos+process.akCsSoftDrop4PFCombinedSubjetSecondaryVertexV2BJetTags
+process.akCsSoftDrop4PFJetBtaggingSV *= process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex+process.akCsSoftDrop4PFSubjetImpactParameterTagInfos+process.inclusiveVertexing+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos+process.akCsSoftDrop4PFCombinedSubjetSecondaryVertexV2BJetTags
 
 ######################################################################################
 
