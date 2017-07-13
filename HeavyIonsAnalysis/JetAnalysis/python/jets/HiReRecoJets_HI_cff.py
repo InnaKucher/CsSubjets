@@ -47,6 +47,20 @@ akCsSoftDrop4PFJets = cms.EDProducer(
     writeCompound = cms.bool(True),
     jetCollInstanceName=cms.string("SubJets")
 )
+akSoftDrop4PFJets = cms.EDProducer("FastjetJetProducer",
+    PFJetParameters,
+    AnomalousCellParameters,
+    jetAlgorithm = cms.string("AntiKt"),
+    rParam       = cms.double(0.4),
+    useSoftDrop = cms.bool(True),
+    zcut = cms.double(0.1),
+    beta = cms.double(0.0),
+    R0   = cms.double(0.4),
+    useExplicitGhosts = cms.bool(True),
+    writeCompound = cms.bool(True),
+    jetCollInstanceName=cms.string("SubJets")
+)
+
 akCsSoftDrop4PFJets.src = cms.InputTag("akCs4PFJets","pfParticlesCs")
 akCsSoftDrop5PFJets = akCsSoftDrop4PFJets.clone(rParam = cms.double(0.5),
                                                 src    = cms.InputTag("akCs5PFJets","pfParticlesCs"))
