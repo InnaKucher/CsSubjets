@@ -29,11 +29,12 @@ process.source = cms.Source("PoolSource",
                                 "/store/himc/HINPbPbWinter16DR/Pythia6_Dijet120_pp502_Hydjet_MB/AODSIM/75X_mcRun2_HeavyIon_v13-v1/00000/04A04E01-A80D-E611-835A-02163E012AD1.root"
 #                                "file:samples/PbPb_MC_RECODEBUG.root"
                                 )
+#			    skipEvents = cms.untracked.uint32(64)
                             )
 
 # Number of events we want to process, -1 = all events
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1)
+    input = cms.untracked.int32(20)
 )
 
 process.output = cms.OutputModule("PoolOutputModule",
@@ -249,19 +250,18 @@ process.pAna = cms.EndPath(process.skimanalysis)
 ##########################################UE##########################################
 # Customization
 process.ak4PFJets.jetPtMin = cms.double(0.0)
-process.ak4PFJets.dropZeros = cms.bool(False)
 process.akSoftDrop4PFJets.src = cms.InputTag("particleFlowTmp")
 process.akCsSoftDrop4PFJets.jetPtMin = cms.double(0.0)
 
 process.akCsSoftDrop4PFPatJetFlavourAssociation.jets="akCs4PFJets"
 process.akCsSoftDrop4PFPatJetFlavourAssociation.unsubtractedJets = cms.InputTag("ak4PFJets")
+process.akCsSoftDrop4PFPatJetFlavourAssociation.redoUESubtraction = cms.untracked.bool(True)
 process.akCsSoftDrop4PFPatJetFlavourAssociation.groomedJets=cms.InputTag("akCsSoftDrop4PFJets")
 process.akCsSoftDrop4PFPatJetFlavourAssociation.subjets= cms.InputTag('akCsSoftDrop4PFJets','SubJets')
 process.akCsSoftDrop4PFPatJetFlavourAssociation.etaMap = cms.InputTag("hiFJRhoProducer","mapEtaEdges")
 process.akCsSoftDrop4PFPatJetFlavourAssociation.rho = cms.InputTag("hiFJGridEmptyAreaCalculator","mapToRhoCorr1Bin")
 process.akCsSoftDrop4PFPatJetFlavourAssociation.rhom = cms.InputTag("hiFJGridEmptyAreaCalculator","mapToRhoMCorr1Bin")
 
-#process.akCs4PFPatJetFlavourAssociation.jetAlgorithm = cms.string('CambridgeAachen')
 process.akCsSoftDrop4PFpatJetsWithBtagging.getJetMCFlavour = cms.bool(False)
 process.akCsSoftDrop4PFJetAnalyzer.doExtendedFlavorTagging = cms.untracked.bool(True)
 process.akCsSoftDrop4PFJetAnalyzer.jetFlavourInfos    = cms.InputTag("akCsSoftDrop4PFPatJetFlavourAssociation")

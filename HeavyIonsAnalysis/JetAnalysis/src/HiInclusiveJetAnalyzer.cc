@@ -195,7 +195,7 @@ HiInclusiveJetAnalyzer::HiInclusiveJetAnalyzer(const edm::ParameterSet& iConfig)
     PositiveCombinedSecondaryVertexV2BJetTags_ = consumes<JetTagCollection> (iConfig.getUntrackedParameter<string>("PositiveCombinedSecondaryVertexV2BJetTags",(bTagJetName_+"PositiveCombinedSecondaryVertexV2BJetTags")));
     NegativeSoftPFMuonByPtBJetTags_ = consumes<JetTagCollection> (iConfig.getUntrackedParameter<string>("NegativeSoftPFMuonByPtBJetTags",(bTagJetName_+"NegativeSoftPFMuonByPtBJetTags")));
     PositiveSoftPFMuonByPtBJetTags_ = consumes<JetTagCollection> (iConfig.getUntrackedParameter<string>("PositiveSoftPFMuonByPtBJetTags",(bTagJetName_+"PositiveSoftPFMuonByPtBJetTags")));
-    if(doExtendedFlavorTagging_) CombinedSubjetSecondaryVertexV2BJetTags_ = mayConsume<JetTagCollection> (iConfig.getUntrackedParameter<string>("CombinedSubjetSecondaryVertexV2BJetTags",(bTagJetName_+"CombinedSubjetSecondaryVertexV2BJetTags")));
+    if(doExtendedFlavorTagging_) CombinedSubjetSecondaryVertexBJetTags_ = mayConsume<JetTagCollection> (iConfig.getUntrackedParameter<string>("CombinedSubjetSecondaryVertexBJetTags",(bTagJetName_+"CombinedSubjetSecondaryVertexBJetTags")));
     if(doExtendedFlavorTagging_) svSubjetTagInfos_ = mayConsume<vector<SecondaryVertexTagInfo> >(iConfig.getUntrackedParameter<string>("SecondaryVertexTagInfos",(bTagJetName_+"SubjetSecondaryVertexTagInfos")));
   }
 
@@ -381,7 +381,7 @@ HiInclusiveJetAnalyzer::beginJob() {
 
 	    t->Branch("jtSubJetHadronFlavor",&jets_.jtSubJetHadronFlavor);
 	t->Branch("jtSubJetPartonFlavor",&jets_.jtSubJetPartonFlavor);
-	t->Branch("jtSubJetcsvV2",&jets_.jtSubJetcsvV2);
+	t->Branch("jtSubJetcsvV1",&jets_.jtSubJetcsvV1);
 	t->Branch("jtSubJetHadronDR",&jets_.jtSubJetHadronDR);
 	t->Branch("jtSubJetHadronPt",&jets_.jtSubJetHadronPt);
 	t->Branch("jtSubJetHadronEta",&jets_.jtSubJetHadronEta);
@@ -1018,7 +1018,7 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
   Handle<JetTagCollection> jetTags_negCombinedSvtxV2;
   Handle<JetTagCollection> jetTags_posCombinedSvtxV2;
   
-  Handle<JetTagCollection> jetTags_subjet_combinedSvtxV2;
+  Handle<JetTagCollection> jetTags_subjet_combinedSvtx;
   Handle<vector<SecondaryVertexTagInfo> > subjetTagInfoSVx;
 
   //------------------------------------------------------
@@ -1048,7 +1048,7 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
     iEvent.getByToken(NegativeCombinedSecondaryVertexV2BJetTags_, jetTags_negCombinedSvtxV2);
     iEvent.getByToken(PositiveCombinedSecondaryVertexV2BJetTags_, jetTags_posCombinedSvtxV2);
     if(doExtendedFlavorTagging_){
-        iEvent.getByToken(CombinedSubjetSecondaryVertexV2BJetTags_, jetTags_subjet_combinedSvtxV2);
+        iEvent.getByToken(CombinedSubjetSecondaryVertexBJetTags_, jetTags_subjet_combinedSvtx);
 	iEvent.getByToken(svSubjetTagInfos_,subjetTagInfoSVx);
     }
     //iEvent.getByToken(NegativeSoftPFMuonByPtBJetTags_, jetTags_softMuneg);
@@ -1603,7 +1603,7 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
 	}
    }
 
-    if(doSubJets_) analyzeSubjets(jet, jets_.nref, theSubjetFlavourInfos, groomedJets, jetTags_subjet_combinedSvtxV2, subjetTagInfoSVx);
+    if(doSubJets_) analyzeSubjets(jet, jets_.nref, theSubjetFlavourInfos, groomedJets, jetTags_subjet_combinedSvtx, subjetTagInfoSVx);
 
     if(usePat_){
       if( (*patjets)[j].hasUserFloat(jetName_+"Njettiness:tau1") )
@@ -1869,7 +1869,7 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
 
 		      int partonMatchIndex = findMatchedParton(jet.eta(), jet.phi(), 0.3, genparts, jets_.jtHadronFlavor[jets_.nref]);
 		      if(partonMatchIndex<0){
-			      cout<< " couldn't find the parton "<<endl;
+			      cout<< "jet " << jets_.nref << " declared flavor " << jets_.jtHadronFlavor[jets_.nref] << " couldn't find the parton "<<endl;
 			      jets_.refparton_flavorProcess[jets_.nref] = 0;
 		      }
 		      else{
@@ -2354,22 +2354,25 @@ int HiInclusiveJetAnalyzer::getFlavorProcess(int index, Handle<GenParticleCollec
 		}
 	}
 	if(abs(momID)==5 && matchedParton->numberOfMothers()==0){ cout << "warning - found orphaned b-quark!" << endl; return -1; }
-	
-	if(matchedParton->status()>20 && matchedParton->status()<30) return 2;
-	if(matchedParton->status()>30 && matchedParton->status()<40) return 3;
-	if(matchedParton->status()>40 && matchedParton->status()<50) return 4;
-	if(matchedParton->status()>50){
-		if(abs(momID)==21) return 5;
-		 return 6;
-	}
 
-	/*if(momIndex<2) return 4; // initial state GSP
-	else if(momIndex<4) return 3; // sometimes GSP, sometimes associated to FEX
-	else if(momIndex<6) return 2; // primaries
-	else if(momIndex<8){
-		if(momID==21) return 6;  // final state hard GSP
-		else return 5; // final state soft GSP
-	}*/
+	if(!isPythia6_){
+		if(matchedParton->status()>20 && matchedParton->status()<30) return 2;
+		if(matchedParton->status()>30 && matchedParton->status()<40) return 3;
+		if(matchedParton->status()>40 && matchedParton->status()<50) return 4;
+		if(matchedParton->status()>50){
+			if(abs(momID)==21) return 5;
+			return 6;
+		}
+	}
+	else{
+		if(momIndex<2) return 4; // initial state GSP
+		else if(momIndex<4) return 3; // sometimes GSP, sometimes associated to FEX
+		else if(momIndex<6) return 2; // primaries
+		else if(momIndex<8){
+			if(momID==21) return 6;  // final state hard GSP
+			else return 5; // final state soft GSP
+		}
+	}
 	//else cout<<" should never get here "<<" momID "<<momID<<" momIndex "<<momIndex<<endl;
 
 
@@ -2394,7 +2397,7 @@ float HiInclusiveJetAnalyzer::getTau(unsigned num, const reco::GenJet object) co
 
 
 //--------------------------------------------------------------------------------------------------
-void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::Handle<reco::JetFlavourInfoMatchingCollection> theSubjetFlavourInfos, edm::Handle<edm::View<reco::Jet> > groomedJets, Handle<JetTagCollection> jetTags_CombinedSvtxV2, Handle<vector<SecondaryVertexTagInfo> > subjetSV) {
+void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::Handle<reco::JetFlavourInfoMatchingCollection> theSubjetFlavourInfos, edm::Handle<edm::View<reco::Jet> > groomedJets, Handle<JetTagCollection> jetTags_CombinedSvtx, Handle<vector<SecondaryVertexTagInfo> > subjetSV) {
 
   std::vector<float> sjpt;
   std::vector<float> sjeta;
@@ -2402,7 +2405,7 @@ void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::H
   std::vector<float> sjm;
   std::vector<float> hadronFlavor;
   std::vector<float> partonFlavor;
-  std::vector<float> csvV2;
+  std::vector<float> csvV1;
   std::vector<std::vector<float>> subjetVtxMass;
   std::vector<std::vector<float>> subjetVtxPt;
   std::vector<std::vector<float>> subjetVtxEta;
@@ -2433,9 +2436,9 @@ void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::H
 	     
 	      vector<float> svm, svpt, sveta, svphi, svntrk, svdl, svdls; 
 	      const reco::Jet *subjd = dynamic_cast<const reco::Jet*>(jet.daughter(k));
-	      int ith_tagged = TaggedJet(*subjd,jetTags_CombinedSvtxV2);
-	      if(ith_tagged >= 0) csvV2.push_back((*jetTags_CombinedSvtxV2)[ith_tagged].second);
-	      else csvV2.push_back(-1);
+	      int ith_tagged = TaggedJet(*subjd,jetTags_CombinedSvtx);
+	      if(ith_tagged >= 0) csvV1.push_back((*jetTags_CombinedSvtx)[ith_tagged].second);
+	      else csvV1.push_back(-1);
 
 	      if(ith_tagged>=0){
 		      const SecondaryVertexTagInfo &subjetInfo = (*subjetSV)[ith_tagged];
@@ -2449,7 +2452,7 @@ void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::H
 			      svdl.push_back(subjetInfo.flightDistance(isv).value());
 			      svdls.push_back(subjetInfo.flightDistance(isv).significance());
 		      }
-		      if((*jetTags_CombinedSvtxV2)[ith_tagged].second > 0.9 && subjetInfo.nVertices()==0) cout << "WARNING! No vertex found in a large CSV subjet!!" << endl;
+		      if((*jetTags_CombinedSvtx)[ith_tagged].second > 0.9 && subjetInfo.nVertices()==0) cout << "WARNING! No vertex found in a large CSV subjet!!" << endl;
 	      }
 
 	      vector<float> hdr, hpt, heta, hphi, hpdg, pdr, ppt, peta, pphi, ppdg;
@@ -2516,11 +2519,11 @@ void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::H
 	    if(doExtendedFlavorTagging_){
 		    hadronFlavor.push_back(-999);
 		    partonFlavor.push_back(-999);
-		    csvV2.push_back(-999);
+		    csvV1.push_back(-999);
 	    }
     }
     //cout << "subjet pt size: "<< sjpt.size() << endl;
-    //cout << "csv size: "<< csvV2.size() << endl;
+    //cout << "csv size: "<< csvV1.size() << endl;
     //cout << "hadron flavor size: " << hadronFlavor.size() << endl;
     //cout << "subjet SV mass size: "<< subjetVtxMass.size() << endl;
     jets_.jtSubJetPt.push_back(sjpt);
@@ -2530,7 +2533,7 @@ void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::H
     if(doExtendedFlavorTagging_){
 	    jets_.jtSubJetHadronFlavor.push_back(hadronFlavor);
 	    jets_.jtSubJetPartonFlavor.push_back(partonFlavor); 
-	    jets_.jtSubJetcsvV2.push_back(csvV2);
+	    jets_.jtSubJetcsvV1.push_back(csvV1);
 	    jets_.jtSubJetSvtxm.push_back(subjetVtxMass);
 	    jets_.jtSubJetSvtxpt.push_back(subjetVtxPt);
 	    jets_.jtSubJetSvtxeta.push_back(subjetVtxEta);

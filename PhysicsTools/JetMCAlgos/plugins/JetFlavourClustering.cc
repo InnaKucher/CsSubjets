@@ -210,6 +210,7 @@ class JetFlavourClustering : public edm::stream::EDProducer<> {
       const bool          hadronFlavourHasPriority_;
       const bool          useSubjets_;
       const bool          useLeptons_;
+      const bool 	  redoSubtraction_;
 
       edm::EDGetTokenT<std::vector<double>>                       etaToken_;
       edm::EDGetTokenT<std::vector<double>>                       rhoToken_;
@@ -229,7 +230,7 @@ class JetFlavourClustering : public edm::stream::EDProducer<> {
 JetFlavourClustering::JetFlavourClustering(const edm::ParameterSet& iConfig) :
 
    jetsToken_(consumes<edm::View<reco::Jet> >( iConfig.getParameter<edm::InputTag>("jets")) ),
-  unsubtractedJetsToken_(consumes<edm::View<reco::Jet> >( iConfig.getParameter<edm::InputTag>("unsubtractedJets")) ),
+   unsubtractedJetsToken_(consumes<edm::View<reco::Jet> >( iConfig.getParameter<edm::InputTag>("unsubtractedJets")) ),
    groomedJetsToken_(mayConsume<edm::View<reco::Jet> >( iConfig.exists("groomedJets") ? iConfig.getParameter<edm::InputTag>("groomedJets") : edm::InputTag() )),
    subjetsToken_(mayConsume<edm::View<reco::Jet> >( iConfig.exists("subjets") ? iConfig.getParameter<edm::InputTag>("subjets") : edm::InputTag() )),
    bHadronsToken_(consumes<reco::GenParticleRefVector>( iConfig.getParameter<edm::InputTag>("bHadrons") )),
@@ -239,11 +240,12 @@ JetFlavourClustering::JetFlavourClustering(const edm::ParameterSet& iConfig) :
    jetAlgorithm_(iConfig.getParameter<std::string>("jetAlgorithm")),
    rParam_(iConfig.getParameter<double>("rParam")),
    jetPtMin_(0.), // hardcoded to 0. since we simply want to recluster all input jets which already had some PtMin applied
-   ghostRescaling_(iConfig.exists("ghostRescaling") ? iConfig.getParameter<double>("ghostRescaling") : 1e-18),
+   ghostRescaling_(iConfig.exists("ghostRescaling") ? iConfig.getParameter<double>("ghostRescaling") : 1e-50),
    relPtTolerance_(iConfig.exists("relPtTolerance") ? iConfig.getParameter<double>("relPtTolerance") : 1e-03), // 0.1% relative difference in Pt should be sufficient to detect possible misconfigurations
    hadronFlavourHasPriority_(iConfig.getParameter<bool>("hadronFlavourHasPriority")),
    useSubjets_(iConfig.exists("groomedJets") && iConfig.exists("subjets")),
    useLeptons_(iConfig.exists("leptons")),
+   redoSubtraction_(iConfig.getUntrackedParameter<bool>("redoUESubtraction",false)),
    etaToken_(consumes<std::vector<double>>(iConfig.getParameter<edm::InputTag>( "etaMap" ))),
    rhoToken_(consumes<std::vector<double>>(iConfig.getParameter<edm::InputTag>( "rho" ))),
    rhomToken_(consumes<std::vector<double>>(iConfig.getParameter<edm::InputTag>( "rhom" )))
@@ -327,7 +329,6 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
      if(it->pt() < jetPtMin_) continue;
      std::vector<edm::Ptr<reco::Candidate> > constituents = it->getJetConstituents();
      std::vector<edm::Ptr<reco::Candidate> >::const_iterator m;
-     //int icand=0;
      for( m = constituents.begin(); m != constituents.end(); ++m )
      {
        reco::CandidatePtr constit = *m;
@@ -337,59 +338,46 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
          continue;
        }
        fjInputs.push_back(fastjet::PseudoJet(constit->px(),constit->py(),constit->pz(),constit->energy()));
-       //std::cout << "pushing back candidate " << icand++ << " pt: "<< constit->pt() << " eta: "<< constit->eta() << std::endl;
      }
    }
 
-   std::cout << "redoing Cs again..." << std::endl;
-   double csRho_EtaMax_ = 4.4;
+   double ghost_EtaMax = 5.0;
    double csRParam_ = 0.4;
+   unsigned int minSeed_ = 14327;
+   std::vector<int> seeds(2);
+   unsigned int runNum_uint = static_cast <unsigned int> (iEvent.id().run());
+   unsigned int evNum_uint = static_cast <unsigned int> (iEvent.id().event()); 
+   seeds[0] = std::max(runNum_uint,minSeed_ + 3) + 3 * evNum_uint;
+   seeds[1] = std::max(runNum_uint,minSeed_ + 5) + 5 * evNum_uint;
+
    typedef boost::shared_ptr<fastjet::GhostedAreaSpec>    ActiveAreaSpecPtr;
    typedef boost::shared_ptr<fastjet::AreaDefinition>     AreaDefinitionPtr;
-   ActiveAreaSpecPtr fjActiveArea_     = ActiveAreaSpecPtr(new fastjet::GhostedAreaSpec(5.0, 1, 0.005)); //ghostEtaMax, activeAreaRepeats, ghostArea_
+   ActiveAreaSpecPtr fjActiveArea_     = ActiveAreaSpecPtr(new fastjet::GhostedAreaSpec(ghost_EtaMax, 1, (double)0.005)); //ghostEtaMax, activeAreaRepeats, ghostArea_
    fjActiveArea_->set_fj2_placement(true);
+   fjActiveArea_->set_random_status(seeds);
+   fjActiveArea_->_initialize();
    AreaDefinitionPtr fjAreaDefinition_ = AreaDefinitionPtr( new fastjet::AreaDefinition(fastjet::active_area_explicit_ghosts, *fjActiveArea_ ) ); //use explict ghosts to avoid Cs'ing them away
-   //copy-pasted from https://github.com/cms-sw/cmssw/blob/CMSSW_7_5_X/RecoJets/JetProducers/plugins/FastjetJetProducer.cc#483
-   transformer_coll transformers;
-   fastjet::Selector rho_range =  fastjet::SelectorAbsRapMax(csRho_EtaMax_);
-   std::unique_ptr<fastjet::JetMedianBackgroundEstimator> bge_rho = std::unique_ptr<fastjet::JetMedianBackgroundEstimator> (new  fastjet::JetMedianBackgroundEstimator(rho_range, *fjJetDefinition_, *fjAreaDefinition_) );
-   bge_rho->set_particles(fjInputs);
-   fastjet::contrib::ConstituentSubtractor * constituentSubtractor = new fastjet::contrib::ConstituentSubtractor(bge_rho.get());
-   constituentSubtractor->use_common_bge_for_rho_and_rhom(true);
-   transformers.push_back( transformer_ptr(constituentSubtractor) );
 
    // insert "ghost" b hadrons in the vector of constituents
-   //insertGhosts(bHadrons, ghostRescaling_, true, true, false, false, fjInputs);
+   insertGhosts(bHadrons, ghostRescaling_, true, true, false, false, fjInputs);
    // insert "ghost" c hadrons in the vector of constituents
-   //insertGhosts(cHadrons, ghostRescaling_, true, false, false, false, fjInputs);
+   insertGhosts(cHadrons, ghostRescaling_, true, false, false, false, fjInputs);
    // insert "ghost" partons in the vector of constituents
-   //insertGhosts(partons, ghostRescaling_, false, false, true, false, fjInputs);
+   insertGhosts(partons, ghostRescaling_, false, false, true, false, fjInputs);
    // if used, insert "ghost" leptons in the vector of constituents
    if( useLeptons_ )
-     //insertGhosts(leptons, ghostRescaling_, false, false, false, true, fjInputs);
-
+	   insertGhosts(leptons, ghostRescaling_, false, false, false, true, fjInputs);	
+   
    // define jet clustering sequence
-   //std::cout << "starting clustering using settings: " << fjJetDefinition_->description() << std::endl; 
    fjClusterSeq_ = ClusterSequencePtr( new fastjet::ClusterSequenceArea( fjInputs, *fjJetDefinition_ , *fjAreaDefinition_) );
-   // recluster jet constituents and inserted "ghosts"
+    // recluster jet constituents and inserted "ghosts"
    std::vector<fastjet::PseudoJet> tempJets = fastjet::sorted_by_pt( fjClusterSeq_->inclusive_jets(jetPtMin_) );
-   std::vector<fastjet::PseudoJet> tempJets2 = fastjet::sorted_by_pt( fjClusterSeq_->inclusive_jets(jetPtMin_) );
-   std::vector<fastjet::PseudoJet> tempSubJets;
-   for(std::vector<fastjet::PseudoJet>::const_iterator ijet = tempJets2.begin(), ijetEnd = tempJets2.end(); ijet != ijetEnd; ijet++ ){
-
-           fastjet::PseudoJet transformedJet = *ijet;
-           for ( transformer_coll::const_iterator itransf = transformers.begin(),
-                           itransfEnd = transformers.end(); itransf != itransfEnd; ++itransf ) {
-                   if ( transformedJet != 0 ) {
-                           transformedJet = (**itransf)(transformedJet);
-                   }
-           }
-           tempSubJets.push_back(transformedJet);
-	   std::cout << "FastJetCS.. original pt: "<< ijet->pt() << " new pt: "<< transformedJet.pt() << std::endl;
-   }
    std::vector<fastjet::PseudoJet> inclusiveJets;
+   if(!redoSubtraction_) inclusiveJets = tempJets; 
+
 ///***************************************************/// STARTING CS SUBTRACTION /////*************************////
 
+   else{
    edm::Handle<std::vector<double>> etaRanges;
    edm::Handle<std::vector<double>> rhoRanges;
    edm::Handle<std::vector<double>> rhomRanges;
@@ -402,8 +390,9 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
     //----------------------------------------------------------------------
     //    // sift ghosts and particles in the input jet
-	std::vector<fastjet::PseudoJet> particles, ghosts;
-	fastjet::SelectorIsPureGhost().sift(ijet->constituents(), ghosts, particles);
+	std::vector<fastjet::PseudoJet> particles, ghosts, fullParticles, flavorParts;
+	fastjet::SelectorIsPureGhost().sift(ijet->constituents(), ghosts, fullParticles);
+        fastjet::SelectorPtRange(1e-30, 1e-12).sift(fullParticles, flavorParts, particles); //sift out the ghost flavors
 	unsigned long nGhosts=ghosts.size();
 	unsigned long nParticles=particles.size();
 	if(nParticles==0) continue; //don't subtract ghost jets
@@ -411,8 +400,8 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 	//assign rho and rhom to ghosts according to local eta-dependent map
 	std::vector<double> rho;
 	std::vector<double> rhom;
-	for (unsigned int j=0;j<nGhosts; j++) {
-
+        for (unsigned int j=0;j<nGhosts; j++) {
+		if(ghosts[j].has_user_info()) std::cout << "ghost " << j << " has info. pt: "<< ghosts[j].pt() << std::endl;
 		if(ghosts[j].eta()<=etaRanges->at(0)) {
 			rho.push_back(rhoRanges->at(0));
 			rhom.push_back(rhomRanges->at(0));
@@ -429,7 +418,6 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 			}
 		}
 	}
-
 	//----------------------------------------------------------------------
 	//    // computing and sorting the distances, deltaR
 	csRParam_ = -1.0;
@@ -505,54 +493,16 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 		subtracted_const.set_user_index(i);
 		subtracted_particles.push_back(subtracted_const);
 	}
+	//reinsert the flavor ghosts manually after subtraction
+	for(unsigned int iflavPart=0; iflavPart<flavorParts.size(); iflavPart++) subtracted_particles.push_back(flavorParts[iflavPart]);
+
 	fastjet::PseudoJet subtracted_jet=join(subtracted_particles);
-	std::cout << "Marta CS... orig jet pt: " << ijet->perp() << " sub pt: " << subtracted_jet.perp() << std::endl;
 	if(subtracted_jet.perp()>0.)
 		inclusiveJets.push_back( subtracted_jet );
-   } 
+   }
+ } 
 
 ///********************************** END CS SUBTRACION CUT/PASTE *************************///
-
-
-   std::cout << "**** Reclustered ****" << std::endl;
-   for(unsigned ijet=0; ijet<inclusiveJets.size(); ijet++)
-   {
-     if(inclusiveJets.at(ijet).pt() < jetPtMin_) continue;
-     std::vector<fastjet::PseudoJet> constituents, ghosts;
-     fastjet::SelectorIsPureGhost().sift(inclusiveJets.at(ijet).constituents(), ghosts, constituents);
-     std::vector<fastjet::PseudoJet>::const_iterator m;
-     //int icand=0;
-     for( m = constituents.begin(); m != constituents.end(); ++m )
-     {
-       if(m->pt() == 0)
-       {
-         edm::LogWarning("NullTransverseMomentum") << "dropping input candidate with pt=0";
-         continue;
-       }
-        //std::cout << "reclustered candidate " << icand++ << " pt: "<< m->pt() << " eta: "<< m->eta() << std::endl;
-     }
-   }
-
-/*   std::cout << "redoing soft-drop again..." << std::endl;
-   std::vector<fastjet::PseudoJet> inclusiveJets;
-   //copy-pasted from https://github.com/cms-sw/cmssw/blob/CMSSW_7_5_X/RecoJets/JetProducers/plugins/FastjetJetProducer.cc#483
-   transformer_coll transformers;
-   fastjet::contrib::SoftDrop * sd = new fastjet::contrib::SoftDrop(0, 0.1, 0.5); //beta, zcut, R0
-   transformers.push_back( transformer_ptr(sd) );
-
-   for(std::vector<fastjet::PseudoJet>::const_iterator ijet = inclusiveJetsTmp.begin(), ijetEnd = inclusiveJetsTmp.end(); ijet != ijetEnd; ijet++ ){
-
-	   fastjet::PseudoJet transformedJet = *ijet;
-	   for ( transformer_coll::const_iterator itransf = transformers.begin(),
-			   itransfEnd = transformers.end(); itransf != itransfEnd; ++itransf ) {
-		   if ( transformedJet != 0 ) {
-			   transformedJet = (**itransf)(transformedJet);
-		   }
-	   }
-	   inclusiveJets.push_back(transformedJet);
-   }*/
-   
-   std::cout << " ******************************** STARTING RECLUSTERED ************************ "<< std::endl;
 
    if( inclusiveJets.size() < jets->size() )
      edm::LogError("TooFewReclusteredJets") << "There are fewer reclustered (" << inclusiveJets.size() << ") than original jets (" << jets->size() << "). Please check that the jet algorithm and jet size match those used for the original jet collection.";
@@ -565,7 +515,6 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    std::vector<int> groomedIndices;
    if( useSubjets_ )
    {
-   std::cout << "Using the subjets!!" << std::endl;
      if( groomedJets->size() > jets->size() )
        edm::LogError("TooManyGroomedJets") << "There are more groomed (" << groomedJets->size() << ") than original jets (" << jets->size() << "). Please check that the two jet collections belong to each other.";
 
@@ -576,7 +525,7 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    std::vector<std::vector<int> > subjetIndices;
    if( useSubjets_ )
    {
-     matchSubjets(groomedIndices,groomedJets,subjets,subjetIndices);
+	matchSubjets(groomedIndices,groomedJets,subjets,subjetIndices);
    }
 
    // determine jet flavour
@@ -614,8 +563,6 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
      else
      {
        // since the "ghosts" are extremely soft, the configuration and ordering of the reclustered and original jets should in principle stay the same
-       if(useSubjets_) std::cout << "orig jet pt: "<< jets->at(i).pt() << " fastjet CS jet pt: "<< tempSubJets.at(i).pt() << " reclustered pt: "<< inclusiveJets.at(reclusteredIndices.at(i)).pt() << std::endl; 
-       else if(useSubjets_) std::cout << "no groomed match to index "<< i << std::endl;
        if( std::abs( inclusiveJets.at(reclusteredIndices.at(i)).pt() - jets->at(i).pt() ) / jets->at(i).pt() > relPtTolerance_ ) 
      	{
          if( jets->at(i).pt() < 10. )  // special handling for low-Pt jets (Pt<10 GeV)
@@ -632,30 +579,30 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
        // get jet constituents (sorted by Pt)
        std::vector<fastjet::PseudoJet> constituents = fastjet::sorted_by_pt( inclusiveJets.at(reclusteredIndices.at(i)).constituents() );
 
-       // loop over jet constituents and try to find "ghosts"
-   //    std::cout << " at jet : " << i << std::endl;
-       //int icand=0;
 	for(std::vector<fastjet::PseudoJet>::const_iterator it = constituents.begin(); it != constituents.end(); ++it)
        {
-    //	std::cout << "echoing candidate " << icand++ << " pt: "<< it->pt() << " eta: "<< it->eta() << std::endl;
          if( !it->has_user_info() ) continue; // skip if not a "ghost"
 
-         // "ghost" hadron
-         if( it->user_info<GhostInfo>().isHadron() )
-         {
-           // "ghost" b hadron
-           if( it->user_info<GhostInfo>().isbHadron() )
-             clusteredbHadrons.push_back(it->user_info<GhostInfo>().particleRef());
-           // "ghost" c hadron
-           else
-             clusteredcHadrons.push_back(it->user_info<GhostInfo>().particleRef());
-         }
-         // "ghost" parton
-         else if( it->user_info<GhostInfo>().isParton() )
-           clusteredPartons.push_back(it->user_info<GhostInfo>().particleRef());
-         // "ghost" lepton
-         else if( it->user_info<GhostInfo>().isLepton() )
-           clusteredLeptons.push_back(it->user_info<GhostInfo>().particleRef());
+	 // "ghost" hadron
+	 if( it->user_info<GhostInfo>().isHadron() )
+	 {
+		 // "ghost" b hadron
+		 if( it->user_info<GhostInfo>().isbHadron() ){
+			 clusteredbHadrons.push_back(it->user_info<GhostInfo>().particleRef());
+		 }
+		 // "ghost" c hadron
+		 else{
+			 clusteredcHadrons.push_back(it->user_info<GhostInfo>().particleRef());
+		 }
+	 }
+	 // "ghost" parton
+	 else if( it->user_info<GhostInfo>().isParton() ){
+		 clusteredPartons.push_back(it->user_info<GhostInfo>().particleRef());
+	 }
+	 // "ghost" lepton
+	 else if( it->user_info<GhostInfo>().isLepton() ){
+		 clusteredLeptons.push_back(it->user_info<GhostInfo>().particleRef());
+	 }
        }
 
        int hadronFlavour = 0; // default hadron flavour set to 0 (= undefined)
@@ -665,7 +612,7 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
        setFlavours(clusteredbHadrons, clusteredcHadrons, clusteredPartons, hadronFlavour, partonFlavour);
 
        // set the JetFlavourInfo for this jet
-       (*jetFlavourInfos)[jets->refAt(i)] = reco::JetFlavourInfo(clusteredbHadrons, clusteredcHadrons, clusteredPartons, clusteredLeptons, hadronFlavour, partonFlavour);
+	(*jetFlavourInfos)[jets->refAt(i)] = reco::JetFlavourInfo(clusteredbHadrons, clusteredcHadrons, clusteredPartons, clusteredLeptons, hadronFlavour, partonFlavour);
      }
 
      // if subjets are used, determine their flavour
@@ -699,7 +646,7 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
          setFlavours(assignedbHadrons.at(sj), assignedcHadrons.at(sj), assignedPartons.at(sj), subjetHadronFlavour, subjetPartonFlavour);
 
          // set the JetFlavourInfo for this subjet
-         (*subjetFlavourInfos)[subjets->refAt(subjetIndices.at(i).at(sj))] = reco::JetFlavourInfo(assignedbHadrons.at(sj), assignedcHadrons.at(sj), assignedPartons.at(sj), assignedLeptons.at(sj), subjetHadronFlavour, subjetPartonFlavour);
+	(*subjetFlavourInfos)[subjets->refAt(subjetIndices.at(i).at(sj))] = reco::JetFlavourInfo(assignedbHadrons.at(sj), assignedcHadrons.at(sj), assignedPartons.at(sj), assignedLeptons.at(sj), subjetHadronFlavour, subjetPartonFlavour);
        }
      }
    }
@@ -766,7 +713,7 @@ JetFlavourClustering::matchReclusteredJets(const edm::Handle<edm::View<reco::Jet
                                             << "This is not expected so please check that the jet algorithm and jet size match those used for the original jet collection.";
        }
        else{
-       	  std::cout << " matched original jet " << j << " (pt:" << jets->at(j).pt() << ") with reclustered jet " << matchedIdx << " (pt: " << reclusteredJets.at(matchedIdx).pt() << ")" << std::endl; 
+       	  //std::cout << " matched original jet " << j << " (pt:" << jets->at(j).pt() << ") with reclustered jet " << matchedIdx << " (pt: " << reclusteredJets.at(matchedIdx).pt() << ")" << std::endl; 
       	  matchedLocks.at(matchedIdx) = true;
        }
      }
@@ -810,20 +757,23 @@ JetFlavourClustering::matchGroomedJets(const edm::Handle<edm::View<reco::Jet> >&
      {
        if ( matchedDR2 > rParam_*rParam_ )
        {
-         edm::LogWarning("MatchedJetsFarApart") << "Matched groomed jet " << gj << " and original jet " << matchedIdx <<" are separated by dR=" << sqrt(matchedDR2) << " which is greater than the jet size R=" << rParam_ << ".\n"
+        if(jets->at(matchedIdx).pt()>10){ 
+	edm::LogWarning("MatchedJetsFarApart") << "Matched groomed jet " << gj << " and original jet " << matchedIdx <<" are separated by dR=" << sqrt(matchedDR2) << " which is greater than the jet size R=" << rParam_ << ".\n"
                                                 << "This is not expected so the matching of these two jets has been discarded. Please check that the two jet collections belong to each other.";
+	}
          matchedIdx = -1;
        }
-       else
-         jetLocks.at(matchedIdx) = true;
+       else{
+	    jetLocks.at(matchedIdx) = true;
+       }	
      }
      jetIndices.push_back(matchedIdx);
+    
    }
 
    for(size_t j=0; j<jets->size(); ++j)
    {
      std::vector<int>::iterator matchedIndex = std::find( jetIndices.begin(), jetIndices.end(), j );
-
      matchedIndices.push_back( matchedIndex != jetIndices.end() ? std::distance(jetIndices.begin(),matchedIndex) : -1 );
    }
 }

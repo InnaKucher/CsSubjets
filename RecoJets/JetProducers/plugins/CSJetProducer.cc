@@ -65,7 +65,7 @@ void CSJetProducer::runAlgorithm( edm::Event & iEvent, edm::EventSetup const& iS
   //some minor modifications with respect to original
   //main change: eta-dependent rho within the jet
   for ( std::vector<fastjet::PseudoJet>::const_iterator ijet = tempJets.begin(), ijetEnd = tempJets.end(); ijet != ijetEnd; ++ijet ) {
-  
+
     //----------------------------------------------------------------------
     // sift ghosts and particles in the input jet
     std::vector<fastjet::PseudoJet> particles, ghosts;
@@ -78,7 +78,7 @@ void CSJetProducer::runAlgorithm( edm::Event & iEvent, edm::EventSetup const& iS
     std::vector<double> rho;
     std::vector<double> rhom;
     for (unsigned int j=0;j<nGhosts; j++) {
-
+	
       if(ghosts[j].eta()<=etaRanges->at(0)) {
         rho.push_back(rhoRanges->at(0));
         rhom.push_back(rhomRanges->at(0));
@@ -171,7 +171,6 @@ void CSJetProducer::runAlgorithm( edm::Event & iEvent, edm::EventSetup const& iS
       subtracted_particles.push_back(subtracted_const);
     }
     fastjet::PseudoJet subtracted_jet=join(subtracted_particles);
-    //std::cout << "orig jet pt: " << ijet->perp() << " sub pt: " << subtracted_jet.perp() << std::endl;
     if(subtracted_jet.perp()>0.)
       fjJets_.push_back( subtracted_jet );
     

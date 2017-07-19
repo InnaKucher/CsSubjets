@@ -221,7 +221,7 @@ private:
   edm::EDGetTokenT<reco::JetTagCollection> NegativeSoftPFMuonByPtBJetTags_;
   edm::EDGetTokenT<reco::JetTagCollection> PositiveSoftPFMuonByPtBJetTags_;
   edm::EDGetTokenT<std::vector<reco::SecondaryVertexTagInfo> > svSubjetTagInfos_;
-  edm::EDGetTokenT<reco::JetTagCollection> CombinedSubjetSecondaryVertexV2BJetTags_;
+  edm::EDGetTokenT<reco::JetTagCollection> CombinedSubjetSecondaryVertexBJetTags_;
 
   bool doExtendedFlavorTagging_;
   edm::EDGetTokenT<reco::JetFlavourInfoMatchingCollection> jetFlavourInfosToken_;
@@ -352,7 +352,7 @@ private:
     std::vector<std::vector<float>> jtSubJetM;
     std::vector<std::vector<float>> jtSubJetHadronFlavor;
     std::vector<std::vector<float>> jtSubJetPartonFlavor; 
-    std::vector<std::vector<float>> jtSubJetcsvV2;
+    std::vector<std::vector<float>> jtSubJetcsvV1;
     std::vector<std::vector<std::vector<float>>> jtSubJetSvtxm;
     std::vector<std::vector<std::vector<float>>> jtSubJetSvtxpt;
     std::vector<std::vector<std::vector<float>>> jtSubJetSvtxeta;    
