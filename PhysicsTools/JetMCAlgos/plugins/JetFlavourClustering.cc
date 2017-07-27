@@ -194,7 +194,7 @@ class JetFlavourClustering : public edm::stream::EDProducer<> {
 
       // ----------member data ---------------------------
       const edm::EDGetTokenT<edm::View<reco::Jet> >      jetsToken_;        // Input jet collection
-      const edm::EDGetTokenT<edm::View<reco::Jet> >      unsubtractedJetsToken_; //Input cs jets collection
+      edm::EDGetTokenT<edm::View<reco::Jet> >      unsubtractedJetsToken_; //Input cs jets collection
       const edm::EDGetTokenT<edm::View<reco::Jet> >      groomedJetsToken_; // Input groomed jet collection
       const edm::EDGetTokenT<edm::View<reco::Jet> >      subjetsToken_;     // Input subjet collection
       const edm::EDGetTokenT<reco::GenParticleRefVector> bHadronsToken_;    // Input b hadron collection
@@ -230,7 +230,6 @@ class JetFlavourClustering : public edm::stream::EDProducer<> {
 JetFlavourClustering::JetFlavourClustering(const edm::ParameterSet& iConfig) :
 
    jetsToken_(consumes<edm::View<reco::Jet> >( iConfig.getParameter<edm::InputTag>("jets")) ),
-   unsubtractedJetsToken_(consumes<edm::View<reco::Jet> >( iConfig.getParameter<edm::InputTag>("unsubtractedJets")) ),
    groomedJetsToken_(mayConsume<edm::View<reco::Jet> >( iConfig.exists("groomedJets") ? iConfig.getParameter<edm::InputTag>("groomedJets") : edm::InputTag() )),
    subjetsToken_(mayConsume<edm::View<reco::Jet> >( iConfig.exists("subjets") ? iConfig.getParameter<edm::InputTag>("subjets") : edm::InputTag() )),
    bHadronsToken_(consumes<reco::GenParticleRefVector>( iConfig.getParameter<edm::InputTag>("bHadrons") )),
@@ -245,12 +244,15 @@ JetFlavourClustering::JetFlavourClustering(const edm::ParameterSet& iConfig) :
    hadronFlavourHasPriority_(iConfig.getParameter<bool>("hadronFlavourHasPriority")),
    useSubjets_(iConfig.exists("groomedJets") && iConfig.exists("subjets")),
    useLeptons_(iConfig.exists("leptons")),
-   redoSubtraction_(iConfig.getUntrackedParameter<bool>("redoUESubtraction",false)),
-   etaToken_(consumes<std::vector<double>>(iConfig.getParameter<edm::InputTag>( "etaMap" ))),
-   rhoToken_(consumes<std::vector<double>>(iConfig.getParameter<edm::InputTag>( "rho" ))),
-   rhomToken_(consumes<std::vector<double>>(iConfig.getParameter<edm::InputTag>( "rhom" )))
-
+   redoSubtraction_(iConfig.getUntrackedParameter<bool>("redoUESubtraction",false))
 {
+   if(redoSubtraction_){
+           unsubtractedJetsToken_ = (consumes<edm::View<reco::Jet> >( iConfig.getParameter<edm::InputTag>("unsubtractedJets")) );
+	   etaToken_ = (consumes<std::vector<double>>(iConfig.getParameter<edm::InputTag>( "etaMap" )));
+           rhoToken_ = (consumes<std::vector<double>>(iConfig.getParameter<edm::InputTag>( "rho" )));
+           rhomToken_ = (consumes<std::vector<double>>(iConfig.getParameter<edm::InputTag>( "rhom" )));
+   }
+
    // register your products
    produces<reco::JetFlavourInfoMatchingCollection>();
    if( useSubjets_ )
@@ -293,12 +295,14 @@ JetFlavourClustering::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    edm::Handle<edm::View<reco::Jet> > subjets;
    if( useSubjets_ )
    {
-     iEvent.getByToken(unsubtractedJetsToken_, unsubtractedJets);
+     if(redoSubtraction_) iEvent.getByToken(unsubtractedJetsToken_, unsubtractedJets);
+     else iEvent.getByToken(jetsToken_, unsubtractedJets);
      iEvent.getByToken(groomedJetsToken_, groomedJets);
      iEvent.getByToken(subjetsToken_, subjets);
    }
    else{
-   	iEvent.getByToken(unsubtractedJetsToken_, jets);
+	if(redoSubtraction_) iEvent.getByToken(unsubtractedJetsToken_, jets);
+   	else iEvent.getByToken(jetsToken_, jets);
    }
 
    edm::Handle<reco::GenParticleRefVector> bHadrons;
