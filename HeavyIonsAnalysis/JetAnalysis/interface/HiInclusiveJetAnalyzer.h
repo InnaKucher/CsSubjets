@@ -40,6 +40,8 @@
 
 #include "SimDataFormats/JetMatching/interface/JetFlavourInfo.h"
 #include "SimDataFormats/JetMatching/interface/JetFlavourInfoMatching.h"
+#include "RecoBTag/SecondaryVertex/interface/V0Filter.h"
+#include "RecoBTag/SecondaryVertex/interface/TrackSelector.h"
 
 #include "fastjet/contrib/Njettiness.hh"
 #include "TMVA/Reader.h"
@@ -89,7 +91,7 @@ private:
   math::XYZPoint getPosition(const DetId &id, reco::Vertex::Point vtx = reco::Vertex::Point(0,0,0));
   int TaggedJet(reco::Jet calojet, edm::Handle<reco::JetTagCollection > jetTags );
   float getTau(unsigned num, const reco::GenJet object) const;
-  void analyzeSubjets(const reco::Jet jet, int idx, edm::Handle<reco::JetFlavourInfoMatchingCollection>, edm::Handle<edm::View<reco::Jet> >, edm::Handle<reco::JetTagCollection> jetTags_CombinedSvtxV2, edm::Handle<std::vector<reco::SecondaryVertexTagInfo> > subjetSV);
+  void analyzeSubjets(const reco::Jet jet, int idx, edm::Handle<reco::JetFlavourInfoMatchingCollection>, edm::Handle<edm::View<reco::Jet> >, edm::Handle<reco::JetTagCollection> jetTags_CombinedSvtxV2, edm::Handle<std::vector<reco::TrackIPTagInfo> > subjetTagInfo, edm::Handle<std::vector<reco::SecondaryVertexTagInfo> > subjetSV);
   void fillNewJetVarsRecoJet(const reco::Jet jet);
   void fillNewJetVarsRefJet(const reco::GenJet jet);
   void fillNewJetVarsGenJet(const reco::GenJet jet);
@@ -100,7 +102,11 @@ private:
 
   int findMatchedParton(float eta, float phi, float maxDr, edm::Handle<reco::GenParticleCollection > genparts, int partonFlavor);
   int getFlavorProcess(int index, edm::Handle<reco::GenParticleCollection > genparts);
- 
+
+  reco::TrackSelector                     trackSelector; 
+  reco::TrackSelector                     trackPseudoSelector;
+  reco::V0Filter                          pseudoVertexV0Filter;
+  reco::V0Filter                          trackPairV0Filter;
   std::auto_ptr<fastjet::contrib::Njettiness>   routine_;
 
   class ExtraInfo : public fastjet::PseudoJet::UserInfoBase {
@@ -220,6 +226,7 @@ private:
   edm::EDGetTokenT<reco::JetTagCollection> PositiveCombinedSecondaryVertexV2BJetTags_;
   edm::EDGetTokenT<reco::JetTagCollection> NegativeSoftPFMuonByPtBJetTags_;
   edm::EDGetTokenT<reco::JetTagCollection> PositiveSoftPFMuonByPtBJetTags_;
+  edm::EDGetTokenT<std::vector<reco::TrackIPTagInfo> > svImpactParameterTagInfos_;
   edm::EDGetTokenT<std::vector<reco::SecondaryVertexTagInfo> > svSubjetTagInfos_;
   edm::EDGetTokenT<reco::JetTagCollection> CombinedSubjetSecondaryVertexBJetTags_;
 
@@ -353,6 +360,7 @@ private:
     std::vector<std::vector<float>> jtSubJetHadronFlavor;
     std::vector<std::vector<float>> jtSubJetPartonFlavor; 
     std::vector<std::vector<float>> jtSubJetcsvV1;
+    std::vector<std::vector<int>> jtSubJetVtxType;
     std::vector<std::vector<std::vector<float>>> jtSubJetSvtxm;
     std::vector<std::vector<std::vector<float>>> jtSubJetSvtxpt;
     std::vector<std::vector<std::vector<float>>> jtSubJetSvtxeta;    
@@ -485,6 +493,7 @@ private:
     float pdiscr_csvV2[MAXJETS];
 
     int nsvtx[MAXJETS];
+    std::vector<std::vector<int> >svType;
     std::vector<std::vector<int> >svtxntrk;
     std::vector<std::vector<float> >svtxdl;
     std::vector<std::vector<float> >svtxdls;

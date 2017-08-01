@@ -69,7 +69,11 @@ using namespace reco;
 
 
 HiInclusiveJetAnalyzer::HiInclusiveJetAnalyzer(const edm::ParameterSet& iConfig) :
-  geo(0)
+	trackSelector(iConfig.getParameter<edm::ParameterSet>("trackSelection")),
+        trackPseudoSelector(iConfig.getParameter<edm::ParameterSet>("trackSelection")),
+        pseudoVertexV0Filter(iConfig.getParameter<edm::ParameterSet>("trackPairV0Filter")),
+        trackPairV0Filter(iConfig.getParameter<edm::ParameterSet>("trackPairV0Filter")),
+	geo(0)
 {
 
   doMatch_ = iConfig.getUntrackedParameter<bool>("matchJets",false);
@@ -197,6 +201,7 @@ HiInclusiveJetAnalyzer::HiInclusiveJetAnalyzer(const edm::ParameterSet& iConfig)
     PositiveSoftPFMuonByPtBJetTags_ = consumes<JetTagCollection> (iConfig.getUntrackedParameter<string>("PositiveSoftPFMuonByPtBJetTags",(bTagJetName_+"PositiveSoftPFMuonByPtBJetTags")));
     if(doExtendedFlavorTagging_) CombinedSubjetSecondaryVertexBJetTags_ = mayConsume<JetTagCollection> (iConfig.getUntrackedParameter<string>("CombinedSubjetSecondaryVertexBJetTags",(bTagJetName_+"CombinedSubjetSecondaryVertexBJetTags")));
     if(doExtendedFlavorTagging_) svSubjetTagInfos_ = mayConsume<vector<SecondaryVertexTagInfo> >(iConfig.getUntrackedParameter<string>("SecondaryVertexTagInfos",(bTagJetName_+"SubjetSecondaryVertexTagInfos")));
+    if(doExtendedFlavorTagging_) svImpactParameterTagInfos_ = mayConsume<vector<TrackIPTagInfo> >(iConfig.getUntrackedParameter<string>("ImpactParameterTagInfos",(bTagJetName_+"SubjetImpactParameterTagInfos")));
   }
 
   //  cout<<" jet collection : "<<jetTag_<<endl;
@@ -371,6 +376,7 @@ HiInclusiveJetAnalyzer::beginJob() {
     t->Branch("jtSubJetPhi",&jets_.jtSubJetPhi);
     t->Branch("jtSubJetM",&jets_.jtSubJetM);
     if(doExtendedFlavorTagging_){
+	    t->Branch("jtSubJetVtxType", &jets_.jtSubJetVtxType);
 	    t->Branch("jtSubJetSvtxm",&jets_.jtSubJetSvtxm);
 	    t->Branch("jtSubJetSvtxpt",&jets_.jtSubJetSvtxpt);
 	    t->Branch("jtSubJetSvtxeta",&jets_.jtSubJetSvtxeta);
@@ -513,6 +519,7 @@ HiInclusiveJetAnalyzer::beginJob() {
     t->Branch("pdiscr_csvV2",jets_.pdiscr_csvV2,"pdiscr_csvV2[nref]/F");
 
     t->Branch("nsvtx",    jets_.nsvtx,    "nsvtx[nref]/I");
+    t->Branch("svType", &jets_.svType);
     t->Branch("svtxntrk", &jets_.svtxntrk);
     t->Branch("svtxdl",   &jets_.svtxdl);
     t->Branch("svtxdls",  &jets_.svtxdls);
@@ -1019,6 +1026,7 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
   Handle<JetTagCollection> jetTags_posCombinedSvtxV2;
   
   Handle<JetTagCollection> jetTags_subjet_combinedSvtx;
+  Handle<vector<TrackIPTagInfo> > subjetTagInfo;
   Handle<vector<SecondaryVertexTagInfo> > subjetTagInfoSVx;
 
   //------------------------------------------------------
@@ -1049,6 +1057,7 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
     iEvent.getByToken(PositiveCombinedSecondaryVertexV2BJetTags_, jetTags_posCombinedSvtxV2);
     if(doExtendedFlavorTagging_){
         iEvent.getByToken(CombinedSubjetSecondaryVertexBJetTags_, jetTags_subjet_combinedSvtx);
+	iEvent.getByToken(svImpactParameterTagInfos_,subjetTagInfo);
 	iEvent.getByToken(svSubjetTagInfos_,subjetTagInfoSVx);
     }
     //iEvent.getByToken(NegativeSoftPFMuonByPtBJetTags_, jetTags_softMuneg);
@@ -1130,6 +1139,7 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
 
 	std::vector<int> svtxntrks;
 	std::vector<float> svjetDr, svtxdl, svtxdls, svtxdl2d, svtxdls2d, svtxm, svtxpt;
+	std::vector<int> svType;
 	if(jets_.nsvtx[jets_.nref]==0){
 		svtxntrks.push_back(-999);
 		svjetDr.push_back(-999);
@@ -1137,7 +1147,8 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
 		svtxdls.push_back(-999);
 		svtxdl2d.push_back(-999);
 		svtxm.push_back(-999);
-		svtxpt.push_back(-999);		
+		svtxpt.push_back(-999);	
+		svType.push_back(-999);
 	}
 	for (int ivtx=0; ivtx<jets_.nsvtx[jets_.nref]; ivtx++) {
 	//  if(jets_.nsvtx[jets_.nref]>1) cout << "ntrks: " << tagInfoSV.nVertexTracks(ivtx) << endl;
@@ -1164,7 +1175,7 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
 	    int trkNetCharge=0;
 	    int nTrkInCone=0;
 	    int nsvtxtrks=0;
-	    TrackRefVector svtxTracks = tagInfoSV.vertexTracks(0);
+	    TrackRefVector svtxTracks = tagInfoSV.vertexTracks(ivtx);
 	    for(unsigned int itrk=0; itrk<svtxTracks.size(); itrk++){
 	      nsvtxtrks++;
 	      trkSumChi2 += svtxTracks.at(itrk)->chi2();
@@ -1180,10 +1191,24 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
 	    double sinth = svtx.p4().Vect().Unit().Cross(tagInfoSV.flightDirection(0).unit()).Mag2();
 	    sinth = sqrt(sinth);
 	    jets_.svtxmcorr[jets_.nref] = sqrt(pow(svtxM,2)+(pow(svtxPt,2)*pow(sinth,2)))+svtxPt*sinth;
-	  }	
+	  }
 	  
+	  TrackRefVector svtxTracks = tagInfoSV.vertexTracks(ivtx);
+	  unsigned nVtxTypeTrks=0, nVtxTypeVertices=0, nAssocTrks=0;
+	  for(unsigned int itrk=0; itrk<svtxTracks.size(); itrk++){
+		  if(tagInfoSV.trackWeight(ivtx, svtxTracks.at(itrk)) >= 0.5) nAssocTrks++; //0.5 is default value
+	  }
+	  if(nAssocTrks>0){
+		  bool isTrackVertex = (nAssocTrks==1);
+		  ++*(isTrackVertex ? &nVtxTypeTrks : &nVtxTypeVertices); // <-- holy complicated logic, batman! From GhostTrackComputer.cc
+	  }
+	  if(nVtxTypeVertices) svType.push_back(0);
+	  else if(nVtxTypeTrks) svType.push_back(1);
+	  else svType.push_back(2);	
+
 	  if(svtx.ndof()>0)jets_.svtxnormchi2[jets_.nref]  = svtx.chi2()/svtx.ndof();
 	}
+	jets_.svType.push_back(svType);
 	jets_.svtxntrk.push_back(svtxntrks);
         jets_.svJetDeltaR.push_back(svjetDr);
         jets_.svtxdl.push_back(svtxdl);
@@ -1603,7 +1628,7 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
 	}
    }
 
-    if(doSubJets_) analyzeSubjets(jet, jets_.nref, theSubjetFlavourInfos, groomedJets, jetTags_subjet_combinedSvtx, subjetTagInfoSVx);
+    if(doSubJets_) analyzeSubjets(jet, jets_.nref, theSubjetFlavourInfos, groomedJets, jetTags_subjet_combinedSvtx, subjetTagInfo, subjetTagInfoSVx);
 
     if(usePat_){
       if( (*patjets)[j].hasUserFloat(jetName_+"Njettiness:tau1") )
@@ -2397,7 +2422,7 @@ float HiInclusiveJetAnalyzer::getTau(unsigned num, const reco::GenJet object) co
 
 
 //--------------------------------------------------------------------------------------------------
-void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::Handle<reco::JetFlavourInfoMatchingCollection> theSubjetFlavourInfos, edm::Handle<edm::View<reco::Jet> > groomedJets, Handle<JetTagCollection> jetTags_CombinedSvtx, Handle<vector<SecondaryVertexTagInfo> > subjetSV) {
+void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::Handle<reco::JetFlavourInfoMatchingCollection> theSubjetFlavourInfos, edm::Handle<edm::View<reco::Jet> > groomedJets, Handle<JetTagCollection> jetTags_CombinedSvtx, Handle<vector<TrackIPTagInfo> > subjetIP, Handle<vector<SecondaryVertexTagInfo> > subjetSV) {
 
   std::vector<float> sjpt;
   std::vector<float> sjeta;
@@ -2406,6 +2431,7 @@ void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::H
   std::vector<float> hadronFlavor;
   std::vector<float> partonFlavor;
   std::vector<float> csvV1;
+  std::vector<int> sjVtxType;
   std::vector<std::vector<float>> subjetVtxMass;
   std::vector<std::vector<float>> subjetVtxPt;
   std::vector<std::vector<float>> subjetVtxEta;
@@ -2426,133 +2452,183 @@ void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::H
 
   if(jet.numberOfDaughters()>0) {
     //cout << "nsubjets: "<< jet.numberOfDaughters() << endl;
-    for (unsigned k = 0; k < jet.numberOfDaughters(); ++k) {
-      const reco::Candidate & dp = *jet.daughter(k);
-      sjpt.push_back(dp.pt());
-      sjeta.push_back(dp.eta());
-      sjphi.push_back(dp.phi());
-      sjm.push_back(dp.mass());
-      if(doExtendedFlavorTagging_){
-	     
-	      vector<float> svm, svpt, sveta, svphi, svntrk, svdl, svdls; 
-	      const reco::Jet *subjd = dynamic_cast<const reco::Jet*>(jet.daughter(k));
-	      int ith_tagged = TaggedJet(*subjd,jetTags_CombinedSvtx);
-	      if(ith_tagged >= 0) csvV1.push_back((*jetTags_CombinedSvtx)[ith_tagged].second);
-	      else csvV1.push_back(-1);
+	  for (unsigned k = 0; k < jet.numberOfDaughters(); ++k) {
+		  const reco::Candidate & dp = *jet.daughter(k);
+		  sjpt.push_back(dp.pt());
+		  sjeta.push_back(dp.eta());
+		  sjphi.push_back(dp.phi());
+		  sjm.push_back(dp.mass());
+		  if(doExtendedFlavorTagging_){
 
-	      if(ith_tagged>=0){
-		      const SecondaryVertexTagInfo &subjetInfo = (*subjetSV)[ith_tagged];
-		      for(unsigned isv=0; isv<subjetInfo.nVertices(); isv++){
-			      //cout << "subjet " << ith_tagged << " x,y,z: " << subjetInfo.secondaryVertex(isv).x() << " " << subjetInfo.secondaryVertex(isv).y() << " " << subjetInfo.secondaryVertex(isv).z() << endl;
-			      svm.push_back(subjetInfo.secondaryVertex(isv).p4().mass());
-			      svpt.push_back(subjetInfo.secondaryVertex(isv).p4().pt());
-			      sveta.push_back(subjetInfo.secondaryVertex(isv).p4().eta());
-			      svphi.push_back(subjetInfo.secondaryVertex(isv).p4().phi());
-			      svntrk.push_back(subjetInfo.nVertexTracks(isv));
-			      svdl.push_back(subjetInfo.flightDistance(isv).value());
-			      svdls.push_back(subjetInfo.flightDistance(isv).significance());
-		      }
-		      if((*jetTags_CombinedSvtx)[ith_tagged].second > 0.9 && subjetInfo.nVertices()==0) cout << "WARNING! No vertex found in a large CSV subjet!!" << endl;
-	      }
+			  vector<float> svm, svpt, sveta, svphi, svntrk, svdl, svdls; 
+			  const reco::Jet *subjd = dynamic_cast<const reco::Jet*>(jet.daughter(k));
+			  int ith_tagged = TaggedJet(*subjd,jetTags_CombinedSvtx);
+			  if(ith_tagged >= 0) csvV1.push_back((*jetTags_CombinedSvtx)[ith_tagged].second);
+			  else csvV1.push_back(-1);
 
-	      vector<float> hdr, hpt, heta, hphi, hpdg, pdr, ppt, peta, pphi, ppdg;
-		for ( reco::JetFlavourInfoMatchingCollection::const_iterator sj  = theSubjetFlavourInfos->begin(); sj != theSubjetFlavourInfos->end(); sj++ ) { 
-		      if( sqrt(reco::deltaR2(subjd->eta(), subjd->phi(), (*sj).first.get()->eta(), (*sj).first.get()->phi() )) <0.01  ){
-			      
-			      reco::Jet *aSubjet = const_cast<reco::Jet*>((*sj).first.get());
-				
-			      reco::JetFlavourInfo aInfo = (*sj).second;	
-			      hadronFlavor.push_back(aInfo.getHadronFlavour());
-			      partonFlavor.push_back(aInfo.getPartonFlavour());
-			      const reco::GenParticleRefVector &bHadrons = aInfo.getbHadrons();
-			      for(reco::GenParticleRefVector::const_iterator it = bHadrons.begin(); it != bHadrons.end(); ++it){
-				      hdr.push_back(reco::deltaR(aSubjet->eta(), aSubjet->phi(), (*it)->eta(), (*it)->phi()));
-				      hpt.push_back((*it)->pt());
-				      heta.push_back((*it)->eta());
-				      hphi.push_back((*it)->phi());
-				      hpdg.push_back((*it)->pdgId());
-			      }
-			      const reco::GenParticleRefVector &cHadrons = aInfo.getcHadrons();
-			      for(reco::GenParticleRefVector::const_iterator it = cHadrons.begin(); it != cHadrons.end(); ++it){
-				      hdr.push_back(reco::deltaR(aSubjet->eta(), aSubjet->phi(), (*it)->eta(), (*it)->phi()));
-				      hpt.push_back((*it)->pt());
-				      heta.push_back((*it)->eta());
-				      hphi.push_back((*it)->phi());
-				      hpdg.push_back((*it)->pdgId());
-			      }
-			      const reco::GenParticleRefVector & partons = aInfo.getPartons();
-			      for(reco::GenParticleRefVector::const_iterator it = partons.begin(); it != partons.end(); ++it){
-				      pdr.push_back(reco::deltaR( aSubjet->eta(), aSubjet->phi(), (*it)->eta(), (*it)->phi() ));
-				      ppt.push_back((*it)->pt());
-				      peta.push_back((*it)->eta());
-				      pphi.push_back((*it)->phi());
-				      ppdg.push_back((*it)->pdgId());
-			      }
-			break;	
-		      } // end if reco::deltaR2 subjd (*sj).first.get()
-		} // end for const_iterator sj  = theSubjetFlavourInfos->begin()
-		subjetVtxMass.push_back(svm);
-		subjetVtxPt.push_back(svpt);
-		subjetVtxEta.push_back(sveta);
-		subjetVtxPhi.push_back(svphi);
-		subjetVtxNtrk.push_back(svntrk);
-		subjetVtxdl.push_back(svdl);
-		subjetVtxdls.push_back(svdls);
-	      hadronDR.push_back(hdr);
-	      hadronPt.push_back(hpt);
-	      hadronEta.push_back(heta);
-	      hadronPhi.push_back(hphi);
-	      hadronPdg.push_back(hpdg);
-	      partonDR.push_back(pdr);
-	      partonPt.push_back(ppt);
-	      partonEta.push_back(peta);
-	      partonPhi.push_back(pphi);
-	      partonPdg.push_back(ppdg);
-	      }	
+			  if(ith_tagged>=0){
+				  const SecondaryVertexTagInfo &subjetInfo = (*subjetSV)[ith_tagged];
+				  for(unsigned isv=0; isv<subjetInfo.nVertices(); isv++){
+					  //cout << "subjet " << ith_tagged << " x,y,z: " << subjetInfo.secondaryVertex(isv).x() << " " << subjetInfo.secondaryVertex(isv).y() << " " << subjetInfo.secondaryVertex(isv).z() << endl;
+					  svm.push_back(subjetInfo.secondaryVertex(isv).p4().mass());
+					  svpt.push_back(subjetInfo.secondaryVertex(isv).p4().pt());
+					  sveta.push_back(subjetInfo.secondaryVertex(isv).p4().eta());
+					  svphi.push_back(subjetInfo.secondaryVertex(isv).p4().phi());
+					  svntrk.push_back(subjetInfo.nVertexTracks(isv));
+					  svdl.push_back(subjetInfo.flightDistance(isv).value());
+					  svdls.push_back(subjetInfo.flightDistance(isv).significance());
+				  }
+				  if((*jetTags_CombinedSvtx)[ith_tagged].second > 0.9 && subjetInfo.nVertices()==0) cout << "WARNING! No vertex found in a large CSV subjet!!" << endl;
+				  if(subjetInfo.nVertices()>0) sjVtxType.push_back(0);
+				  else{
+					  const TrackIPTagInfo &ipInfo = (*subjetIP)[ith_tagged];		    	
+					  GlobalPoint pv(ipInfo.primaryVertex()->position().x(),ipInfo.primaryVertex()->position().y(),ipInfo.primaryVertex()->position().z());
+					  std::vector<std::size_t> indices = ipInfo.sortedIndexes(reco::btag::IP3DSig);
+					  const std::vector<reco::btag::TrackIPData> &ipData = ipInfo.impactParameterData();
+					  
+					  const TrackIPTagInfo::input_container &tracks = ipInfo.selectedTracks();
+					  std::vector<const Track *> pseudoVertexTracks;	
+					  int nVtxTrks=0;		
 
-      }
-    } else {
-	    sjpt.push_back(-999.);
-	    sjeta.push_back(-999.);
-	    sjphi.push_back(-999.);
-	    sjm.push_back(-999.);
-	    if(doExtendedFlavorTagging_){
-		    hadronFlavor.push_back(-999);
-		    partonFlavor.push_back(-999);
-		    csvV1.push_back(-999);
-	    }
-    }
-    //cout << "subjet pt size: "<< sjpt.size() << endl;
-    //cout << "csv size: "<< csvV1.size() << endl;
-    //cout << "hadron flavor size: " << hadronFlavor.size() << endl;
-    //cout << "subjet SV mass size: "<< subjetVtxMass.size() << endl;
-    jets_.jtSubJetPt.push_back(sjpt);
-    jets_.jtSubJetEta.push_back(sjeta);
-    jets_.jtSubJetPhi.push_back(sjphi);
-    jets_.jtSubJetM.push_back(sjm);
-    if(doExtendedFlavorTagging_){
-	    jets_.jtSubJetHadronFlavor.push_back(hadronFlavor);
-	    jets_.jtSubJetPartonFlavor.push_back(partonFlavor); 
-	    jets_.jtSubJetcsvV1.push_back(csvV1);
-	    jets_.jtSubJetSvtxm.push_back(subjetVtxMass);
-	    jets_.jtSubJetSvtxpt.push_back(subjetVtxPt);
-	    jets_.jtSubJetSvtxeta.push_back(subjetVtxEta);
-	    jets_.jtSubJetSvtxphi.push_back(subjetVtxPhi);
-	    jets_.jtSubJetSvtxNtrk.push_back(subjetVtxNtrk);
-	    jets_.jtSubJetSvtxdl.push_back(subjetVtxdl);
-	    jets_.jtSubJetSvtxdls.push_back(subjetVtxdls);
-	    jets_.jtSubJetHadronDR.push_back(hadronDR);
-	    jets_.jtSubJetHadronPt.push_back(hadronPt);
-	    jets_.jtSubJetHadronEta.push_back(hadronEta);
-	    jets_.jtSubJetHadronPhi.push_back(hadronPhi);
-	    jets_.jtSubJetHadronPdg.push_back(hadronPdg);
-	    jets_.jtSubJetPartonDR.push_back(partonDR);
-	    jets_.jtSubJetPartonPt.push_back(partonPt);
-	    jets_.jtSubJetPartonEta.push_back(partonEta);
-	    jets_.jtSubJetPartonPhi.push_back(partonPhi);
-	    jets_.jtSubJetPartonPdg.push_back(partonPdg);
-    }	
+					  const Track * trackPairV0Test[2];
+					  for(std::size_t i=0; i<indices.size(); i++) {
+						  std::size_t idx = indices[i];
+						  const reco::btag::TrackIPData &data = ipData[idx];
+						  const Track * trackPtr = reco::btag::toTrack(tracks[idx]);
+						  const Track &track = *trackPtr;		
+
+						  if (!trackSelector(track, data, *subjd, pv)) continue;
+						  if( trackPseudoSelector(track, data, *subjd, pv)) {
+							  pseudoVertexTracks.push_back(trackPtr);
+							  nVtxTrks++;
+						  }
+						  // check against all other tracks for V0 track pairs
+						  trackPairV0Test[0] = reco::btag::toTrack(tracks[idx]);
+						  bool ok = true;
+						  for(std::size_t j=0; j<indices.size(); j++) {
+							  if (i == j) continue;
+
+							  std::size_t pairIdx = indices[j];
+							  const reco::btag::TrackIPData &pairTrackData = ipData[pairIdx];
+							  const Track * pairTrackPtr = reco::btag::toTrack(tracks[pairIdx]);
+							  const Track &pairTrack = *pairTrackPtr;
+
+							  if (!trackSelector(pairTrack, pairTrackData, *subjd, pv))
+								  continue;
+
+							  trackPairV0Test[1] = pairTrackPtr;
+							  if (!trackPairV0Filter(trackPairV0Test, 2)) {
+								  ok = false;
+								  break;
+							  }
+						  }
+						  if (!ok) continue;
+					  }
+					  if(nVtxTrks >= 2 && pseudoVertexV0Filter(pseudoVertexTracks)) sjVtxType.push_back(1);
+					  else sjVtxType.push_back(2); 
+				  }
+			  }
+
+			  vector<float> hdr, hpt, heta, hphi, hpdg, pdr, ppt, peta, pphi, ppdg;
+			  for ( reco::JetFlavourInfoMatchingCollection::const_iterator sj  = theSubjetFlavourInfos->begin(); sj != theSubjetFlavourInfos->end(); sj++ ) { 
+				  if( sqrt(reco::deltaR2(subjd->eta(), subjd->phi(), (*sj).first.get()->eta(), (*sj).first.get()->phi() )) <0.01  ){
+
+					  reco::Jet *aSubjet = const_cast<reco::Jet*>((*sj).first.get());
+
+					  reco::JetFlavourInfo aInfo = (*sj).second;	
+					  hadronFlavor.push_back(aInfo.getHadronFlavour());
+					  partonFlavor.push_back(aInfo.getPartonFlavour());
+					  const reco::GenParticleRefVector &bHadrons = aInfo.getbHadrons();
+					  for(reco::GenParticleRefVector::const_iterator it = bHadrons.begin(); it != bHadrons.end(); ++it){
+						  hdr.push_back(reco::deltaR(aSubjet->eta(), aSubjet->phi(), (*it)->eta(), (*it)->phi()));
+						  hpt.push_back((*it)->pt());
+						  heta.push_back((*it)->eta());
+						  hphi.push_back((*it)->phi());
+						  hpdg.push_back((*it)->pdgId());
+					  }
+					  const reco::GenParticleRefVector &cHadrons = aInfo.getcHadrons();
+					  for(reco::GenParticleRefVector::const_iterator it = cHadrons.begin(); it != cHadrons.end(); ++it){
+						  hdr.push_back(reco::deltaR(aSubjet->eta(), aSubjet->phi(), (*it)->eta(), (*it)->phi()));
+						  hpt.push_back((*it)->pt());
+						  heta.push_back((*it)->eta());
+						  hphi.push_back((*it)->phi());
+						  hpdg.push_back((*it)->pdgId());
+					  }
+					  const reco::GenParticleRefVector & partons = aInfo.getPartons();
+					  for(reco::GenParticleRefVector::const_iterator it = partons.begin(); it != partons.end(); ++it){
+						  pdr.push_back(reco::deltaR( aSubjet->eta(), aSubjet->phi(), (*it)->eta(), (*it)->phi() ));
+						  ppt.push_back((*it)->pt());
+						  peta.push_back((*it)->eta());
+						  pphi.push_back((*it)->phi());
+						  ppdg.push_back((*it)->pdgId());
+					  }
+					  break;	
+				  } // end if reco::deltaR2 subjd (*sj).first.get()
+			  } // end for const_iterator sj  = theSubjetFlavourInfos->begin()
+			  subjetVtxMass.push_back(svm);
+			  subjetVtxPt.push_back(svpt);
+			  subjetVtxEta.push_back(sveta);
+			  subjetVtxPhi.push_back(svphi);
+			  subjetVtxNtrk.push_back(svntrk);
+			  subjetVtxdl.push_back(svdl);
+			  subjetVtxdls.push_back(svdls);
+			  hadronDR.push_back(hdr);
+			  hadronPt.push_back(hpt);
+			  hadronEta.push_back(heta);
+			  hadronPhi.push_back(hphi);
+			  hadronPdg.push_back(hpdg);
+			  partonDR.push_back(pdr);
+			  partonPt.push_back(ppt);
+			  partonEta.push_back(peta);
+			  partonPhi.push_back(pphi);
+			  partonPdg.push_back(ppdg);
+		  }	
+
+	  }
+  } else {
+	  sjpt.push_back(-999.);
+	  sjeta.push_back(-999.);
+	  sjphi.push_back(-999.);
+	  sjm.push_back(-999.);
+	  sjVtxType.push_back(-999.);
+	  if(doExtendedFlavorTagging_){
+		  hadronFlavor.push_back(-999);
+		  partonFlavor.push_back(-999);
+		  csvV1.push_back(-999);
+	  }
   }
+  //cout << "subjet pt size: "<< sjpt.size() << endl;
+  //cout << "csv size: "<< csvV1.size() << endl;
+  //cout << "hadron flavor size: " << hadronFlavor.size() << endl;
+  //cout << "subjet SV mass size: "<< subjetVtxMass.size() << endl;
+  jets_.jtSubJetPt.push_back(sjpt);
+  jets_.jtSubJetEta.push_back(sjeta);
+  jets_.jtSubJetPhi.push_back(sjphi);
+  jets_.jtSubJetM.push_back(sjm);
+  if(doExtendedFlavorTagging_){
+	  jets_.jtSubJetHadronFlavor.push_back(hadronFlavor);
+	  jets_.jtSubJetPartonFlavor.push_back(partonFlavor); 
+	  jets_.jtSubJetVtxType.push_back(sjVtxType);
+	  jets_.jtSubJetcsvV1.push_back(csvV1);
+	  jets_.jtSubJetSvtxm.push_back(subjetVtxMass);
+	  jets_.jtSubJetSvtxpt.push_back(subjetVtxPt);
+	  jets_.jtSubJetSvtxeta.push_back(subjetVtxEta);
+	  jets_.jtSubJetSvtxphi.push_back(subjetVtxPhi);
+	  jets_.jtSubJetSvtxNtrk.push_back(subjetVtxNtrk);
+	  jets_.jtSubJetSvtxdl.push_back(subjetVtxdl);
+	  jets_.jtSubJetSvtxdls.push_back(subjetVtxdls);
+	  jets_.jtSubJetHadronDR.push_back(hadronDR);
+	  jets_.jtSubJetHadronPt.push_back(hadronPt);
+	  jets_.jtSubJetHadronEta.push_back(hadronEta);
+	  jets_.jtSubJetHadronPhi.push_back(hadronPhi);
+	  jets_.jtSubJetHadronPdg.push_back(hadronPdg);
+	  jets_.jtSubJetPartonDR.push_back(partonDR);
+	  jets_.jtSubJetPartonPt.push_back(partonPt);
+	  jets_.jtSubJetPartonEta.push_back(partonEta);
+	  jets_.jtSubJetPartonPhi.push_back(partonPhi);
+	  jets_.jtSubJetPartonPdg.push_back(partonPdg);
+  }	
+}
 
 
 //--------------------------------------------------------------------------------------------------

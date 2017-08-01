@@ -29,8 +29,8 @@ process.source = cms.Source("PoolSource",
         #"root://eoscms.cern.ch//eos/cms/store/cmst3/group/hintt/CMSSW_7_5_8_patch2/TTbar/RECO/Events_1.root"
                             #    'file:/afs/cern.ch/work/k/kjung/holdingCell/Pythia6_pp_HLTReco.root'
                            #'/store/himc/HINppWinter16DR/Pythia8_bJet120_pp502_TuneCUETP8M1/AODSIM/75X_mcRun2_asymptotic_ppAt5TeV_v3-v1/80000/02C10805-D6E4-E511-9C81-0CC47A4D9A10.root'), 
-			   '/store/himc/HINppWinter16DR/Pythia8_Dijet120_pp502_TuneCUETP8M1/AODSIM/75X_mcRun2_asymptotic_ppAt5TeV_v3-v1/60000/1AC3D4FC-2DF0-E511-96CA-0CC47A04D082.root'), 
-			   eventsToProcess = cms.untracked.VEventRange('1:42101','1:52848')
+			   '/store/himc/HINppWinter16DR/Pythia8_Dijet120_pp502_TuneCUETP8M1/AODSIM/75X_mcRun2_asymptotic_ppAt5TeV_v3-v1/60000/1AC3D4FC-2DF0-E511-96CA-0CC47A04D082.root') 
+#			   eventsToProcess = cms.untracked.VEventRange('1:42101','1:52848')
 )
 
 # Number of events we want to process, -1 = all events
@@ -252,11 +252,20 @@ process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.rParam = cms.double(0.4)
 process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.extSVCollection = cms.InputTag('inclusiveSecondaryVertices')
 process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.maxDeltaRToJetAxis = cms.double(0.1)
 
+process.akSoftDrop4PFJetAnalyzer.trackSelection = process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.trackSelection
+process.akSoftDrop4PFJetAnalyzer.trackPairV0Filter = process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.v0Filter
+
 process.akSoftDrop4PFCombinedSubjetSecondaryVertexBJetTags = process.akSoftDrop4PFCombinedSecondaryVertexBJetTags.clone(
 	tagInfos = cms.VInputTag(cms.InputTag("akSoftDrop4PFSubjetImpactParameterTagInfos"),
                 cms.InputTag("akSoftDrop4PFSubjetSecondaryVertexTagInfos"))
 )
+#process.akSoftDrop4PFCombinedSubjetSecondaryVertexV2BJetTags = process.akSoftDrop4PFCombinedSecondaryVertexV2BJetTags.clone(
+#        tagInfos = cms.VInputTag(cms.InputTag("akSoftDrop4PFSubjetImpactParameterTagInfos"),
+#                cms.InputTag("akSoftDrop4PFSubjetSecondaryVertexTagInfos"))
+#)
+
 process.akSoftDrop4PFJetBtaggingSV *= process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex+process.akSoftDrop4PFSubjetImpactParameterTagInfos+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos+process.akSoftDrop4PFCombinedSubjetSecondaryVertexBJetTags
+##+process.akSoftDrop4PFCombinedSubjetSecondaryVertexV2BJetTags
 
 #process.printEventAKSoftDrop4PFJets = cms.EDAnalyzer("printJetFlavourInfo",
 #                                                     jetFlavourInfos    = cms.InputTag("akSoftDrop4PFPatJetFlavourAssociation"),
