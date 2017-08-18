@@ -634,7 +634,7 @@ void TemplatedSecondaryVertexProducer<IPTI,VTX>::produce(edm::Event &event,
 	      // find the closest subjet
 	      int closestSubjetIdx = std::distance( dR2toSubjets.begin(), std::min_element(dR2toSubjets.begin(), dR2toSubjets.end()) );
 
-	      std::cout << " clustered sv: "<< p.pt() << " eta: "<< p.eta() << " phi: "<< p.phi_std() << " to subjet pt: "<< trackIPTagInfos->at(subjetIndices.at(i).at(closestSubjetIdx)).jet()->pt() << " eta: " << trackIPTagInfos->at(subjetIndices.at(i).at(closestSubjetIdx)).jet()->eta() << " phi: "<< trackIPTagInfos->at(subjetIndices.at(i).at(closestSubjetIdx)).jet()->phi() <<std::endl;
+	      //std::cout << " clustered sv: "<< p.pt() << " eta: "<< p.eta() << " phi: "<< p.phi_std() << " to subjet pt: "<< trackIPTagInfos->at(subjetIndices.at(i).at(closestSubjetIdx)).jet()->pt() << " eta: " << trackIPTagInfos->at(subjetIndices.at(i).at(closestSubjetIdx)).jet()->eta() << " phi: "<< trackIPTagInfos->at(subjetIndices.at(i).at(closestSubjetIdx)).jet()->phi() <<std::endl;
 	      clusteredSVs.at(subjetIndices.at(i).at(closestSubjetIdx)).push_back(sv);
 	    }
 	  }
@@ -855,7 +855,7 @@ void TemplatedSecondaryVertexProducer<IPTI,VTX>::produce(edm::Event &event,
 			 const VTX & extVertex = (*extSecVertex)[ clusteredSVs.at(jetIdx).at(iExtSv) ];
 			 if( extVertex.p4().M() < 0.3 )
 			   continue;
-			std::cout << " vertex with pt: "<< extVertex.p4().pt() << " eta: "<< extVertex.p4().eta() << " phi: "<< extVertex.p4().phi() << " will be used!" << std::endl; 
+			//std::cout << " vertex with pt: "<< extVertex.p4().pt() << " eta: "<< extVertex.p4().eta() << " phi: "<< extVertex.p4().phi() << " will be used!" << std::endl; 
 			extAssoCollection.push_back( extVertex );
 		      }
 		  }
@@ -864,7 +864,7 @@ void TemplatedSecondaryVertexProducer<IPTI,VTX>::produce(edm::Event &event,
 			 const VTX & extVertex = (*extSecVertex)[iExtSv];
 			 if( Geom::deltaR2( ( position(extVertex) - pv.position() ), jetDir ) > extSVDeltaRToJet*extSVDeltaRToJet || extVertex.p4().M() < 0.3 )
 			   continue;
-			std::cout << " vertex with pt: "<< extVertex.p4().pt() << " eta: "<< extVertex.p4().eta() << " phi: "<< extVertex.p4().phi() << " will be used!" << std::endl; 
+			//std::cout << " vertex with pt: "<< extVertex.p4().pt() << " eta: "<< extVertex.p4().eta() << " phi: "<< extVertex.p4().phi() << " will be used!" << std::endl; 
 			extAssoCollection.push_back( extVertex );
 		      }
 		  }

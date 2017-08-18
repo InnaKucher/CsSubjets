@@ -69,7 +69,7 @@ jetSequences = cms.Sequence(
     hiFJGridEmptyAreaCalculator + 
 
 
-    akPu4PFJetsNoLimits +
+#    akPu4PFJetsNoLimits +
 
     #akPu2CaloJets +
     #akPu2PFJets +
@@ -77,12 +77,13 @@ jetSequences = cms.Sequence(
     #akVs2PFJets +
     #akCs2PFJets +
 
-    akPu3CaloJets +
-    akPu3PFJets +
+#    akPu3CaloJets +
+#    akPu3PFJets +
     #akVs3CaloJets +
     #akVs3PFJets +
-    akCs3PFJets +
+#    akCs3PFJets +
 
+    ak4PFJets +
     akPu4CaloJets +
     akPu4PFJets +
     #akVs4CaloJets +
@@ -119,7 +120,7 @@ jetSequences = cms.Sequence(
     #akVs4CaloJetSequence +
     #akVs4PFJetSequence +
     #akPu4PFJetSequence +
-    akCs4PFJetSequence +
+#    akCs4PFJetSequence +
 
     #akPu5CaloJetSequence +
     #akVs5CaloJetSequence +

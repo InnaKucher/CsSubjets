@@ -201,7 +201,7 @@ ALGO_SUB_GROOM_RADIUS_OBJECT_JetAnalyzer = inclusiveJetAnalyzer.clone(jetTag = c
                                                              doGenSubJets = cms.untracked.bool(DOGENSUBJETS_),     
                                                              subjetGenTag = cms.untracked.InputTag("ALGO_GROOM_RADIUS_GenJets"),
                                                              doGenTaus = ISMC
-                                                             )
+                                                            )
 
 ALGO_SUB_GROOM_RADIUS_OBJECT_JetSequence_mc = cms.Sequence(
                                                   #ALGO_SUB_GROOM_RADIUS_OBJECT_clean

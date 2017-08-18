@@ -82,21 +82,42 @@ process.load('HeavyIonsAnalysis.JetAnalysis.jets.ak3PFJetSequence_pp_data_cff')
 process.load('HeavyIonsAnalysis.JetAnalysis.jets.ak4PFJetSequence_pp_data_cff')
 process.load('HeavyIonsAnalysis.JetAnalysis.jets.ak5PFJetSequence_pp_data_cff')
 
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akSoftDrop4PFJetSequence_pp_data_cff')
+
 process.highPurityTracks = cms.EDFilter("TrackSelector",
                                         src = cms.InputTag("generalTracks"),
                                         cut = cms.string('quality("highPurity")')
                                         )
 
-
+#SoftDrop PF jets
+from RecoJets.JetProducers.PFJetParameters_cfi import *
+from RecoJets.JetProducers.AnomalousCellParameters_cfi import *
+process.akSoftDrop4PFJets = cms.EDProducer(
+    "FastjetJetProducer",
+    PFJetParameters,
+    AnomalousCellParameters,
+    jetAlgorithm = cms.string("AntiKt"),
+    rParam       = cms.double(0.4),
+    useSoftDrop = cms.bool(True),
+    zcut = cms.double(0.1),
+    beta = cms.double(0.0),
+    R0   = cms.double(0.4),
+    useExplicitGhosts = cms.bool(True),
+    writeCompound = cms.bool(True),
+    jetCollInstanceName=cms.string("SubJets")
+)
+process.akSoftDrop5PFJets = process.akSoftDrop4PFJets.clone(rParam = cms.double(0.5), R0 = cms.double(0.5))
 
 process.jetSequences = cms.Sequence(
-    process.ak3PFJets +
-    process.ak5PFJets +
+    #process.ak3PFJets +
+    #process.ak5PFJets +
+    process.akSoftDrop4PFJets +
     process.highPurityTracks +
-    process.ak4CaloJetSequence +
-    process.ak3PFJetSequence +
-    process.ak4PFJetSequence +
-    process.ak5PFJetSequence
+    #process.ak4CaloJetSequence +
+    #process.ak3PFJetSequence +
+    #process.ak4PFJetSequence +
+    process.akSoftDrop4PFJetSequence 
+    #process.ak5PFJetSequence
     )
 
 # How to turn on the jet constituents 
@@ -190,13 +211,13 @@ process.ana_step = cms.Path(process.hltanalysis *
 			    process.hltobject *
                             process.hiEvtAnalyzer *
                             process.jetSequences +
-                            process.egmGsfElectronIDSequence + #Should be added in the path for VID module
-                            process.ggHiNtuplizer +
-                            process.ggHiNtuplizerGED +
-                            process.pfcandAnalyzer +
-                            process.HiForest +
-                            process.trackSequencesPP +
-                            process.tupelPatSequence
+#                            process.egmGsfElectronIDSequence + #Should be added in the path for VID module
+#                            process.ggHiNtuplizer +
+#                            process.ggHiNtuplizerGED +
+#                            process.pfcandAnalyzer +
+                            process.HiForest 
+#                            process.trackSequencesPP +
+#                            process.tupelPatSequence
                             )
 
 #####################################################################################
@@ -241,3 +262,48 @@ process.pVertexFilterCutEandG = cms.Path(process.pileupVertexFilterCutEandG)
 process.pAna = cms.EndPath(process.skimanalysis)
 
 # Customization
+
+#process.akSoftDrop4PFPatJetFlavourAssociation.jets="ak4PFJets"
+#process.akSoftDrop4PFPatJetFlavourAssociation.groomedJets=cms.InputTag("akSoftDrop4PFJets")
+#process.akSoftDrop4PFPatJetFlavourAssociation.subjets= cms.InputTag('akSoftDrop4PFJets','SubJets')
+process.akSoftDrop4PFJets.useSoftDrop = True
+#process.akSoftDrop4PFpatJetsWithBtagging.getJetMCFlavour = cms.bool(False)
+#process.akSoftDrop4PFJetAnalyzer.doExtendedFlavorTagging = cms.untracked.bool(True)
+#process.akSoftDrop4PFJetAnalyzer.jetFlavourInfos    = cms.InputTag("akSoftDrop4PFPatJetFlavourAssociation")
+#process.akSoftDrop4PFJetAnalyzer.subjetFlavourInfos = cms.InputTag("akSoftDrop4PFPatJetFlavourAssociation","SubJets")
+process.akSoftDrop4PFJetAnalyzer.groomedJets        = cms.InputTag("akSoftDrop4PFJets")
+process.akSoftDrop4PFJetAnalyzer.doSubJets = cms.untracked.bool(True)
+#process.akSoftDrop4PFJetAnalyzer.isPythia6 = cms.untracked.bool(True)
+
+process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex = process.akSoftDrop4PFJetTracksAssociatorAtVertex.clone()
+process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex.jets = cms.InputTag('akSoftDrop4PFJets','SubJets')
+process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex.coneSize = cms.double(0.25)
+process.akSoftDrop4PFSubjetImpactParameterTagInfos = process.akSoftDrop4PFImpactParameterTagInfos.clone()
+process.akSoftDrop4PFSubjetImpactParameterTagInfos.jetTracks = cms.InputTag("akSoftDrop4PFSubjetJetTracksAssociatorAtVertex")
+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos = process.akSoftDrop4PFSecondaryVertexTagInfos.clone()
+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.trackIPTagInfos = cms.InputTag('akSoftDrop4PFSubjetImpactParameterTagInfos')
+
+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.fatJets = cms.InputTag('ak4PFJets')
+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.groomedFatJets = cms.InputTag('akSoftDrop4PFJets')
+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.useSVClustering = cms.bool(False)
+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.useExternalSV = cms.bool(True)
+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.jetAlgorithm = cms.string('AntiKt')
+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.useSVMomentum = cms.bool(True)
+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.rParam = cms.double(0.4)
+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.extSVCollection = cms.InputTag('inclusiveSecondaryVertices')
+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.maxDeltaRToJetAxis = cms.double(0.1)
+
+process.ak4PFJetAnalyzer.trackSelection = process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.trackSelection
+process.ak4PFJetAnalyzer.trackPairV0Filter = process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.v0Filter
+
+process.akSoftDrop4PFJetAnalyzer.trackSelection = process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.trackSelection
+process.akSoftDrop4PFJetAnalyzer.trackPairV0Filter = process.akSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.v0Filter
+
+process.akSoftDrop4PFCombinedSubjetSecondaryVertexBJetTags = process.akSoftDrop4PFCombinedSecondaryVertexBJetTags.clone(
+        tagInfos = cms.VInputTag(cms.InputTag("akSoftDrop4PFSubjetImpactParameterTagInfos"),
+                cms.InputTag("akSoftDrop4PFSubjetSecondaryVertexTagInfos"))
+)
+
+process.akSoftDrop4PFJetBtaggingSV *= process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex+process.akSoftDrop4PFSubjetImpactParameterTagInfos+process.akSoftDrop4PFSubjetSecondaryVertexTagInfos+process.akSoftDrop4PFCombinedSubjetSecondaryVertexBJetTags
+
+

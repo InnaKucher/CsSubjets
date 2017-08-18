@@ -103,9 +103,9 @@ process.load('HeavyIonsAnalysis.JetAnalysis.hiSignalGenFilters')
 
 
 #PU minimal tower cut reco sequence
-#process.load('HeavyIonsAnalysis.JetAnalysis.FullJetSequence_puLimitedPbPb')
+process.load('HeavyIonsAnalysis.JetAnalysis.FullJetSequence_puLimitedPbPb')
 # nominal jet reco sequence
-process.load('HeavyIonsAnalysis.JetAnalysis.FullJetSequence_nominalPbPb')
+#process.load('HeavyIonsAnalysis.JetAnalysis.FullJetSequence_nominalPbPb')
 # replace above with this one for JEC:
 #process.load('HeavyIonsAnalysis.JetAnalysis.FullJetSequence_JECPbPb')
 
@@ -179,14 +179,14 @@ process.load("HeavyIonsAnalysis.VectorBosonAnalysis.tupelSequence_PbPb_mc_cff")
 #replace pp CSVv2 with PbPb CSVv2 (positive and negative taggers unchanged!)
 process.load('RecoBTag.CSVscikit.csvscikitTagJetTags_cfi')
 process.load('RecoBTag.CSVscikit.csvscikitTaggerProducer_cfi')
-process.akPu4PFCombinedSecondaryVertexV2BJetTags = process.pfCSVscikitJetTags.clone()
-process.akPu4PFCombinedSecondaryVertexV2BJetTags.tagInfos=cms.VInputTag(cms.InputTag("akPu4PFImpactParameterTagInfos"), cms.InputTag("akPu4PFSecondaryVertexTagInfos"))
+process.akPu4PFCombinedSecondaryVertexBJetTags = process.pfCSVscikitJetTags.clone()
+process.akPu4PFCombinedSecondaryVertexBJetTags.tagInfos=cms.VInputTag(cms.InputTag("akPu4PFImpactParameterTagInfos"), cms.InputTag("akPu4PFSecondaryVertexTagInfos"))
 
-process.akCs4PFCombinedSecondaryVertexV2BJetTags = process.pfCSVscikitJetTags.clone()
-process.akCs4PFCombinedSecondaryVertexV2BJetTags.tagInfos=cms.VInputTag(cms.InputTag("akCs4PFImpactParameterTagInfos"), cms.InputTag("akCs4PFSecondaryVertexTagInfos"))
+process.akCs4PFCombinedSecondaryVertexBJetTags = process.pfCSVscikitJetTags.clone()
+process.akCs4PFCombinedSecondaryVertexBJetTags.tagInfos=cms.VInputTag(cms.InputTag("akCs4PFImpactParameterTagInfos"), cms.InputTag("akCs4PFSecondaryVertexTagInfos"))
 
-process.akPu4CaloCombinedSecondaryVertexV2BJetTags = process.pfCSVscikitJetTags.clone()
-process.akPu4CaloCombinedSecondaryVertexV2BJetTags.tagInfos=cms.VInputTag(cms.InputTag("akPu4CaloImpactParameterTagInfos"), cms.InputTag("akPu4CaloSecondaryVertexTagInfos"))
+process.akPu4CaloCombinedSecondaryVertexBJetTags = process.pfCSVscikitJetTags.clone()
+process.akPu4CaloCombinedSecondaryVertexBJetTags.tagInfos=cms.VInputTag(cms.InputTag("akPu4CaloImpactParameterTagInfos"), cms.InputTag("akPu4CaloSecondaryVertexTagInfos"))
 process.CSVscikitTags.weightFile=cms.FileInPath('HeavyIonsAnalysis/JetAnalysis/data/bTagCSVv2PbPb_758p3_Jan2017_BDTG_weights.xml')
 
 
@@ -269,15 +269,22 @@ process.akCsSoftDrop4PFJetAnalyzer.subjetFlavourInfos = cms.InputTag("akCsSoftDr
 process.akCsSoftDrop4PFJetAnalyzer.groomedJets        = cms.InputTag("akCsSoftDrop4PFJets")
 process.akCsSoftDrop4PFJetAnalyzer.isPythia6 = cms.untracked.bool(True)
 
-process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex = process.akCsSoftDrop4PFJetTracksAssociatorAtVertex.clone()
-process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex.jets = cms.InputTag('akCsSoftDrop4PFJets','SubJets')
-process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex.coneSize = cms.double(0.25)
+#process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex = process.akCsSoftDrop4PFJetTracksAssociatorAtVertex.clone()
+#process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex.jets = cms.InputTag('akCsSoftDrop4PFJets','SubJets')
+#process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex.coneSize = cms.double(0.25)
+
+process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex = cms.EDProducer("JetTracksAssociatorExplicit",
+        jets = cms.InputTag('akCsSoftDrop4PFJets','SubJets'),
+        tracks = cms.InputTag('highPurityTracks')
+)
+
 process.akCsSoftDrop4PFSubjetImpactParameterTagInfos = process.akCsSoftDrop4PFImpactParameterTagInfos.clone()
 process.akCsSoftDrop4PFSubjetImpactParameterTagInfos.jetTracks = cms.InputTag("akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex")
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos = process.akCsSoftDrop4PFSecondaryVertexTagInfos.clone()
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.trackIPTagInfos = cms.InputTag('akCsSoftDrop4PFSubjetImpactParameterTagInfos')
 
 #doing ghost-vertex reclustering for subjets
+#starting with IVF vertexing
 from RecoVertex.AdaptiveVertexFinder.inclusiveVertexing_cff import *
 process.inclusiveVertexFinder.primaryVertices = cms.InputTag("hiSelectedVertex")
 process.inclusiveVertexFinder.tracks = cms.InputTag("hiGeneralTracks")
@@ -295,12 +302,15 @@ process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.groomedFatJets = cms.InputT
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.jetAlgorithm = cms.string("AntiKt")
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.rParam = cms.double(0.4)
 
+process.akCsSoftDrop4PFJetAnalyzer.trackSelection = process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.trackSelection
+process.akCsSoftDrop4PFJetAnalyzer.trackPairV0Filter = process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.v0Filter
+
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.maxDeltaRToJetAxis = cms.double(0.2)
-process.akCsSoftDrop4PFCombinedSubjetSecondaryVertexV2BJetTags = process.akCsSoftDrop4PFCombinedSecondaryVertexV2BJetTags.clone(
+process.akCsSoftDrop4PFCombinedSubjetSecondaryVertexBJetTags = process.akCsSoftDrop4PFCombinedSecondaryVertexBJetTags.clone(
         tagInfos = cms.VInputTag(cms.InputTag("akCsSoftDrop4PFSubjetImpactParameterTagInfos"),
                 cms.InputTag("akCsSoftDrop4PFSubjetSecondaryVertexTagInfos"))
 )
-process.akCsSoftDrop4PFJetBtaggingSV *= process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex+process.akCsSoftDrop4PFSubjetImpactParameterTagInfos+process.inclusiveVertexing+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos+process.akCsSoftDrop4PFCombinedSubjetSecondaryVertexV2BJetTags
+process.akCsSoftDrop4PFJetBtaggingSV *= process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex+process.akCsSoftDrop4PFSubjetImpactParameterTagInfos+process.inclusiveVertexing+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos+process.akCsSoftDrop4PFCombinedSubjetSecondaryVertexBJetTags
 
 ######################################################################################
 
