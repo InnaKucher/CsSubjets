@@ -263,21 +263,17 @@ process.pAna = cms.EndPath(process.skimanalysis)
 
 # Customization
 
-#process.akSoftDrop4PFPatJetFlavourAssociation.jets="ak4PFJets"
-#process.akSoftDrop4PFPatJetFlavourAssociation.groomedJets=cms.InputTag("akSoftDrop4PFJets")
-#process.akSoftDrop4PFPatJetFlavourAssociation.subjets= cms.InputTag('akSoftDrop4PFJets','SubJets')
 process.akSoftDrop4PFJets.useSoftDrop = True
-#process.akSoftDrop4PFpatJetsWithBtagging.getJetMCFlavour = cms.bool(False)
 #process.akSoftDrop4PFJetAnalyzer.doExtendedFlavorTagging = cms.untracked.bool(True)
-#process.akSoftDrop4PFJetAnalyzer.jetFlavourInfos    = cms.InputTag("akSoftDrop4PFPatJetFlavourAssociation")
-#process.akSoftDrop4PFJetAnalyzer.subjetFlavourInfos = cms.InputTag("akSoftDrop4PFPatJetFlavourAssociation","SubJets")
 process.akSoftDrop4PFJetAnalyzer.groomedJets        = cms.InputTag("akSoftDrop4PFJets")
 process.akSoftDrop4PFJetAnalyzer.doSubJets = cms.untracked.bool(True)
-#process.akSoftDrop4PFJetAnalyzer.isPythia6 = cms.untracked.bool(True)
 
-process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex = process.akSoftDrop4PFJetTracksAssociatorAtVertex.clone()
-process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex.jets = cms.InputTag('akSoftDrop4PFJets','SubJets')
-process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex.coneSize = cms.double(0.25)
+#turn on explicit SV-track assn
+process.akSoftDrop4PFSubjetJetTracksAssociatorAtVertex = cms.EDProducer("JetTracksAssociatorExplicit",
+        jets = cms.InputTag('akSoftDrop4PFJets','SubJets'),
+        tracks = cms.InputTag('highPurityTracks')
+)
+
 process.akSoftDrop4PFSubjetImpactParameterTagInfos = process.akSoftDrop4PFImpactParameterTagInfos.clone()
 process.akSoftDrop4PFSubjetImpactParameterTagInfos.jetTracks = cms.InputTag("akSoftDrop4PFSubjetJetTracksAssociatorAtVertex")
 process.akSoftDrop4PFSubjetSecondaryVertexTagInfos = process.akSoftDrop4PFSecondaryVertexTagInfos.clone()
