@@ -22,10 +22,13 @@ from RecoJets.JetAssociationProducers.ak5JTA_cff import *
 from RecoBTag.Configuration.RecoBTag_cff import *
 
 class bTaggers:
-    def __init__(self,jetname,rParam):
+    def __init__(self,jetname,rParam,ispp,doSubjets):
         self.JetTracksAssociatorAtVertex = ak5JetTracksAssociatorAtVertex.clone()
         self.JetTracksAssociatorAtVertex.jets = cms.InputTag(jetname+"Jets")
-        self.JetTracksAssociatorAtVertex.tracks = cms.InputTag("hiGeneralTracks")
+	if(ispp):
+		self.JetTracksAssociatorAtVertex.tracks = cms.InputTag("generalTracks")
+	else:
+        	self.JetTracksAssociatorAtVertex.tracks = cms.InputTag("hiGeneralTracks")
         self.ImpactParameterTagInfos = impactParameterTagInfos.clone()
         self.ImpactParameterTagInfos.jetTracks = cms.InputTag(jetname+"JetTracksAssociatorAtVertex")
         self.ImpactParameterTagInfos.primaryVertex = cms.InputTag("offlinePrimaryVertices")
@@ -103,6 +106,38 @@ class bTaggers:
         self.NegativeSoftPFMuonByPtBJetTags                = negativeSoftPFMuonByPtBJetTags.clone()
         self.NegativeSoftPFMuonByPtBJetTags.tagInfos       = cms.VInputTag(cms.InputTag(jetname+"SoftPFMuonsTagInfos"))
 
+	if doSubjets:
+		self.SubjetImpactParameterTagInfos = impactParameterTagInfos.clone()
+		self.SubjetImpactParameterTagInfos.jetTracks = cms.InputTag(jetname+"SubjetJetTracksAssociatorAtVertex")
+		self.SubjetSecondaryVertexTagInfos = secondaryVertexTagInfos.clone() 
+		self.SubjetSecondaryVertexTagInfos.trackIPTagInfos = cms.InputTag(jetname+'SubjetImpactParameterTagInfos')
+		self.SubjetSecondaryVertexTagInfos.fatJets = cms.InputTag('ak4PFJets')
+		self.SubjetSecondaryVertexTagInfos.groomedFatJets = cms.InputTag(jetname+'Jets')
+		self.SubjetSecondaryVertexTagInfos.useSVClustering = cms.bool(True)
+		self.SubjetSecondaryVertexTagInfos.useExternalSV = cms.bool(True)
+		self.SubjetSecondaryVertexTagInfos.jetAlgorithm = cms.string('AntiKt')
+		self.SubjetSecondaryVertexTagInfos.useSVMomentum = cms.bool(True)
+		self.SubjetSecondaryVertexTagInfos.rParam = cms.double(0.4)
+		self.SubjetSecondaryVertexTagInfos.extSVCollection = cms.InputTag('inclusiveSecondaryVertices')
+		self.SubjetSecondaryVertexTagInfos.vertexCuts.maxDeltaRToJetAxis = cms.double(0.1)
+
+		self.SubjetJetTracksAssociatorAtVertex = cms.EDProducer("JetTracksAssociatorExplicit",
+			jets = cms.InputTag(jetname+'Jets','SubJets')
+		)
+		if ispp:
+			self.SubjetJetTracksAssociatorAtVertex.tracks = cms.InputTag('highPurityTracks')
+		else:
+			self.SubjetJetTracksAssociatorAtVertex.tracks = cms.InputTag('highPurityTracks')
+
+		self.CombinedSubjetSecondaryVertexV2BJetTags = combinedSecondaryVertexV2BJetTags.clone(
+			tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"),
+			cms.InputTag(jetname+"SubjetSecondaryVertexTagInfos"))
+		)
+		self.CombinedSubjetSecondaryVertexBJetTags = combinedSecondaryVertexBJetTags.clone(
+			tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"),
+			cms.InputTag(jetname+"SubjetSecondaryVertexTagInfos"))
+		) 
+
         self.JetTracksAssociator = cms.Sequence(self.JetTracksAssociatorAtVertex)
         self.JetBtaggingIP       = cms.Sequence(self.ImpactParameterTagInfos * (
                 self.TrackCountingHighEffBJetTags +
@@ -166,6 +201,11 @@ class bTaggers:
             partons = cms.InputTag(jetname+"PatJetPartons","algorithmicPartons"),
             leptons = cms.InputTag(jetname+"PatJetPartons","leptons"),
             )
+
+	if doSubjets:
+		self.PatJetFlavourAssociation.jets="ak4PFJets"
+		self.PatJetFlavourAssociation.groomedJets = cms.InputTag(jetname+'Jets')
+		self.PatJetFlavourAssociation.subjets = cms.InputTag(jetname+'Jets', 'SubJets')
 
         self.PatJetFlavourId               = cms.Sequence(self.PatJetPartons*self.PatJetFlavourAssociation)
         #self.match   = patJetGenJetMatch.clone(

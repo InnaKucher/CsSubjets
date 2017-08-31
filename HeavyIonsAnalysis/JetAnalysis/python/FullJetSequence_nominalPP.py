@@ -27,6 +27,10 @@ akSoftDrop4PFJets = cms.EDProducer(
     jetCollInstanceName=cms.string("SubJets")
 )
 akSoftDrop5PFJets = akSoftDrop4PFJets.clone(rParam = cms.double(0.5), R0 = cms.double(0.5))
+akSoftDrop4PFz01bm1Jets = akSoftDrop4PFJets.clone(beta = cms.double(-1))
+akSoftDrop4PFz01b1Jets = akSoftDrop4PFJets.clone(beta = cms.double(1))
+akSoftDrop4PFz005bm1Jets = akSoftDrop4PFJets.clone(beta = cms.double(-1), zcut=cms.double(0.05))
+akSoftDrop4PFz005bm2Jets = akSoftDrop4PFJets.clone(beta = cms.double(-2), zcut=cms.double(0.05))
 
 from HeavyIonsAnalysis.JetAnalysis.akSoftDrop4GenJets_cfi import akSoftDrop4GenJets
 akSoftDrop5GenJets = akSoftDrop4GenJets.clone(rParam = 0.5)
@@ -56,6 +60,10 @@ from HeavyIonsAnalysis.JetAnalysis.jets.ak4PFJetSequence_pp_mc_cff import *
 from HeavyIonsAnalysis.JetAnalysis.jets.ak5PFJetSequence_pp_mc_cff import *
 from HeavyIonsAnalysis.JetAnalysis.jets.ak4CaloJetSequence_pp_mc_cff import *
 from HeavyIonsAnalysis.JetAnalysis.jets.akSoftDrop4PFJetSequence_pp_mc_cff import *
+from HeavyIonsAnalysis.JetAnalysis.jets.akSoftDrop4PFJetSequence_z01_bm1_pp_mc_cff import *
+from HeavyIonsAnalysis.JetAnalysis.jets.akSoftDrop4PFJetSequence_z01_b1_pp_mc_cff import *
+from HeavyIonsAnalysis.JetAnalysis.jets.akSoftDrop4PFJetSequence_z005_bm1_pp_mc_cff import *
+from HeavyIonsAnalysis.JetAnalysis.jets.akSoftDrop4PFJetSequence_z005_bm2_pp_mc_cff import *
 from HeavyIonsAnalysis.JetAnalysis.jets.akSoftDrop5PFJetSequence_pp_mc_cff import *
 
 highPurityTracks = cms.EDFilter("TrackSelector",
@@ -74,6 +82,10 @@ jetSequences = cms.Sequence(
     ak5PFJets +
     akSoftDrop4PFJets +
     akSoftDrop5PFJets +
+    akSoftDrop4PFz01bm1Jets +
+    akSoftDrop4PFz01b1Jets +
+    akSoftDrop4PFz005bm1Jets +
+    akSoftDrop4PFz005bm2Jets + 
     akFilter4PFJets +
     akFilter5PFJets +
     akSoftDrop4GenJets +
@@ -83,6 +95,10 @@ jetSequences = cms.Sequence(
 #    ak4PFJetSequence +
 #    ak5PFJetSequence +
     #ak4CaloJetSequence +
-    akSoftDrop4PFJetSequence 
+    akSoftDrop4PFJetSequence +
+    akSoftDrop4PFz01bm1JetSequence +
+    akSoftDrop4PFz01b1JetSequence +
+    akSoftDrop4PFz005bm1JetSequence +
+    akSoftDrop4PFz005bm2JetSequence
 #    akSoftDrop5PFJetSequence
 )

@@ -26,14 +26,14 @@ process.HiForest.HiForestVersion = cms.string(version)
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
                                 #"/store/group/phys_heavyions/velicanu/reco/HIPhysicsMinBiasUPC/v0/000/262/548/recoExpress_84.root"
-                            'file:samples/PbPb_DATA_AOD.root'
+                            '/store/hidata/HIRun2015/HIHardProbes/AOD/PromptReco-v1/000/262/548/00000/9091A3D3-AD9A-E511-8B73-02163E011A3E.root'
 				)
 )
 
 
 # Number of events we want to process, -1 = all events
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10))
+    input = cms.untracked.int32(100))
 
 
 #####################################################################################
@@ -76,9 +76,9 @@ process.TFileService = cms.Service("TFileService",
 #############################
 
 #require the pu algo to use a certain threshold of towers for bg subtraction
-#process.load("HeavyIonsAnalysis.JetAnalysis.FullJetSequence_puLimitedDataPbPb")
+process.load("HeavyIonsAnalysis.JetAnalysis.FullJetSequence_puLimitedDataPbPb")
 #or don't do that
-process.load("HeavyIonsAnalysis.JetAnalysis.FullJetSequence_puUnlimitedDataPbPb")
+#process.load("HeavyIonsAnalysis.JetAnalysis.FullJetSequence_puUnlimitedDataPbPb")
 
 #####################################################################################
 
@@ -148,17 +148,18 @@ process.CSVscikitTags.weightFile=cms.FileInPath('HeavyIonsAnalysis/JetAnalysis/d
 # Main analysis list
 #########################
 
-process.ana_step = cms.Path(process.hltanalysis *
-			    process.hltobject *
+process.ana_step = cms.Path(
+#			    process.hltanalysis *
+#			    process.hltobject *
                             process.centralityBin *
                             process.hiEvtAnalyzer*
                             process.jetSequences +
-                            process.ggHiNtuplizer +
-                            process.ggHiNtuplizerGED +
+#                            process.ggHiNtuplizer +
+#                            process.ggHiNtuplizerGED +
                             process.pfcandAnalyzer +
                             process.pfcandAnalyzerCS +
                             process.HiForest +
-                            process.trackSequencesPbPb +
+#                            process.trackSequencesPbPb +
                             process.hcalNoise #+
                             #process.tupelPatSequence
                             )
@@ -192,6 +193,63 @@ process.pAna = cms.EndPath(process.skimanalysis)
 
 # Customization
 ##########################################UE##########################################
+process.ak4PFJets.jetPtMin = cms.double(0.0)
+process.akSoftDrop4PFJets.src = cms.InputTag("particleFlowTmp")
+process.akCsSoftDrop4PFJets.jetPtMin = cms.double(0.0)
+
+process.akCsSoftDrop4PFpatJetsWithBtagging.getJetMCFlavour = cms.bool(False)
+process.akCsSoftDrop4PFJetAnalyzer.doExtendedFlavorTagging = cms.untracked.bool(False)
+process.akCsSoftDrop4PFJetAnalyzer.jetFlavourInfos    = cms.InputTag("akCsSoftDrop4PFPatJetFlavourAssociation")
+process.akCsSoftDrop4PFJetAnalyzer.subjetFlavourInfos = cms.InputTag("akCsSoftDrop4PFPatJetFlavourAssociation","SubJets")
+process.akCsSoftDrop4PFJetAnalyzer.groomedJets        = cms.InputTag("akCsSoftDrop4PFJets")
+process.akCsSoftDrop4PFJetAnalyzer.isPythia6 = cms.untracked.bool(False)
+
+#process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex = process.akCsSoftDrop4PFJetTracksAssociatorAtVertex.clone()
+#process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex.jets = cms.InputTag('akCsSoftDrop4PFJets','SubJets')
+#process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex.coneSize = cms.double(0.25)
+
+process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex = cms.EDProducer("JetTracksAssociatorExplicit",
+        jets = cms.InputTag('akCsSoftDrop4PFJets','SubJets'),
+        tracks = cms.InputTag('highPurityTracks')
+)
+
+process.akCsSoftDrop4PFSubjetImpactParameterTagInfos = process.akCsSoftDrop4PFImpactParameterTagInfos.clone()
+process.akCsSoftDrop4PFSubjetImpactParameterTagInfos.jetTracks = cms.InputTag("akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex")
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos = process.akCsSoftDrop4PFSecondaryVertexTagInfos.clone()
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.trackIPTagInfos = cms.InputTag('akCsSoftDrop4PFSubjetImpactParameterTagInfos')
+
+#doing ghost-vertex reclustering for subjets
+#starting with IVF vertexing
+from RecoVertex.AdaptiveVertexFinder.inclusiveVertexing_cff import *
+process.inclusiveVertexFinder.primaryVertices = cms.InputTag("hiSelectedVertex")
+process.inclusiveVertexFinder.tracks = cms.InputTag("highPurityTracks")
+process.trackVertexArbitrator.primaryVertices = cms.InputTag("hiSelectedVertex")
+process.trackVertexArbitrator.tracks = cms.InputTag("highPurityTracks")
+process.inclusiveSecondaryVertices.primaryVertices= cms.InputTag("hiSelectedVertex")
+process.inclusiveSecondaryVertices.tracks = cms.InputTag("highPurityTracks")
+
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.useExternalSV = cms.bool(True)
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.extSVCollection = cms.InputTag("inclusiveSecondaryVertices")
+#process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.extSVCollection = cms.InputTag("hiSelectedVertex")
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.extSVDeltaRToJet = cms.double(1.0) #make this big to make sure ghost vertexing works 
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.useSVClustering = cms.bool(True)
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.useSVMomentum = cms.bool(True)
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.fatJets = cms.InputTag("ak4PFJets")
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.groomedFatJets = cms.InputTag("akCsSoftDrop4PFJets")
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.jetAlgorithm = cms.string("AntiKt")
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.rParam = cms.double(0.4)
+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.maxDeltaRToJetAxis = cms.double(0.2)
+
+process.akCsSoftDrop4PFJetAnalyzer.trackSelection = process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.trackSelection
+process.akCsSoftDrop4PFJetAnalyzer.trackPairV0Filter = process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.vertexCuts.v0Filter
+
+process.akCsSoftDrop4PFCombinedSubjetSecondaryVertexBJetTags = process.akCsSoftDrop4PFCombinedSecondaryVertexBJetTags.clone(
+        tagInfos = cms.VInputTag(cms.InputTag("akCsSoftDrop4PFSubjetImpactParameterTagInfos"),
+                cms.InputTag("akCsSoftDrop4PFSubjetSecondaryVertexTagInfos"))
+)
+process.akCsSoftDrop4PFJetBtaggingSV *= process.akCsSoftDrop4PFSubjetJetTracksAssociatorAtVertex+process.akCsSoftDrop4PFSubjetImpactParameterTagInfos+process.inclusiveVertexing+process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos+process.akCsSoftDrop4PFCombinedSubjetSecondaryVertexBJetTags
+
+######################################################################################
 from CondCore.DBCommon.CondDBSetup_cfi import *
 process.uetable = cms.ESSource("PoolDBESSource",
       DBParameters = cms.PSet(

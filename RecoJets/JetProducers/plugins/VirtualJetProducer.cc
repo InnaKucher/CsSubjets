@@ -889,7 +889,10 @@ void VirtualJetProducer::writeJetsWithConstituents(  edm::Event & iEvent, edm::E
   std::auto_ptr<reco::PFCandidateCollection>  constituentCollection( new reco::PFCandidateCollection() );
   // This will store the handle for the constituents after we write them
   edm::OrphanHandle<reco::PFCandidateCollection> constituentHandleAfterPut;
-  
+ 
+  edm::Handle<reco::CandidateView> inputsHandle;
+  iEvent.getByToken(input_candidateview_token_, inputsHandle);
+ 
   // Loop over the jets and extract constituents
   std::vector<fastjet::PseudoJet> constituentsSub;
   std::vector<fastjet::PseudoJet>::const_iterator it = fjJets_.begin(),
@@ -937,7 +940,10 @@ void VirtualJetProducer::writeJetsWithConstituents(  edm::Event & iEvent, edm::E
     math::XYZTLorentzVector pVec;
     pVec.SetPxPyPzE(constit.px(),constit.py(),constit.pz(),constit.e());
     pCand.setP4(pVec);
-    pCand.setSourceCandidatePtr( orig->sourceCandidatePtr(0) );
+    //const reco::PFCandidate *tempPtr = dynamic_cast<const reco::PFCandidate*>(&(*(orig->sourceCandidatePtr(0))));
+    edm::Ptr<reco::PFCandidate> test(orig);
+    //reco::PFCandidatePtr test = refToPtr(*orig);
+    pCand.setSourceCandidatePtr( test );
     constituentCollection->push_back(pCand);
   }
   // put constituents into event record

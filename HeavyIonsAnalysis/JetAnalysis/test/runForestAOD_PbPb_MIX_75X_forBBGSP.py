@@ -7,6 +7,10 @@ import FWCore.ParameterSet.Config as cms
 process = cms.Process('HiForest')
 process.options = cms.untracked.PSet()
 
+#process.Timing = cms.Service("Timing",
+#	summaryOnly = cms.untracked.bool(False)
+#)
+
 #####################################################################################
 # HiForest labelling info
 #####################################################################################
@@ -34,7 +38,7 @@ process.source = cms.Source("PoolSource",
 
 # Number of events we want to process, -1 = all events
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(20)
+    input = cms.untracked.int32(10)
 )
 
 process.output = cms.OutputModule("PoolOutputModule",
@@ -287,14 +291,15 @@ process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.trackIPTagInfos = cms.Input
 #starting with IVF vertexing
 from RecoVertex.AdaptiveVertexFinder.inclusiveVertexing_cff import *
 process.inclusiveVertexFinder.primaryVertices = cms.InputTag("hiSelectedVertex")
-process.inclusiveVertexFinder.tracks = cms.InputTag("hiGeneralTracks")
+process.inclusiveVertexFinder.tracks = cms.InputTag("highPurityTracks")
 process.trackVertexArbitrator.primaryVertices = cms.InputTag("hiSelectedVertex")
-process.trackVertexArbitrator.tracks = cms.InputTag("hiGeneralTracks")
+process.trackVertexArbitrator.tracks = cms.InputTag("highPurityTracks")
 process.inclusiveSecondaryVertices.primaryVertices= cms.InputTag("hiSelectedVertex")
-process.inclusiveSecondaryVertices.tracks = cms.InputTag("hiGeneralTracks")
+process.inclusiveSecondaryVertices.tracks = cms.InputTag("highPurityTracks")
 
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.useExternalSV = cms.bool(True)
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.extSVCollection = cms.InputTag("inclusiveSecondaryVertices")
+#process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.extSVCollection = cms.InputTag("hiSelectedVertex")
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.extSVDeltaRToJet = cms.double(1.0) #make this big to make sure ghost vertexing works 
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.useSVClustering = cms.bool(True)
 process.akCsSoftDrop4PFSubjetSecondaryVertexTagInfos.fatJets = cms.InputTag("ak4PFJets")

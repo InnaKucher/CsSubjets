@@ -179,7 +179,7 @@ namespace reco {
     /// this function can be used to set the ptr to the source of the 
     /// Candidate, which will allow to keep track 
     /// of the reconstruction history. 
-    virtual void setSourceCandidatePtr( const CandidatePtr& ptr ) {};
+    virtual void setSourceCandidatePtr( const CandidatePtr& ptr ) { std::cout << "WARNING! Using Virtual setSource! "<< std::endl;};
 
     /// chi-squares
     virtual double vertexChi2() const = 0;

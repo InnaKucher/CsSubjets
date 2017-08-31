@@ -2476,11 +2476,11 @@ void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::H
 				  svdls.push_back(subjetInfo.flightDistance(isv).significance());
 			  }
 			  if((*jetTags_CombinedSvtx)[ith_tagged].second > 0.9 && subjetInfo.nVertices()>0){
-				//cout << "full vtx criteria met for subjet " << k << " (pt=" << subjd->pt() << ", csv="<< (*jetTags_CombinedSvtx)[ith_tagged].second << ") " << endl;
-			//	cout << "full vtx reco tracks: "<< endl;
+				cout << "full vtx criteria met for subjet " << k << " (pt=" << subjd->pt() << ", csv="<< (*jetTags_CombinedSvtx)[ith_tagged].second << ") " << endl;
+				cout << "full vtx reco tracks: "<< endl;
 				int itrack=0;
 				for(reco::Vertex::trackRef_iterator it = subjetInfo.secondaryVertex(0).tracks_begin(); it != subjetInfo.secondaryVertex(0).tracks_end(); it++, itrack++){
-			//		cout << "sv track " << itrack << " pt: "<< (*it)->pt() << " eta: " << (*it)->eta() << " phi: "<< (*it)->phi() << endl; 
+					cout << "sv track " << itrack << " pt: "<< (*it)->pt() << " eta: " << (*it)->eta() << " phi: "<< (*it)->phi() << endl; 
 				}	  
 	
 			  }
