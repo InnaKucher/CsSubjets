@@ -169,14 +169,14 @@ process.load("HeavyIonsAnalysis.VectorBosonAnalysis.tupelSequence_pp_mc_cff")
 #########################
 process.ana_step = cms.Path(#process.hltanalysis *
                             process.hiEvtAnalyzer *
-                            process.HiGenParticleAna*
+                            #process.HiGenParticleAna*
                             process.jetSequences +
                             #process.egmGsfElectronIDSequence + #Should be added in the path for VID module
                             #process.ggHiNtuplizer +
                             #process.ggHiNtuplizerGED +
-                            process.pfcandAnalyzer +
+#                            process.pfcandAnalyzer +
                             process.HiForest +
-			    process.trackSequencesPP +
+#			    process.trackSequencesPP +
                             process.runAnalyzer 
   #                          process.tupelPatSequence
 )
