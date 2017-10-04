@@ -109,6 +109,8 @@ class bTaggers:
 	if doSubjets:
 		self.SubjetImpactParameterTagInfos = impactParameterTagInfos.clone()
 		self.SubjetImpactParameterTagInfos.jetTracks = cms.InputTag(jetname+"SubjetJetTracksAssociatorAtVertex")
+		self.SubjetJetProbabilityBJetTags = jetProbabilityBJetTags.clone()
+		self.SubjetJetProbabilityBJetTags.tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"))
 		self.SubjetSecondaryVertexTagInfos = secondaryVertexTagInfos.clone() 
 		self.SubjetSecondaryVertexTagInfos.trackIPTagInfos = cms.InputTag(jetname+'SubjetImpactParameterTagInfos')
 		self.SubjetSecondaryVertexTagInfos.fatJets = cms.InputTag('ak4PFJets')
