@@ -101,7 +101,8 @@ void CombinedSVComputer::fillCommonVariables(reco::TaggingVariableList & vars, r
 
         edm::RefToBase<Jet> jet = ipInfo.jet();
         math::XYZVector jetDir = jet->momentum().Unit();
-        bool havePv = ipInfo.primaryVertex().isNonnull();
+        //std::cout << "starting CSV computation for jet pt: "<< jet->pt() << " eta: "<< jet->eta() << std::endl;
+	bool havePv = ipInfo.primaryVertex().isNonnull();
         GlobalPoint pv;
         if (havePv)
                 pv = GlobalPoint(ipInfo.primaryVertex()->x(),
@@ -126,6 +127,7 @@ void CombinedSVComputer::fillCommonVariables(reco::TaggingVariableList & vars, r
 	
 	int vtx = -1;
 	
+	//std::cout << "found " << svInfo.nVertices() << " associated reco vertices" << std::endl;
 	IterationRange range = flipIterate(svInfo.nVertices(), true);
 	range_for(i , range) {
 		if (vtx < 0) vtx = i;
@@ -149,6 +151,7 @@ void CombinedSVComputer::fillCommonVariables(reco::TaggingVariableList & vars, r
 	std::vector<const Track *> pseudoVertexTracks;
 
         const Track * trackPairV0Test[2];
+	//std::cout << "found " << indices.size() << " associated tracks "<< std::endl; 
         range = flipIterate(indices.size(), false);
         range_for(i, range) {
                 std::size_t idx = indices[i];
@@ -225,9 +228,10 @@ void CombinedSVComputer::fillCommonVariables(reco::TaggingVariableList & vars, r
                 vars.insert(btau::trackPParRatio, jetDir.Dot(trackMom) / trackMag, true);
         }
 
-        if (vtxType == btag::Vertices::NoVertex && vertexKinematics.numberOfTracks() >= pseudoMultiplicityMin && pseudoVertexV0Filter(pseudoVertexTracks))
+        if ( vtxType == btag::Vertices::NoVertex && vertexKinematics.numberOfTracks() >= pseudoMultiplicityMin && pseudoVertexV0Filter(pseudoVertexTracks))
         {
-                vtxType = btag::Vertices::PseudoVertex;
+                //std::cout << "found a pseudovertex with " << vertexKinematics.numberOfTracks() << " tracks "<< std::endl;
+		vtxType = btag::Vertices::PseudoVertex;
                 for(std::vector<const Track *>::const_iterator track = pseudoVertexTracks.begin(); track != pseudoVertexTracks.end(); ++track)
                 {
                         vars.insert(btau::trackEtaRel, reco::btau::etaRel(jetDir,(*track)->momentum()), true);
@@ -235,6 +239,7 @@ void CombinedSVComputer::fillCommonVariables(reco::TaggingVariableList & vars, r
                         vtx_track_ESum  += std::sqrt((*track)->momentum().Mag2() + ROOT::Math::Square(ParticleMasses::piPlus));
                 }
         }
+	//else if( vtxType == btag::Vertices::NoVertex) std::cout << " found a ghost vertex " << std::endl;
 
 	vars.insert(btau::vertexCategory, vtxType, true);
 	

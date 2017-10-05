@@ -62,6 +62,15 @@ reco::TrackRefVector PFJet::getTrackRefs() const {
   result.reserve( chargedMultiplicity() );
   for (unsigned i = 0;  i <  numberOfDaughters (); i++) {
     const reco::PFCandidatePtr pfcand = getPFConstituent (i);
+    
+    //move from the CS candidates to the PF candidates, if they're CS-jets.
+    /*reco::TrackRef trackref;
+    reco::CandidatePtr pfCandParent = pfcand->sourceCandidatePtr(0);
+    if(pfCandParent.isNonnull()){
+	edm::Ptr<reco::PFCandidate> ptr = edm::Ptr<reco::PFCandidate>(pfCandParent);
+    	trackref = ptr->trackRef();
+    }
+    else reco::TrackRef trackref = pfcand->trackRef();*/
     reco::TrackRef trackref = pfcand->trackRef();
     if( trackref.isNonnull() ) {
       result.push_back( trackref );
