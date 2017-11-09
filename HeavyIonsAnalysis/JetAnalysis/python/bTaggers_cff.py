@@ -131,14 +131,66 @@ class bTaggers:
 		else:
 			self.SubjetJetTracksAssociatorAtVertex.tracks = cms.InputTag('highPurityTracks')
 
-		self.CombinedSubjetSecondaryVertexV2BJetTags = combinedSecondaryVertexV2BJetTags.clone(
+		self.SubjetCombinedSecondaryVertexV2BJetTags = combinedSecondaryVertexV2BJetTags.clone(
 			tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"),
 			cms.InputTag(jetname+"SubjetSecondaryVertexTagInfos"))
 		)
-		self.CombinedSubjetSecondaryVertexBJetTags = combinedSecondaryVertexBJetTags.clone(
+		self.SubjetCombinedSecondaryVertexBJetTags = combinedSecondaryVertexBJetTags.clone(
 			tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"),
 			cms.InputTag(jetname+"SubjetSecondaryVertexTagInfos"))
-		) 
+		)
+
+                self.SubjetSecondaryVertexNegativeTagInfos = secondaryVertexNegativeTagInfos.clone()
+                self.SubjetSecondaryVertexNegativeTagInfos.trackIPTagInfos = cms.InputTag(jetname+'SubjetImpactParameterTagInfos')
+                self.SubjetSecondaryVertexNegativeTagInfos.fatJets = cms.InputTag('ak4PFJets')
+                self.SubjetSecondaryVertexNegativeTagInfos.groomedFatJets = cms.InputTag(jetname+'Jets')
+                self.SubjetSecondaryVertexNegativeTagInfos.useSVClustering = cms.bool(True)
+                self.SubjetSecondaryVertexNegativeTagInfos.useExternalSV = cms.bool(True)
+                self.SubjetSecondaryVertexNegativeTagInfos.jetAlgorithm = cms.string('AntiKt')
+                self.SubjetSecondaryVertexNegativeTagInfos.useSVMomentum = cms.bool(True)
+                self.SubjetSecondaryVertexNegativeTagInfos.rParam = cms.double(0.4)
+                self.SubjetSecondaryVertexNegativeTagInfos.extSVCollection = cms.InputTag('inclusiveSecondaryVertices')
+                self.SubjetSecondaryVertexNegativeTagInfos.vertexCuts.maxDeltaRToJetAxis = cms.double(0.1)
+
+                self.SubjetSimpleSecondaryVertexHighEffBJetTags = simpleSecondaryVertexHighEffBJetTags.clone(
+                    tagInfos      = cms.VInputTag(cms.InputTag(jetname+"SubjetSecondaryVertexTagInfos"))
+                )
+                self.SubjetSimpleSecondaryVertexHighPurBJetTags = simpleSecondaryVertexHighPurBJetTags.clone(
+                    tagInfos      = cms.VInputTag(cms.InputTag(jetname+"SubjetSecondaryVertexTagInfos"))
+                )
+                self.SubjetNegativeSimpleSecondaryVertexHighEffBJetTags = negativeSimpleSecondaryVertexHighEffBJetTags.clone(
+                    tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetSecondaryVertexNegativeTagInfos"))
+                )
+                self.SubjetNegativeSimpleSecondaryVertexHighPurBJetTags = negativeSimpleSecondaryVertexHighPurBJetTags.clone(
+                    tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetSecondaryVertexNegativeTagInfos"))
+                )
+                self.SubjetNegativeCombinedSecondaryVertexBJetTags = negativeCombinedSecondaryVertexBJetTags.clone(
+                    tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"),
+                                             cms.InputTag(jetname+"SubjetSecondaryVertexNegativeTagInfos"))
+
+                )
+                self.SubjetPositiveCombinedSecondaryVertexBJetTags =  positiveCombinedSecondaryVertexBJetTags.clone(
+                    tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"),
+                                             cms.InputTag(jetname+"SubjetSecondaryVertexTagInfos"))
+                )
+                self.SubjetNegativeCombinedSecondaryVertexV2BJetTags = negativeCombinedSecondaryVertexV2BJetTags.clone(
+                    tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"),
+                                             cms.InputTag(jetname+"SubjetSecondaryVertexNegativeTagInfos"))
+                )
+                self.SubjetPositiveCombinedSecondaryVertexV2BJetTags = positiveCombinedSecondaryVertexV2BJetTags.clone(
+                    tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"),
+                                             cms.InputTag(jetname+"SubjetSecondaryVertexTagInfos"))
+                )
+                self.SubjetTrackCountingHighEffBJetTags = trackCountingHighEffBJetTags.clone(
+                    tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"))
+                )
+                self.SubjetTrackCountingHighPurBJetTags = trackCountingHighPurBJetTags.clone(
+                    tagInfos = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"))
+                )
+                self.SubjetJetBProbabilityBJetTags = jetBProbabilityBJetTags.clone(
+                    tagInfos      = cms.VInputTag(cms.InputTag(jetname+"SubjetImpactParameterTagInfos"))
+                )
+
 
         self.JetTracksAssociator = cms.Sequence(self.JetTracksAssociatorAtVertex)
         self.JetBtaggingIP       = cms.Sequence(self.ImpactParameterTagInfos * (
@@ -147,7 +199,7 @@ class bTaggers:
                 self.JetProbabilityBJetTags +
                 self.JetBProbabilityBJetTags 
                 )
-                                                )
+        )
 
         self.JetBtaggingSV = cms.Sequence(self.ImpactParameterTagInfos *
                 self.SecondaryVertexTagInfos * (self.SimpleSecondaryVertexHighEffBJetTags +
@@ -176,12 +228,44 @@ class bTaggers:
                                              self.PositiveSoftPFMuonByPtBJetTags
             )
                                           )
-
+                                          
         self.JetBtagging = cms.Sequence(self.JetBtaggingIP
                 *self.JetBtaggingSV
                 *self.JetBtaggingNegSV
                 *self.JetBtaggingMu
                 )
+
+
+        if doSubjets:
+            self.SubjetBtaggingIP       = cms.Sequence(self.SubjetImpactParameterTagInfos * (
+                self.SubjetTrackCountingHighEffBJetTags +
+                self.SubjetTrackCountingHighPurBJetTags +
+                self.SubjetJetProbabilityBJetTags +
+                self.SubjetJetBProbabilityBJetTags
+                )
+            )
+            
+            self.SubjetBtaggingSV = cms.Sequence(self.SubjetImpactParameterTagInfos * self.SubjetSecondaryVertexTagInfos * (self.SubjetSimpleSecondaryVertexHighEffBJetTags +
+                                                                                                             self.SubjetSimpleSecondaryVertexHighPurBJetTags +
+                                                                                                             self.SubjetCombinedSecondaryVertexBJetTags +
+                                                                                                             self.SubjetCombinedSecondaryVertexV2BJetTags
+                                                                                                             )
+            )
+            
+            self.SubjetBtaggingNegSV = cms.Sequence(self.SubjetImpactParameterTagInfos * self.SubjetSecondaryVertexNegativeTagInfos * (self.SubjetNegativeSimpleSecondaryVertexHighEffBJetTags +
+                                                                                                                        self.SubjetNegativeSimpleSecondaryVertexHighPurBJetTags +
+                                                                                                                        self.SubjetNegativeCombinedSecondaryVertexBJetTags +
+                                                                                                                        self.SubjetPositiveCombinedSecondaryVertexBJetTags +
+                                                                                                                        self.SubjetNegativeCombinedSecondaryVertexV2BJetTags +
+                                                                                                                        self.SubjetPositiveCombinedSecondaryVertexV2BJetTags
+                                                                                                                        )
+            )
+
+
+            self.SubjetBtagging = cms.Sequence(self.SubjetBtaggingIP
+                                               *self.SubjetBtaggingSV
+                                               *self.SubjetBtaggingNegSV
+                                               )
 
         self.PatJetPartonAssociationLegacy       = patJetPartonAssociationLegacy.clone(
             jets = cms.InputTag(jetname+"Jets"),

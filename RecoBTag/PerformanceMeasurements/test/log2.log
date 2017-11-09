@@ -1,0 +1,1233 @@
+('Running on files ', ['file:qcd_99.root'])
+('Output file ', 'JetTree_qcd_numEvent1.root')
+('N events ', 1)
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+ATTENTION - NOT LIMITING THE MINIMUM TOWERS FRACTION
+Constructing BTagAnalyzerLegacy:btagana
+BTagAnalyzerLegacy:btagana constructed
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=7
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=1.01019
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.940001
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0195404
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 5 initJetNTracks = 7 and tag value = 0.082698
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=4
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=0.419884
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.226494
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.096353
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 4 and tag value = 0.67754
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=4
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-0.176981
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=1.07048
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0293386
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 3 initJetNTracks = 4 and tag value = 0.142664
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=5
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-2.87478
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.940631
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0649017
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 3 initJetNTracks = 5 and tag value = 0.133592
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=4
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=0.87992
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.903416
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0792764
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 3 initJetNTracks = 4 and tag value = 0.1563
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=4
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.885083
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0804123
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 3 initJetNTracks = 4 and tag value = 0.147291
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.284437
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.23811
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.639056
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.803815
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.00692669
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 2 initJetNTracks = 2 and tag value = 0.154598
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.878494
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0295736
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 2 and tag value = 0.845034
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=3
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.304691
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.145901
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 3 and tag value = 0.616182
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.963843
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0613219
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 2 initJetNTracks = 2 and tag value = 0.168598
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.731907
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0387041
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.55664
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=1.11885
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.194322
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 2 and tag value = 0.853964
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=3
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-0.352234
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=1.07424
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0412953
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 3 and tag value = 0.553031
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.506085
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.13255
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.553102
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.747092
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.112786
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.564019
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=2.45438
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 2 and tag value = 0.958741
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=4
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-0.423662
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.884938
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.294354
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 4 and tag value = 0.56108
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=3
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.807685
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0404467
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 3 and tag value = 0.563876
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=1.34201
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0539251
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.530472
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=3
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.85359
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0684688
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 3 and tag value = 0.567915
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.856246
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.159459
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.556362
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+vtxType = 2
+ varSV[TagVarCSV_jetNTracks]=3
+
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=3.34226
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.218802
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 2 initJetNTracks = 3 and tag value = 0.739114
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+vtxType = 2
+BTagAnalyser:: ntagtracks = 7
+vtxType = 2
+BTagAnalyser:: CSV jetNTracks = 5
+BTagAnalyser:: ntagtracks = 4
+vtxType = 2
+BTagAnalyser:: CSV jetNTracks = 1

@@ -5,7 +5,8 @@ import RecoBTag.SecondaryVertex.candidateCombinedSecondaryVertexV2Computer_cfi a
 from RecoBTag.CSVscikit.training_settings import csvscikit_vpset
 from RecoBTag.CSVscikit.helpers import get_vars
 
-weightfilename = 'RecoBTag/PerformanceMeasurements/test/TMVA_weights.xml'
+#weightfilename = 'RecoBTag/PerformanceMeasurements/test/TMVA_weights.xml'
+weightfilename = 'RecoBTag/PerformanceMeasurements/data/TMVA_weights2.xml'
 
 #charmTagsComputerCvsL = cms.ESProducer(
 CSVscikitTags = cms.ESProducer(

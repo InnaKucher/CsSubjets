@@ -1,0 +1,13 @@
+DIGI,L1,DIGI2RAW,HLT:@fake,RAW2DIGI,L1Reco,ENDJOB
+We have determined that this is simulation (if not, rerun cmsDriver.py with --data)
+entry file:step1.root
+Step: DIGI Spec: 
+Step: L1 Spec: 
+Step: DIGI2RAW Spec: 
+Step: HLT Spec: ['@fake']
+Step: RAW2DIGI Spec: 
+Step: L1Reco Spec: 
+Step: ENDJOB Spec: 
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+customising the process with customizeHLTforFullSim from HLTrigger/Configuration/customizeHLTforMC
+Config file step2_DIGI_L1_DIGI2RAW_HLT_RAW2DIGI_L1Reco.py created

@@ -1,0 +1,8 @@
+GEN,SIM,ENDJOB
+We have determined that this is simulation (if not, rerun cmsDriver.py with --data)
+Step: GEN Spec: 
+Loading generator fragment from Configuration.Generator.MinBias_8TeV_pythia8_TuneCUETP8M1_cff
+Step: SIM Spec: 
+Step: ENDJOB Spec: 
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+Config file MinBias_8TeV_pythia8_TuneCUETP8M1_cff_GEN_SIM.py created

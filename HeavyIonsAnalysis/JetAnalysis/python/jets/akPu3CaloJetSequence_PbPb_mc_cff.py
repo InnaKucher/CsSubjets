@@ -37,7 +37,7 @@ akPu3CaloJetID= cms.EDProducer('JetIDProducer', JetIDParams, src = cms.InputTag(
 
 #akPu3Caloclean   = heavyIonCleanedGenJets.clone(src = cms.InputTag('ak3HiSignalGenJets'))
 
-akPu3CalobTagger = bTaggers("akPu3Calo",0.3)
+akPu3CalobTagger = bTaggers("akPu3Calo",0.3,False,False)
 
 #create objects locally since they dont load properly otherwise
 #akPu3Calomatch = akPu3CalobTagger.match
@@ -86,6 +86,14 @@ akPu3CaloPatJetFlavourIdLegacy = cms.Sequence(akPu3CaloPatJetPartonAssociationLe
 #Not working with our PU sub
 akPu3CaloPatJetFlavourAssociation = akPu3CalobTagger.PatJetFlavourAssociation
 akPu3CaloPatJetFlavourId = cms.Sequence(akPu3CaloPatJetPartons*akPu3CaloPatJetFlavourAssociation)
+
+#adding the subjet taggers
+#SUBJETDUMMY_akPu3CaloSubjetImpactParameterTagInfos = akPu3CalobTagger.SubjetImpactParameterTagInfos
+#SUBJETDUMMY_akPu3CaloSubjetJetProbabilityBJetTags = akPu3CalobTagger.SubjetJetProbabilityBJetTags
+#SUBJETDUMMY_akPu3CaloSubjetSecondaryVertexTagInfos = akPu3CalobTagger.SubjetSecondaryVertexTagInfos
+#SUBJETDUMMY_akPu3CaloSubjetJetTracksAssociatorAtVertex = akPu3CalobTagger.SubjetJetTracksAssociatorAtVertex
+#SUBJETDUMMY_akPu3CaloCombinedSubjetSecondaryVertexBJetTags = akPu3CalobTagger.CombinedSubjetSecondaryVertexBJetTags
+#SUBJETDUMMY_akPu3CaloCombinedSubjetSecondaryVertexV2BJetTags = akPu3CalobTagger.CombinedSubjetSecondaryVertexV2BJetTags
 
 akPu3CaloJetBtaggingIP       = cms.Sequence(akPu3CaloImpactParameterTagInfos *
             (akPu3CaloTrackCountingHighEffBJetTags +
@@ -200,8 +208,13 @@ akPu3CaloJetAnalyzer = inclusiveJetAnalyzer.clone(jetTag = cms.InputTag("akPu3Ca
 							     doSubJets = cms.untracked.bool(False),
                                                              doGenSubJets = cms.untracked.bool(False),     
                                                              subjetGenTag = cms.untracked.InputTag("ak3GenJets"),
+							     doExtendedFlavorTagging = cms.untracked.bool(True),
+							     jetFlavourInfos = cms.InputTag("akPu3CaloPatJetFlavourAssociation"),
+							     subjetFlavourInfos = cms.InputTag("akPu3CaloPatJetFlavourAssociation","SubJets"),
+							     groomedJets = cms.InputTag("akPu3CaloJets"),
+							     isPythia6 = cms.untracked.bool(False),
                                                              doGenTaus = True
-                                                             )
+                                                            )
 
 akPu3CaloJetSequence_mc = cms.Sequence(
                                                   #akPu3Caloclean

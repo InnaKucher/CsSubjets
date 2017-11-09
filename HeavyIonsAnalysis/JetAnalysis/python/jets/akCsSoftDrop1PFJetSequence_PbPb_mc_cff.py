@@ -37,7 +37,7 @@ akCsSoftDrop1PFJetID= cms.EDProducer('JetIDProducer', JetIDParams, src = cms.Inp
 
 #akCsSoftDrop1PFclean   = heavyIonCleanedGenJets.clone(src = cms.InputTag('ak1HiSignalGenJets'))
 
-akCsSoftDrop1PFbTagger = bTaggers("akCsSoftDrop1PF",0.1)
+akCsSoftDrop1PFbTagger = bTaggers("akCsSoftDrop1PF",0.1,False,True)
 
 #create objects locally since they dont load properly otherwise
 #akCsSoftDrop1PFmatch = akCsSoftDrop1PFbTagger.match
@@ -86,6 +86,14 @@ akCsSoftDrop1PFPatJetFlavourIdLegacy = cms.Sequence(akCsSoftDrop1PFPatJetPartonA
 #Not working with our PU sub
 akCsSoftDrop1PFPatJetFlavourAssociation = akCsSoftDrop1PFbTagger.PatJetFlavourAssociation
 akCsSoftDrop1PFPatJetFlavourId = cms.Sequence(akCsSoftDrop1PFPatJetPartons*akCsSoftDrop1PFPatJetFlavourAssociation)
+
+#adding the subjet taggers
+akCsSoftDrop1PFSubjetImpactParameterTagInfos = akCsSoftDrop1PFbTagger.SubjetImpactParameterTagInfos
+akCsSoftDrop1PFSubjetJetProbabilityBJetTags = akCsSoftDrop1PFbTagger.SubjetJetProbabilityBJetTags
+akCsSoftDrop1PFSubjetSecondaryVertexTagInfos = akCsSoftDrop1PFbTagger.SubjetSecondaryVertexTagInfos
+akCsSoftDrop1PFSubjetJetTracksAssociatorAtVertex = akCsSoftDrop1PFbTagger.SubjetJetTracksAssociatorAtVertex
+akCsSoftDrop1PFCombinedSubjetSecondaryVertexBJetTags = akCsSoftDrop1PFbTagger.CombinedSubjetSecondaryVertexBJetTags
+akCsSoftDrop1PFCombinedSubjetSecondaryVertexV2BJetTags = akCsSoftDrop1PFbTagger.CombinedSubjetSecondaryVertexV2BJetTags
 
 akCsSoftDrop1PFJetBtaggingIP       = cms.Sequence(akCsSoftDrop1PFImpactParameterTagInfos *
             (akCsSoftDrop1PFTrackCountingHighEffBJetTags +
@@ -200,8 +208,13 @@ akCsSoftDrop1PFJetAnalyzer = inclusiveJetAnalyzer.clone(jetTag = cms.InputTag("a
 							     doSubJets = cms.untracked.bool(True),
                                                              doGenSubJets = cms.untracked.bool(True),     
                                                              subjetGenTag = cms.untracked.InputTag("akSoftDrop1GenJets"),
+							     doExtendedFlavorTagging = cms.untracked.bool(True),
+							     jetFlavourInfos = cms.InputTag("akCsSoftDrop1PFPatJetFlavourAssociation"),
+							     subjetFlavourInfos = cms.InputTag("akCsSoftDrop1PFPatJetFlavourAssociation","SubJets"),
+							     groomedJets = cms.InputTag("akCsSoftDrop1PFJets"),
+							     isPythia6 = cms.untracked.bool(False),
                                                              doGenTaus = True
-                                                             )
+                                                            )
 
 akCsSoftDrop1PFJetSequence_mc = cms.Sequence(
                                                   #akCsSoftDrop1PFclean

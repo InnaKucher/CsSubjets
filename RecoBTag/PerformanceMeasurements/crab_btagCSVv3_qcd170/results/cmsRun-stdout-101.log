@@ -1,0 +1,22 @@
+Beginning CMSSW wrapper script
+ slc6_amd64_gcc491 scramv1 CMSSW
+Performing SCRAM setup...
+Completed SCRAM setup
+Retrieving SCRAM project...
+Untarring  /tmp/glide_xkBSOZ/execute/dir_30972/sandbox.tar.gz
+Completed SCRAM project
+Executing CMSSW
+cmsRun  -j FrameworkJobReport.xml PSet.py
+----- Begin Fatal Exception 15-Jan-2017 16:20:33 EST-----------------------
+An exception of category 'ConfigFileReadError' occurred while
+   [0] Processing the python configuration file named PSet.py
+Exception Message:
+python encountered the error: <type 'exceptions.RuntimeError'>
+edm::FileInPath unable to find file RecoBTag/PerformanceMeasurements/test/TMVA_weights2.xml anywhere in the search path.
+The search path is defined by: CMSSW_SEARCH_PATH
+${CMSSW_SEARCH_PATH} is: /tmp/glide_xkBSOZ/execute/dir_30972/CMSSW_7_5_8_patch3/src:/tmp/glide_xkBSOZ/execute/dir_30972/CMSSW_7_5_8_patch3/external/slc6_amd64_gcc491/data:/cvmfs/cms.cern.ch/slc6_amd64_gcc491/cms/cmssw-patch/CMSSW_7_5_8_patch3/src:/cvmfs/cms.cern.ch/slc6_amd64_gcc491/cms/cmssw-patch/CMSSW_7_5_8_patch3/external/slc6_amd64_gcc491/data
+Current directory is: /tmp/glide_xkBSOZ/execute/dir_30972
+
+----- End Fatal Exception -------------------------------------------------
+Complete
+process id is 32563 status is 90

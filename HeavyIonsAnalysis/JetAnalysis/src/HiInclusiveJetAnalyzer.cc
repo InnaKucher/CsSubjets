@@ -136,7 +136,7 @@ HiInclusiveJetAnalyzer::HiInclusiveJetAnalyzer(const edm::ParameterSet& iConfig)
   useJEC_ = iConfig.getUntrackedParameter<bool>("useJEC",true);
   usePat_ = iConfig.getUntrackedParameter<bool>("usePAT",true);
 
-  doLifeTimeTagging_ = iConfig.getUntrackedParameter<bool>("doLifeTimeTagging",false);
+  doLifeTimeTagging_ = iConfig.getUntrackedParameter<bool>("doLifeTimeTagging",true);
   doLifeTimeTaggingExtras_ = iConfig.getUntrackedParameter<bool>("doLifeTimeTaggingExtras",true);
   saveBfragments_  = iConfig.getUntrackedParameter<bool>("saveBfragments",false);
   skipCorrections_  = iConfig.getUntrackedParameter<bool>("skipCorrections",false);
@@ -199,7 +199,7 @@ HiInclusiveJetAnalyzer::HiInclusiveJetAnalyzer(const edm::ParameterSet& iConfig)
     PositiveCombinedSecondaryVertexV2BJetTags_ = consumes<JetTagCollection> (iConfig.getUntrackedParameter<string>("PositiveCombinedSecondaryVertexV2BJetTags",(bTagJetName_+"PositiveCombinedSecondaryVertexV2BJetTags")));
     NegativeSoftPFMuonByPtBJetTags_ = consumes<JetTagCollection> (iConfig.getUntrackedParameter<string>("NegativeSoftPFMuonByPtBJetTags",(bTagJetName_+"NegativeSoftPFMuonByPtBJetTags")));
     PositiveSoftPFMuonByPtBJetTags_ = consumes<JetTagCollection> (iConfig.getUntrackedParameter<string>("PositiveSoftPFMuonByPtBJetTags",(bTagJetName_+"PositiveSoftPFMuonByPtBJetTags")));
-    if(doSubJets_) CombinedSubjetSecondaryVertexBJetTags_ = mayConsume<JetTagCollection> (iConfig.getUntrackedParameter<string>("CombinedSubjetSecondaryVertexBJetTags",(bTagJetName_+"CombinedSubjetSecondaryVertexBJetTags")));
+    if(doSubJets_) CombinedSubjetSecondaryVertexBJetTags_ = mayConsume<JetTagCollection> (iConfig.getUntrackedParameter<string>("SubjetCombinedSecondaryVertexBJetTags",(bTagJetName_+"SubjetCombinedSecondaryVertexBJetTags")));
     if(doSubJets_) SubjetJetProbabilityBJetTags_ = mayConsume<JetTagCollection> (iConfig.getUntrackedParameter<string>("SubjetJetProbabilityBJetTags",(bTagJetName_+"SubjetJetProbabilityBJetTags")));
     if(doSubJets_) svSubjetTagInfos_ = mayConsume<vector<SecondaryVertexTagInfo> >(iConfig.getUntrackedParameter<string>("SecondaryVertexTagInfos",(bTagJetName_+"SubjetSecondaryVertexTagInfos")));
     if(doSubJets_) svImpactParameterTagInfos_ = mayConsume<vector<TrackIPTagInfo> >(iConfig.getUntrackedParameter<string>("ImpactParameterTagInfos",(bTagJetName_+"SubjetImpactParameterTagInfos")));
@@ -242,6 +242,8 @@ HiInclusiveJetAnalyzer::beginRun(const edm::Run& run,
 
 void
 HiInclusiveJetAnalyzer::beginJob() {
+
+  cout << "IK::begin" << endl;
 
   //string jetTagName = jetTag_.label()+"_tree";
   string jetTagTitle = jetTagLabel_.label()+" Jet Analysis Tree";
@@ -372,6 +374,9 @@ HiInclusiveJetAnalyzer::beginJob() {
   } 
  
   if(doSubJets_) {
+
+    cout << "IK::do subJets" << endl;
+
     t->Branch("jtSubJetPt",&jets_.jtSubJetPt);
     t->Branch("jtSubJetEta",&jets_.jtSubJetEta);
     t->Branch("jtSubJetPhi",&jets_.jtSubJetPhi);
@@ -677,6 +682,7 @@ HiInclusiveJetAnalyzer::beginJob() {
     }
     
     if(doGenTaus_) {
+      cout << "IK::gen taus" << endl;
       t->Branch("reftau1",jets_.reftau1,"reftau1[nref]/F");
       t->Branch("reftau2",jets_.reftau2,"reftau2[nref]/F");
       t->Branch("reftau3",jets_.reftau3,"reftau3[nref]/F");
@@ -720,6 +726,7 @@ HiInclusiveJetAnalyzer::beginJob() {
     }
 
     if(doGenSubJets_) {
+      cout << "IK::do gen subJets" << endl;
       t->Branch("refptG",jets_.refptG,"refptG[nref]/F");
       t->Branch("refetaG",jets_.refetaG,"refetaG[nref]/F");
       t->Branch("refphiG",jets_.refphiG,"refphiG[nref]/F");
@@ -1250,6 +1257,10 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
 
 	jets_.nIPtrk[jets_.nref] = tagInfoIP.tracks().size();
 	jets_.nselIPtrk[jets_.nref] = tagInfoIP.selectedTracks().size();
+
+	cout << "HiInclusiveJetAnalyzer::tagInfoIP.tracks().size() = " << tagInfoIP.tracks().size() << endl;
+	cout << "HiInclusiveJetAnalyzer::tagInfoIP.selectedTracks().size() = " << tagInfoIP.selectedTracks().size() <<endl;
+
 	if (doLifeTimeTaggingExtras_) {
 
 	  TrackRefVector selTracks=tagInfoIP.selectedTracks();
@@ -1630,7 +1641,13 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
 	}
    }
 
-    if(doSubJets_) analyzeSubjets(jet, jets_.nref, theSubjetFlavourInfos, groomedJets, jetTags_subjet_combinedSvtx, jetTags_subjet_JP, subjetTagInfo, subjetTagInfoSVx);
+   if(doSubJets_) {
+
+     cout << "IK::ANALYZE subjets" << endl;
+
+     analyzeSubjets(jet, jets_.nref, theSubjetFlavourInfos, groomedJets, jetTags_subjet_combinedSvtx, jetTags_subjet_JP, subjetTagInfo, subjetTagInfoSVx);
+
+   }
 
     if(usePat_){
       if( (*patjets)[j].hasUserFloat(jetName_+"Njettiness:tau1") )
@@ -2044,6 +2061,9 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
     
     jets_.ngen = 0;
 
+    cout << "IK::ANALYZE gen jets" << endl;
+    cout << "genjets->size() = " << genjets->size() << endl;
+
     //int igen = 0;
     for(unsigned int igen = 0 ; igen < genjets->size(); ++igen){
       //for ( typename edm::View<reco::Jet>::const_iterator genjetIt = genjets->begin() ; genjetIt != genjets->end() ; ++genjetIt ) {
@@ -2426,6 +2446,8 @@ float HiInclusiveJetAnalyzer::getTau(unsigned num, const reco::GenJet object) co
 //--------------------------------------------------------------------------------------------------
 void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::Handle<reco::JetFlavourInfoMatchingCollection> theSubjetFlavourInfos, edm::Handle<edm::View<reco::Jet> > groomedJets, Handle<JetTagCollection> jetTags_CombinedSvtx, Handle<JetTagCollection> jetTags_JP, Handle<vector<TrackIPTagInfo> > subjetIP, Handle<vector<SecondaryVertexTagInfo> > subjetSV) {
 
+  cout << "IK: inside the analyzeSubjets"<< endl;
+
   std::vector<float> sjpt;
   std::vector<float> sjeta;
   std::vector<float> sjphi;
@@ -2452,6 +2474,8 @@ void HiInclusiveJetAnalyzer::analyzeSubjets(const reco::Jet jet, int idx, edm::H
   std::vector<std::vector<float>> partonEta;
   std::vector<std::vector<float>> partonPhi;
   std::vector<std::vector<float>> partonPdg;
+
+  cout << "IK: numberOfDaughters() " << jet.numberOfDaughters() << endl;
 
   if(jet.numberOfDaughters()>0) {
 	  //cout << "nsubjets: "<< jet.numberOfDaughters() << endl;

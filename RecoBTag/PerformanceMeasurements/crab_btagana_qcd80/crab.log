@@ -1,0 +1,541 @@
+('Running on files ', ['fcr_99.root'])
+('Output file ', 'JetTree_fcr.root')
+('N events ', -1)
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+DEBUG 2016-11-14 20:40:38,651: 	 Executing command: 'submit'
+DEBUG 2016-11-14 20:40:38,653: 	 Found CRAB cache file /home/llr/cms/lisniak/.crab3
+DEBUG 2016-11-14 20:40:38,679: 	 Checking credentials
+DEBUG 2016-11-14 20:40:38,680: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-14 20:40:38,680: 	 Getting proxy life time left
+DEBUG 2016-11-14 20:40:39,685: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 43060
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:40:40,591: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 43058
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:40:40,592: 	 Proxy valid for 11:57:40 hours
+INFO 2016-11-14 20:40:40,592: 	 Will use CRAB configuration file crabConfigQCD.py
+DEBUG 2016-11-14 20:40:40,592: 	 Loading CRAB configuration file.
+DEBUG 2016-11-14 20:40:45,010: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2016-11-14 20:40:45,127: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:40:45,128: 	 Checking credentials
+DEBUG 2016-11-14 20:40:45,128: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-14 20:40:45,128: 	 Getting proxy life time left
+DEBUG 2016-11-14 20:40:46,133: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 43053
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:40:47,139: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 43051
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:40:47,140: 	 Proxy valid for 11:57:33 hours
+DEBUG 2016-11-14 20:40:48,245: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u837 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:40:49,099: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-11-14 20:40:49,210: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:40:49,210: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-11-14 20:40:49,211: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak_cmsweb.cern.ch for credential name
+DEBUG 2016-11-14 20:40:50,716: 	 Executing : 
+ command : myproxy-info -l fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6 -s myproxy.cern.ch
+ output : username: fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 716:43:58  (29.9 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:40:50,718: 	 Myproxy is valid: 2580238
+DEBUG 2016-11-14 20:40:50,718: 	 Command use: submit
+DEBUG 2016-11-14 20:40:50,719: 	 Options use: ['-c', 'crabConfigQCD.py']
+DEBUG 2016-11-14 20:40:51,581: 	 CRABClient version: 3.3.1611
+DEBUG 2016-11-14 20:40:51,582: 	 Instance is prod
+DEBUG 2016-11-14 20:40:51,582: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-11-14 20:40:51,582: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-11-14 20:40:51,582: 	 Started submission
+DEBUG 2016-11-14 20:40:51,582: 	 Working on /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80
+DEBUG 2016-11-14 20:40:52,527: 	 Loading required information from the environment
+DEBUG 2016-11-14 20:40:52,527: 	 Found CMSSW_7_5_8_patch3 for slc6_amd64_gcc491 with base /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3
+DEBUG 2016-11-14 20:40:52,527: 	 Loading required information from the environment
+DEBUG 2016-11-14 20:40:52,527: 	 Found CMSSW_7_5_8_patch3 for slc6_amd64_gcc491 with base /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3
+DEBUG 2016-11-14 20:40:52,553: 	 UNIQUE NAME: tarUUID f98e744c-6cde-4c02-8db1-4aeca722373e 
+DEBUG 2016-11-14 20:40:52,554: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.transferOutputs = True
+config.General.transferLogs = True
+config.General.requestName = 'btagana_qcd80'
+config.section_('JobType')
+config.JobType.psetName = 'runForestAOD_PbPb_MIX_75X.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.maxMemoryMB = 2400
+config.section_('Data')
+config.Data.inputDataset = '/Pythia6_Dijet80_pp502_Hydjet_MB/HINPbPbWinter16DR-75X_mcRun2_HeavyIon_v13-v1/AODSIM'
+config.Data.outputDatasetTag = 'btagana_qcd80'
+config.Data.totalUnits = 50
+config.Data.unitsPerJob = 1
+config.Data.splitting = 'FileBased'
+config.Data.inputDBS = 'global'
+config.Data.outLFNDirBase = '/store/user/istaslis/btaganaqcd80'
+config.Data.publication = False
+config.section_('Site')
+config.Site.storageSite = 'T2_FR_GRIF_LLR'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2016-11-14 20:40:52,554: 	 self.config.JobType.psetName: runForestAOD_PbPb_MIX_75X.py
+INFO 2016-11-14 20:40:52,555: 	 Importing CMSSW configuration runForestAOD_PbPb_MIX_75X.py
+INFO 2016-11-14 20:41:11,785: 	 Finished importing CMSSW configuration runForestAOD_PbPb_MIX_75X.py
+DEBUG 2016-11-14 20:41:11,786: 	 Writing CMSSW configuration to /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80/inputs/PSet.py
+DEBUG 2016-11-14 20:41:16,554: 	 The following EDM output files will be collected: []
+DEBUG 2016-11-14 20:41:16,554: 	 The following TFile output files will be collected: ['JetTree_fcr.root']
+DEBUG 2016-11-14 20:41:16,554: 	 The following user output files will be collected: []
+DEBUG 2016-11-14 20:41:16,554: 	 Loading required information from the environment
+DEBUG 2016-11-14 20:41:16,554: 	 Found CMSSW_7_5_8_patch3 for slc6_amd64_gcc491 with base /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3
+DEBUG 2016-11-14 20:41:16,554: 	 Making tarball in /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80/inputs/f98e744c-6cde-4c02-8db1-4aeca722373edefault.tgz
+DEBUG 2016-11-14 20:41:16,615: 	 Checking directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/lib
+DEBUG 2016-11-14 20:41:16,616: 	 Adding directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/lib to tarball
+DEBUG 2016-11-14 20:41:22,776: 	 Checking directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/biglib
+DEBUG 2016-11-14 20:41:22,776: 	 Adding directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/biglib to tarball
+DEBUG 2016-11-14 20:41:22,794: 	 Checking directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/module
+DEBUG 2016-11-14 20:41:23,087: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/HeavyIonsAnalysis/Configuration/data to tarball
+DEBUG 2016-11-14 20:41:23,437: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/HeavyIonsAnalysis/EventAnalysis/interface to tarball
+DEBUG 2016-11-14 20:41:23,474: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/HeavyIonsAnalysis/JetAnalysis/data to tarball
+DEBUG 2016-11-14 20:41:24,832: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/HeavyIonsAnalysis/JetAnalysis/interface to tarball
+DEBUG 2016-11-14 20:41:25,217: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/HeavyIonsAnalysis/MuonAnalysis/interface to tarball
+DEBUG 2016-11-14 20:41:25,264: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/HeavyIonsAnalysis/PhotonAnalysis/interface to tarball
+DEBUG 2016-11-14 20:41:25,300: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/HeavyIonsAnalysis/TrackAnalysis/interface to tarball
+DEBUG 2016-11-14 20:41:25,324: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/HeavyIonsAnalysis/VertexAnalysis/interface to tarball
+DEBUG 2016-11-14 20:41:25,346: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoHI/HiJetAlgos/interface to tarball
+DEBUG 2016-11-14 20:41:25,428: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoJets/JetProducers/data to tarball
+DEBUG 2016-11-14 20:41:25,449: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoJets/JetProducers/interface to tarball
+DEBUG 2016-11-14 20:41:25,651: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/data to tarball
+DEBUG 2016-11-14 20:41:26,818: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/interface to tarball
+DEBUG 2016-11-14 20:41:27,103: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/ttbar/data to tarball
+DEBUG 2016-11-14 20:41:27,417: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/TagVarExtractor/interface to tarball
+DEBUG 2016-11-14 20:41:27,442: 	 Adding data directory /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/SecondaryVertex/interface to tarball
+DEBUG 2016-11-14 20:41:28,367: 	 Uploading archive /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80/inputs/f98e744c-6cde-4c02-8db1-4aeca722373edefault.tgz to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2016-11-14 20:41:32,975: 	 Loading required information from the environment
+DEBUG 2016-11-14 20:41:32,975: 	 Found CMSSW_7_5_8_patch3 for slc6_amd64_gcc491 with base /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3
+DEBUG 2016-11-14 20:41:32,975: 	 Making tarball in /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80/inputs/debugFiles.tgz
+DEBUG 2016-11-14 20:41:32,997: 	 Uploading archive /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80/inputs/debugFiles.tgz to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2016-11-14 20:41:33,811: 	 Result uploading input files: d87aae24a06157a9e34595af56aba8b861ec146a1d31ad57daef6748e2082324.tar.gz 
+INFO 2016-11-14 20:41:33,812: 	 Sending the request to the server
+DEBUG 2016-11-14 20:41:33,812: 	 Submitting {'maxjobruntime': 1250, 'extrajdl': [], 'ignorelocality': 0, 'savelogsflag': 1, 'useparent': 0, 'asyncdest': 'T2_FR_GRIF_LLR', 'algoargs': 1, 'cachefilename': 'd87aae24a06157a9e34595af56aba8b861ec146a1d31ad57daef6748e2082324.tar.gz', 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2400, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_7_5_8_patch3', 'edmoutfiles': [], 'userfiles': [], 'primarydataset': '', 'inputdata': '/Pythia6_Dijet80_pp502_Hydjet_MB/HINPbPbWinter16DR-75X_mcRun2_HeavyIon_v13-v1/AODSIM', 'lfn': '/store/user/istaslis/btaganaqcd80', 'dryrun': 0, 'workflow': 'crab_btagana_qcd80', 'adduserfiles': [], 'nonprodsw': 0, 'tfileoutfiles': ['JetTree_fcr.root'], 'oneEventMode': 0, 'debugfilename': '105fde0fb70a9bbc9810542c4a6d63dcea32219af8e4dea1eeb398f81c9b9cfe.tar.gz', 'cacheurl': u'https://cmsweb.cern.ch/crabcache', 'saveoutput': 1, 'publication': 0, 'jobarch': 'slc6_amd64_gcc491', 'totalunits': 50, 'splitalgo': 'FileBased', 'ignoreglobalblacklist': 0, 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'publishgroupname': 0, 'jobtype': 'Analysis', 'publishname2': 'btagana_qcd80'} 
+DEBUG 2016-11-14 20:41:33,813: 	 Encoded submit request: maxjobruntime=1250&ignorelocality=0&savelogsflag=1&useparent=0&asyncdest=T2_FR_GRIF_LLR&algoargs=1&cachefilename=d87aae24a06157a9e34595af56aba8b861ec146a1d31ad57daef6748e2082324.tar.gz&numcores=1&generator=pythia&maxmemory=2400&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_7_5_8_patch3&primarydataset=&inputdata=%2FPythia6_Dijet80_pp502_Hydjet_MB%2FHINPbPbWinter16DR-75X_mcRun2_HeavyIon_v13-v1%2FAODSIM&lfn=%2Fstore%2Fuser%2Fistaslis%2Fbtaganaqcd80&dryrun=0&workflow=crab_btagana_qcd80&nonprodsw=0&oneEventMode=0&debugfilename=105fde0fb70a9bbc9810542c4a6d63dcea32219af8e4dea1eeb398f81c9b9cfe.tar.gz&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2Fcrabcache&saveoutput=1&publication=0&jobarch=slc6_amd64_gcc491&totalunits=50&splitalgo=FileBased&ignoreglobalblacklist=0&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fglobal%2FDBSReader&publishgroupname=0&jobtype=Analysis&publishname2=btagana_qcd80&tfileoutfiles=JetTree_fcr.root
+DEBUG 2016-11-14 20:41:35,185: 	 Result: {u'result': [{u'RequestName': u'161114_194134:istaslis_crab_btagana_qcd80'}]}
+INFO 2016-11-14 20:41:35,189: 	 Success: Your task has been delivered to the CRAB3 server.
+INFO 2016-11-14 20:41:35,189: 	 Task name: 161114_194134:istaslis_crab_btagana_qcd80
+INFO 2016-11-14 20:41:35,189: 	 Please use 'crab status' to check how the submission process proceeds.
+DEBUG 2016-11-14 20:41:35,189: 	 About to return
+INFO 2016-11-14 20:41:35,197: 	 Log file is /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80/crab.log
+DEBUG 2016-11-14 20:42:02,888: 	 Executing command: 'status'
+DEBUG 2016-11-14 20:42:02,889: 	 Found CRAB cache file /home/llr/cms/lisniak/.crab3
+DEBUG 2016-11-14 20:42:02,921: 	 Checking credentials
+DEBUG 2016-11-14 20:42:02,921: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-14 20:42:02,922: 	 Getting proxy life time left
+DEBUG 2016-11-14 20:42:03,827: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 42976
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:42:04,733: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 42974
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:42:04,733: 	 Proxy valid for 11:56:16 hours
+DEBUG 2016-11-14 20:42:04,849: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:42:04,850: 	 Checking credentials
+DEBUG 2016-11-14 20:42:04,850: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-14 20:42:04,850: 	 Getting proxy life time left
+DEBUG 2016-11-14 20:42:05,755: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 42974
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:42:06,661: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 42972
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:42:06,661: 	 Proxy valid for 11:56:14 hours
+DEBUG 2016-11-14 20:42:07,870: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-11-14 20:42:07,981: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:42:07,982: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-11-14 20:42:07,982: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak_cmsweb.cern.ch for credential name
+DEBUG 2016-11-14 20:42:08,286: 	 Executing : 
+ command : myproxy-info -l fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6 -s myproxy.cern.ch
+ output : username: fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 716:42:40  (29.9 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:42:08,288: 	 Myproxy is valid: 2580160
+DEBUG 2016-11-14 20:42:08,288: 	 Command use: status
+DEBUG 2016-11-14 20:42:08,288: 	 Options use: []
+DEBUG 2016-11-14 20:42:09,116: 	 CRABClient version: 3.3.1611
+DEBUG 2016-11-14 20:42:09,116: 	 Instance is prod
+DEBUG 2016-11-14 20:42:09,116: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-11-14 20:42:09,117: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-11-14 20:42:09,117: 	 Looking up detailed status of task 161114_194134:istaslis_crab_btagana_qcd80
+DEBUG 2016-11-14 20:42:10,149: 	 {u'status': u'QUEUED', u'username': u'istaslis', u'totalJobdefs': 0, u'jobsPerStatus': {}, u'taskWarningMsg': [], u'schedd': u'', u'statusFailureMsg': u'', u'taskFailureMsg': u'', u'failedJobdefs': 0, u'command': u'SUBMIT', u'submissionTime': 1479152495, u'jobdefErrors': [], u'collector': u'cmsgwms-collector-global.cern.ch,cmssrv221.fnal.gov', u'jobList': []}
+INFO 2016-11-14 20:42:10,149: 	 CRAB project directory:		/grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80
+INFO 2016-11-14 20:42:10,149: 	 Task name:			161114_194134:istaslis_crab_btagana_qcd80
+INFO 2016-11-14 20:42:10,149: 	 Task status:			QUEUED on command SUBMIT
+INFO 2016-11-14 20:42:10,149: 	 
+No jobs created yet!
+INFO 2016-11-14 20:42:10,154: 	 Log file is /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80/crab.log
+DEBUG 2016-11-14 20:43:14,470: 	 Executing command: 'status'
+DEBUG 2016-11-14 20:43:14,471: 	 Found CRAB cache file /home/llr/cms/lisniak/.crab3
+DEBUG 2016-11-14 20:43:14,480: 	 Checking credentials
+DEBUG 2016-11-14 20:43:14,481: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-14 20:43:14,481: 	 Getting proxy life time left
+DEBUG 2016-11-14 20:43:15,486: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 42904
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:43:16,392: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 42902
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:43:16,392: 	 Proxy valid for 11:55:04 hours
+DEBUG 2016-11-14 20:43:16,508: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:43:16,509: 	 Checking credentials
+DEBUG 2016-11-14 20:43:16,509: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-14 20:43:16,509: 	 Getting proxy life time left
+DEBUG 2016-11-14 20:43:17,414: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 42902
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:43:18,320: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 42900
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:43:18,320: 	 Proxy valid for 11:55:02 hours
+DEBUG 2016-11-14 20:43:19,190: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-11-14 20:43:19,301: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:43:19,301: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-11-14 20:43:19,301: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak_cmsweb.cern.ch for credential name
+DEBUG 2016-11-14 20:43:21,308: 	 Executing : 
+ command : myproxy-info -l fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6 -s myproxy.cern.ch
+ output : username: fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 716:41:27  (29.9 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 20:43:21,309: 	 Myproxy is valid: 2580087
+DEBUG 2016-11-14 20:43:21,310: 	 Command use: status
+DEBUG 2016-11-14 20:43:21,310: 	 Options use: ['-d', 'crab_btagana_qcd80/']
+DEBUG 2016-11-14 20:43:22,105: 	 CRABClient version: 3.3.1611
+DEBUG 2016-11-14 20:43:22,105: 	 Instance is prod
+DEBUG 2016-11-14 20:43:22,105: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-11-14 20:43:22,106: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-11-14 20:43:22,106: 	 Looking up detailed status of task 161114_194134:istaslis_crab_btagana_qcd80
+DEBUG 2016-11-14 20:43:24,613: 	 {u'status': u'SUBMITTED', u'username': u'istaslis', u'totalJobdefs': 0, u'jobsPerStatus': {}, u'taskWarningMsg': [u'Task has not yet bootstrapped. Retry in a minute if you just submitted the task.'], u'schedd': u'crab3@vocms0106.cern.ch', u'statusFailureMsg': u'', u'taskFailureMsg': u'', u'failedJobdefs': 0, u'command': u'SUBMIT', u'submissionTime': 1479152495, u'jobdefErrors': [], u'collector': u'cmsgwms-collector-global.cern.ch,cmssrv221.fnal.gov', u'jobList': []}
+INFO 2016-11-14 20:43:24,613: 	 CRAB project directory:		/grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80
+INFO 2016-11-14 20:43:24,613: 	 Task name:			161114_194134:istaslis_crab_btagana_qcd80
+INFO 2016-11-14 20:43:24,613: 	 Grid scheduler:			crab3@vocms0106.cern.ch
+INFO 2016-11-14 20:43:24,613: 	 Task status:			SUBMITTED
+INFO 2016-11-14 20:43:24,614: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=istaslis&table=Mains&pattern=161114_194134%3Aistaslis_crab_btagana_qcd80
+WARNING 2016-11-14 20:43:24,614: 	 Warning:			Task has not yet bootstrapped. Retry in a minute if you just submitted the task.
+INFO 2016-11-14 20:43:24,614: 	 
+No jobs created yet!
+INFO 2016-11-14 20:43:24,618: 	 Log file is /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80/crab.log
+DEBUG 2016-11-14 21:10:35,110: 	 Executing command: 'status'
+DEBUG 2016-11-14 21:10:35,111: 	 Found CRAB cache file /home/llr/cms/lisniak/.crab3
+DEBUG 2016-11-14 21:10:35,121: 	 Checking credentials
+DEBUG 2016-11-14 21:10:35,121: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-14 21:10:35,121: 	 Getting proxy life time left
+DEBUG 2016-11-14 21:10:36,026: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 41264
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:10:36,932: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 41262
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:10:36,933: 	 Proxy valid for 11:27:44 hours
+DEBUG 2016-11-14 21:10:37,049: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:10:37,049: 	 Checking credentials
+DEBUG 2016-11-14 21:10:37,049: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-14 21:10:37,049: 	 Getting proxy life time left
+DEBUG 2016-11-14 21:10:37,954: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 41262
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:10:38,860: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 41260
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:10:38,861: 	 Proxy valid for 11:27:42 hours
+DEBUG 2016-11-14 21:10:39,703: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-11-14 21:10:39,814: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:10:39,815: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-11-14 21:10:39,815: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak_cmsweb.cern.ch for credential name
+DEBUG 2016-11-14 21:10:40,319: 	 Executing : 
+ command : myproxy-info -l fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6 -s myproxy.cern.ch
+ output : username: fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 716:14:08  (29.8 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:10:40,321: 	 Myproxy is valid: 2578448
+DEBUG 2016-11-14 21:10:40,321: 	 Command use: status
+DEBUG 2016-11-14 21:10:40,321: 	 Options use: ['-d', 'crab_btagana_qcd80/']
+DEBUG 2016-11-14 21:10:41,184: 	 CRABClient version: 3.3.1611
+DEBUG 2016-11-14 21:10:41,184: 	 Instance is prod
+DEBUG 2016-11-14 21:10:41,185: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-11-14 21:10:41,185: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-11-14 21:10:41,185: 	 Looking up detailed status of task 161114_194134:istaslis_crab_btagana_qcd80
+DEBUG 2016-11-14 21:10:44,368: 	 {u'status': u'SUBMITTED', u'username': u'istaslis', u'jobsPerStatus': {u'running': 50}, u'jobs': {u'30': {u'State': u'running'}, u'28': {u'State': u'running'}, u'43': {u'State': u'running'}, u'24': {u'State': u'running'}, u'25': {u'State': u'running'}, u'26': {u'State': u'running'}, u'27': {u'State': u'running'}, u'20': {u'State': u'running'}, u'21': {u'State': u'running'}, u'48': {u'State': u'running'}, u'49': {u'State': u'running'}, u'46': {u'State': u'running'}, u'47': {u'State': u'running'}, u'44': {u'State': u'running'}, u'45': {u'State': u'running'}, u'42': {u'State': u'running'}, u'29': {u'State': u'running'}, u'40': {u'State': u'running'}, u'41': {u'State': u'running'}, u'1': {u'State': u'running'}, u'3': {u'State': u'running'}, u'2': {u'State': u'running'}, u'5': {u'State': u'running'}, u'4': {u'State': u'running'}, u'7': {u'State': u'running'}, u'6': {u'State': u'running'}, u'9': {u'State': u'running'}, u'8': {u'State': u'running'}, u'13': {u'State': u'running'}, u'12': {u'State': u'running'}, u'14': {u'State': u'running'}, u'11': {u'State': u'running'}, u'10': {u'State': u'running'}, u'39': {u'State': u'running'}, u'38': {u'State': u'running'}, u'15': {u'State': u'running'}, u'22': {u'State': u'running'}, u'17': {u'State': u'running'}, u'16': {u'State': u'running'}, u'19': {u'State': u'running'}, u'18': {u'State': u'running'}, u'31': {u'State': u'running'}, u'23': {u'State': u'running'}, u'37': {u'State': u'running'}, u'36': {u'State': u'running'}, u'35': {u'State': u'running'}, u'34': {u'State': u'running'}, u'33': {u'State': u'running'}, u'32': {u'State': u'running'}, u'50': {u'State': u'running'}}, u'publication': {u'disabled': []}, u'taskWarningMsg': [], u'schedd': u'crab3@vocms0106.cern.ch', u'publicationFailures': {}, u'outdatasets': None, u'statusFailureMsg': u'', u'taskFailureMsg': u'', u'failedJobdefs': 0, u'ASOURL': u'https://cmsweb.cern.ch/couchdb2', u'command': u'SUBMIT', u'totalJobdefs': 0, u'submissionTime': 1479152495, u'jobdefErrors': [], u'collector': u'cmsgwms-collector-global.cern.ch,cmssrv221.fnal.gov', u'jobList': [[u'running', 42], [u'running', 48], [u'running', 49], [u'running', 24], [u'running', 25], [u'running', 26], [u'running', 27], [u'running', 20], [u'running', 21], [u'running', 22], [u'running', 23], [u'running', 46], [u'running', 47], [u'running', 44], [u'running', 45], [u'running', 28], [u'running', 29], [u'running', 40], [u'running', 41], [u'running', 1], [u'running', 3], [u'running', 2], [u'running', 5], [u'running', 4], [u'running', 7], [u'running', 6], [u'running', 9], [u'running', 8], [u'running', 43], [u'running', 39], [u'running', 38], [u'running', 11], [u'running', 10], [u'running', 13], [u'running', 12], [u'running', 15], [u'running', 14], [u'running', 17], [u'running', 16], [u'running', 19], [u'running', 18], [u'running', 31], [u'running', 30], [u'running', 37], [u'running', 36], [u'running', 35], [u'running', 34], [u'running', 33], [u'running', 32], [u'running', 50]]}
+INFO 2016-11-14 21:10:44,368: 	 CRAB project directory:		/grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80
+INFO 2016-11-14 21:10:44,368: 	 Task name:			161114_194134:istaslis_crab_btagana_qcd80
+INFO 2016-11-14 21:10:44,368: 	 Grid scheduler:			crab3@vocms0106.cern.ch
+INFO 2016-11-14 21:10:44,368: 	 Task status:			SUBMITTED
+INFO 2016-11-14 21:10:44,369: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=istaslis&table=Mains&pattern=161114_194134%3Aistaslis_crab_btagana_qcd80
+INFO 2016-11-14 21:10:44,369: 	 
+Jobs status:			running       100.0% (50/50)
+INFO 2016-11-14 21:10:44,369: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2016-11-14 21:10:44,374: 	 Log file is /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80/crab.log
+DEBUG 2016-11-14 21:30:35,991: 	 Executing command: 'status'
+DEBUG 2016-11-14 21:30:36,004: 	 Found CRAB cache file /home/llr/cms/lisniak/.crab3
+DEBUG 2016-11-14 21:30:36,023: 	 Checking credentials
+DEBUG 2016-11-14 21:30:36,023: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-14 21:30:36,023: 	 Getting proxy life time left
+DEBUG 2016-11-14 21:30:36,929: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 40063
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:30:37,834: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 40061
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:30:37,835: 	 Proxy valid for 11:07:43 hours
+DEBUG 2016-11-14 21:30:37,972: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:30:37,972: 	 Checking credentials
+DEBUG 2016-11-14 21:30:37,972: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-14 21:30:37,972: 	 Getting proxy life time left
+DEBUG 2016-11-14 21:30:38,877: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 40061
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:30:39,783: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 40059
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:30:39,784: 	 Proxy valid for 11:07:41 hours
+DEBUG 2016-11-14 21:30:40,612: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-11-14 21:30:40,722: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:30:40,723: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-11-14 21:30:40,723: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak_cmsweb.cern.ch for credential name
+DEBUG 2016-11-14 21:30:41,327: 	 Executing : 
+ command : myproxy-info -l fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6 -s myproxy.cern.ch
+ output : username: fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 715:54:07  (29.8 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-14 21:30:41,329: 	 Myproxy is valid: 2577247
+DEBUG 2016-11-14 21:30:41,329: 	 Command use: status
+DEBUG 2016-11-14 21:30:41,330: 	 Options use: ['-d', 'crab_btagana_qcd80/']
+DEBUG 2016-11-14 21:30:42,149: 	 CRABClient version: 3.3.1611
+DEBUG 2016-11-14 21:30:42,149: 	 Instance is prod
+DEBUG 2016-11-14 21:30:42,149: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-11-14 21:30:42,149: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-11-14 21:30:42,149: 	 Looking up detailed status of task 161114_194134:istaslis_crab_btagana_qcd80
+DEBUG 2016-11-14 21:30:44,483: 	 {u'status': u'SUBMITTED', u'username': u'istaslis', u'jobsPerStatus': {u'running': 50}, u'jobs': {u'30': {u'State': u'running'}, u'28': {u'State': u'running'}, u'43': {u'State': u'running'}, u'24': {u'State': u'running'}, u'25': {u'State': u'running'}, u'26': {u'State': u'running'}, u'27': {u'State': u'running'}, u'20': {u'State': u'running'}, u'21': {u'State': u'running'}, u'48': {u'State': u'running'}, u'49': {u'State': u'running'}, u'46': {u'State': u'running'}, u'47': {u'State': u'running'}, u'44': {u'State': u'running'}, u'45': {u'State': u'running'}, u'42': {u'State': u'running'}, u'29': {u'State': u'running'}, u'40': {u'State': u'running'}, u'41': {u'State': u'running'}, u'1': {u'State': u'running'}, u'3': {u'State': u'running'}, u'2': {u'State': u'running'}, u'5': {u'State': u'running'}, u'4': {u'State': u'running'}, u'7': {u'State': u'running'}, u'6': {u'State': u'running'}, u'9': {u'State': u'running'}, u'8': {u'State': u'running'}, u'13': {u'State': u'running'}, u'12': {u'State': u'running'}, u'14': {u'State': u'running'}, u'11': {u'State': u'running'}, u'10': {u'State': u'running'}, u'39': {u'State': u'running'}, u'38': {u'State': u'running'}, u'15': {u'State': u'running'}, u'22': {u'State': u'running'}, u'17': {u'State': u'running'}, u'16': {u'State': u'running'}, u'19': {u'State': u'running'}, u'18': {u'State': u'running'}, u'31': {u'State': u'running'}, u'23': {u'State': u'running'}, u'37': {u'State': u'running'}, u'36': {u'State': u'running'}, u'35': {u'State': u'running'}, u'34': {u'State': u'running'}, u'33': {u'State': u'running'}, u'32': {u'State': u'running'}, u'50': {u'State': u'running'}}, u'publication': {u'disabled': []}, u'taskWarningMsg': [], u'schedd': u'crab3@vocms0106.cern.ch', u'publicationFailures': {}, u'outdatasets': None, u'statusFailureMsg': u'', u'taskFailureMsg': u'', u'failedJobdefs': 0, u'ASOURL': u'https://cmsweb.cern.ch/couchdb2', u'command': u'SUBMIT', u'totalJobdefs': 0, u'submissionTime': 1479152495, u'jobdefErrors': [], u'collector': u'cmsgwms-collector-global.cern.ch,cmssrv221.fnal.gov', u'jobList': [[u'running', 42], [u'running', 48], [u'running', 49], [u'running', 24], [u'running', 25], [u'running', 26], [u'running', 27], [u'running', 20], [u'running', 21], [u'running', 22], [u'running', 23], [u'running', 46], [u'running', 47], [u'running', 44], [u'running', 45], [u'running', 28], [u'running', 29], [u'running', 40], [u'running', 41], [u'running', 1], [u'running', 3], [u'running', 2], [u'running', 5], [u'running', 4], [u'running', 7], [u'running', 6], [u'running', 9], [u'running', 8], [u'running', 43], [u'running', 39], [u'running', 38], [u'running', 11], [u'running', 10], [u'running', 13], [u'running', 12], [u'running', 15], [u'running', 14], [u'running', 17], [u'running', 16], [u'running', 19], [u'running', 18], [u'running', 31], [u'running', 30], [u'running', 37], [u'running', 36], [u'running', 35], [u'running', 34], [u'running', 33], [u'running', 32], [u'running', 50]]}
+INFO 2016-11-14 21:30:44,483: 	 CRAB project directory:		/grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80
+INFO 2016-11-14 21:30:44,483: 	 Task name:			161114_194134:istaslis_crab_btagana_qcd80
+INFO 2016-11-14 21:30:44,483: 	 Grid scheduler:			crab3@vocms0106.cern.ch
+INFO 2016-11-14 21:30:44,483: 	 Task status:			SUBMITTED
+INFO 2016-11-14 21:30:44,484: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=istaslis&table=Mains&pattern=161114_194134%3Aistaslis_crab_btagana_qcd80
+INFO 2016-11-14 21:30:44,484: 	 
+Jobs status:			running       100.0% (50/50)
+INFO 2016-11-14 21:30:44,484: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2016-11-14 21:30:44,489: 	 Log file is /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80/crab.log
+DEBUG 2016-11-15 14:37:40,667: 	 Executing command: 'status'
+DEBUG 2016-11-15 14:37:40,667: 	 Found CRAB cache file /home/llr/cms/lisniak/.crab3
+DEBUG 2016-11-15 14:37:40,677: 	 Checking credentials
+DEBUG 2016-11-15 14:37:40,677: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-15 14:37:40,677: 	 Getting proxy life time left
+DEBUG 2016-11-15 14:37:41,582: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 86349
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-15 14:37:42,589: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 86348
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-15 14:37:42,589: 	 Proxy valid for 23:59:09 hours
+DEBUG 2016-11-15 14:37:42,706: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-15 14:37:42,707: 	 Checking credentials
+DEBUG 2016-11-15 14:37:42,707: 	 Found proxy file /tmp/x509up_u837
+DEBUG 2016-11-15 14:37:42,707: 	 Getting proxy life time left
+DEBUG 2016-11-15 14:37:43,713: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -timeleft
+ output : 86347
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-15 14:37:44,720: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u837 -actimeleft
+ output : 86346
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-15 14:37:44,721: 	 Proxy valid for 23:59:07 hours
+DEBUG 2016-11-15 14:37:45,541: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-11-15 14:37:45,653: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-15 14:37:45,653: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-11-15 14:37:45,653: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak_cmsweb.cern.ch for credential name
+DEBUG 2016-11-15 14:37:46,258: 	 Executing : 
+ command : myproxy-info -l fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6 -s myproxy.cern.ch
+ output : username: fb080dc7d4e0790beaeb2d952381dd7a3f1f2fd6
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=istaslis/CN=747350/CN=Stanislav Lisniak
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 698:47:02  (29.1 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-15 14:37:46,260: 	 Myproxy is valid: 2515622
+DEBUG 2016-11-15 14:37:46,260: 	 Command use: status
+DEBUG 2016-11-15 14:37:46,260: 	 Options use: ['-d', 'crab_btagana_qcd80']
+DEBUG 2016-11-15 14:37:47,203: 	 CRABClient version: 3.3.1611
+DEBUG 2016-11-15 14:37:47,203: 	 Instance is prod
+DEBUG 2016-11-15 14:37:47,203: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-11-15 14:37:47,203: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-11-15 14:37:47,204: 	 Looking up detailed status of task 161114_194134:istaslis_crab_btagana_qcd80
+DEBUG 2016-11-15 14:37:48,298: 	 {u'status': u'COMPLETED', u'username': u'istaslis', u'jobsPerStatus': {u'finished': 50}, u'jobs': {u'30': {u'State': u'finished'}, u'28': {u'State': u'finished'}, u'43': {u'State': u'finished'}, u'24': {u'State': u'finished'}, u'25': {u'State': u'finished'}, u'26': {u'State': u'finished'}, u'27': {u'State': u'finished'}, u'20': {u'State': u'finished'}, u'21': {u'State': u'finished'}, u'48': {u'State': u'finished'}, u'49': {u'State': u'finished'}, u'46': {u'State': u'finished'}, u'47': {u'State': u'finished'}, u'44': {u'State': u'finished'}, u'45': {u'State': u'finished'}, u'42': {u'State': u'finished'}, u'29': {u'State': u'finished'}, u'40': {u'State': u'finished'}, u'41': {u'State': u'finished'}, u'1': {u'State': u'finished'}, u'3': {u'State': u'finished'}, u'2': {u'State': u'finished'}, u'5': {u'State': u'finished'}, u'4': {u'State': u'finished'}, u'7': {u'State': u'finished'}, u'6': {u'State': u'finished'}, u'9': {u'State': u'finished'}, u'8': {u'State': u'finished'}, u'13': {u'State': u'finished'}, u'12': {u'State': u'finished'}, u'14': {u'State': u'finished'}, u'11': {u'State': u'finished'}, u'10': {u'State': u'finished'}, u'39': {u'State': u'finished'}, u'38': {u'State': u'finished'}, u'15': {u'State': u'finished'}, u'22': {u'State': u'finished'}, u'17': {u'State': u'finished'}, u'16': {u'State': u'finished'}, u'19': {u'State': u'finished'}, u'18': {u'State': u'finished'}, u'31': {u'State': u'finished'}, u'23': {u'State': u'finished'}, u'37': {u'State': u'finished'}, u'36': {u'State': u'finished'}, u'35': {u'State': u'finished'}, u'34': {u'State': u'finished'}, u'33': {u'State': u'finished'}, u'32': {u'State': u'finished'}, u'50': {u'State': u'finished'}}, u'publication': {u'disabled': []}, u'taskWarningMsg': [], u'schedd': u'crab3@vocms0106.cern.ch', u'publicationFailures': {}, u'outdatasets': None, u'statusFailureMsg': u'', u'taskFailureMsg': u'', u'failedJobdefs': 0, u'ASOURL': u'https://cmsweb.cern.ch/couchdb2', u'command': u'SUBMIT', u'totalJobdefs': 0, u'submissionTime': 1479152495, u'jobdefErrors': [], u'collector': u'cmsgwms-collector-global.cern.ch,cmssrv221.fnal.gov', u'jobList': [[u'finished', 42], [u'finished', 48], [u'finished', 49], [u'finished', 24], [u'finished', 25], [u'finished', 26], [u'finished', 27], [u'finished', 20], [u'finished', 21], [u'finished', 22], [u'finished', 23], [u'finished', 46], [u'finished', 47], [u'finished', 44], [u'finished', 45], [u'finished', 28], [u'finished', 29], [u'finished', 40], [u'finished', 41], [u'finished', 1], [u'finished', 3], [u'finished', 2], [u'finished', 5], [u'finished', 4], [u'finished', 7], [u'finished', 6], [u'finished', 9], [u'finished', 8], [u'finished', 43], [u'finished', 39], [u'finished', 38], [u'finished', 11], [u'finished', 10], [u'finished', 13], [u'finished', 12], [u'finished', 15], [u'finished', 14], [u'finished', 17], [u'finished', 16], [u'finished', 19], [u'finished', 18], [u'finished', 31], [u'finished', 30], [u'finished', 37], [u'finished', 36], [u'finished', 35], [u'finished', 34], [u'finished', 33], [u'finished', 32], [u'finished', 50]]}
+INFO 2016-11-15 14:37:48,298: 	 CRAB project directory:		/grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80
+INFO 2016-11-15 14:37:48,299: 	 Task name:			161114_194134:istaslis_crab_btagana_qcd80
+INFO 2016-11-15 14:37:48,299: 	 Grid scheduler:			crab3@vocms0106.cern.ch
+INFO 2016-11-15 14:37:48,299: 	 Task status:			COMPLETED
+INFO 2016-11-15 14:37:48,299: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=istaslis&table=Mains&pattern=161114_194134%3Aistaslis_crab_btagana_qcd80
+INFO 2016-11-15 14:37:48,300: 	 
+Jobs status:			finished      100.0% (50/50)
+INFO 2016-11-15 14:37:48,300: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2016-11-15 14:37:48,306: 	 Log file is /grid_mnt/data__data.polcms/cms/lisniak/btgtrain/CMSSW_7_5_8_patch3/src/RecoBTag/PerformanceMeasurements/test/crab_btagana_qcd80/crab.log

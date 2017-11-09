@@ -1,0 +1,10 @@
+RAW2DIGI,L1Reco,RECO,EI,ENDJOB
+We have determined that this is simulation (if not, rerun cmsDriver.py with --data)
+entry file:step2.root
+Step: RAW2DIGI Spec: 
+Step: L1Reco Spec: 
+Step: RECO Spec: 
+Step: EI Spec: 
+Step: ENDJOB Spec: 
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+Config file step3_RAW2DIGI_L1Reco_RECO_EI.py created

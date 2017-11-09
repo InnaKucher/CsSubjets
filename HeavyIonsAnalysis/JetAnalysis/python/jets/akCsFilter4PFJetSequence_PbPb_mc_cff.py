@@ -37,7 +37,7 @@ akCsFilter4PFJetID= cms.EDProducer('JetIDProducer', JetIDParams, src = cms.Input
 
 #akCsFilter4PFclean   = heavyIonCleanedGenJets.clone(src = cms.InputTag('ak4HiSignalGenJets'))
 
-akCsFilter4PFbTagger = bTaggers("akCsFilter4PF",0.4)
+akCsFilter4PFbTagger = bTaggers("akCsFilter4PF",0.4,False,True)
 
 #create objects locally since they dont load properly otherwise
 #akCsFilter4PFmatch = akCsFilter4PFbTagger.match
@@ -87,6 +87,30 @@ akCsFilter4PFPatJetFlavourIdLegacy = cms.Sequence(akCsFilter4PFPatJetPartonAssoc
 akCsFilter4PFPatJetFlavourAssociation = akCsFilter4PFbTagger.PatJetFlavourAssociation
 akCsFilter4PFPatJetFlavourId = cms.Sequence(akCsFilter4PFPatJetPartons*akCsFilter4PFPatJetFlavourAssociation)
 
+#adding the subjet taggers
+akCsFilter4PFSubjetImpactParameterTagInfos = akCsFilter4PFbTagger.SubjetImpactParameterTagInfos
+akCsFilter4PFSubjetJetProbabilityBJetTags = akCsFilter4PFbTagger.SubjetJetProbabilityBJetTags
+akCsFilter4PFSubjetSecondaryVertexTagInfos = akCsFilter4PFbTagger.SubjetSecondaryVertexTagInfos
+akCsFilter4PFSubjetJetTracksAssociatorAtVertex = akCsFilter4PFbTagger.SubjetJetTracksAssociatorAtVertex
+#akCsFilter4PFCombinedSubjetSecondaryVertexBJetTags = akCsFilter4PFbTagger.CombinedSubjetSecondaryVertexBJetTags
+#akCsFilter4PFCombinedSubjetSecondaryVertexV2BJetTags = akCsFilter4PFbTagger.CombinedSubjetSecondaryVertexV2BJetTags
+akCsFilter4PFSubjetCombinedSecondaryVertexBJetTags = akCsFilter4PFbTagger.SubjetCombinedSecondaryVertexBJetTags
+akCsFilter4PFSubjetCombinedSecondaryVertexV2BJetTags = akCsFilter4PFbTagger.SubjetCombinedSecondaryVertexV2BJetTags
+
+akCsFilter4PFSubjetNegativeSimpleSecondaryVertexHighEffBJetTags = akCsFilter4PFbTagger.SubjetNegativeSimpleSecondaryVertexHighEffBJetTags
+akCsFilter4PFSubjetSimpleSecondaryVertexHighPurBJetTags = akCsFilter4PFbTagger.SubjetSimpleSecondaryVertexHighPurBJetTags
+akCsFilter4PFSubjetSecondaryVertexNegativeTagInfos = akCsFilter4PFbTagger.SubjetSecondaryVertexNegativeTagInfos
+akCsFilter4PFSubjetSimpleSecondaryVertexHighEffBJetTags = akCsFilter4PFbTagger.SubjetSimpleSecondaryVertexHighEffBJetTags
+akCsFilter4PFSubjetNegativeSimpleSecondaryVertexHighPurBJetTags = akCsFilter4PFbTagger.SubjetNegativeSimpleSecondaryVertexHighPurBJetTags
+akCsFilter4PFSubjetNegativeCombinedSecondaryVertexBJetTags = akCsFilter4PFbTagger.SubjetNegativeCombinedSecondaryVertexBJetTags
+akCsFilter4PFSubjetPositiveCombinedSecondaryVertexBJetTags = akCsFilter4PFbTagger.SubjetPositiveCombinedSecondaryVertexBJetTags
+akCsFilter4PFSubjetNegativeCombinedSecondaryVertexV2BJetTags = akCsFilter4PFbTagger.SubjetNegativeCombinedSecondaryVertexV2BJetTags
+akCsFilter4PFSubjetPositiveCombinedSecondaryVertexV2BJetTags = akCsFilter4PFbTagger.SubjetPositiveCombinedSecondaryVertexV2BJetTags
+akCsFilter4PFSubjetTrackCountingHighEffBJetTags = akCsFilter4PFbTagger.SubjetTrackCountingHighEffBJetTags
+akCsFilter4PFSubjetTrackCountingHighPurBJetTags = akCsFilter4PFbTagger.SubjetTrackCountingHighPurBJetTags
+akCsFilter4PFSubjetJetBProbabilityBJetTags = akCsFilter4PFbTagger.SubjetJetBProbabilityBJetTags
+
+
 akCsFilter4PFJetBtaggingIP       = cms.Sequence(akCsFilter4PFImpactParameterTagInfos *
             (akCsFilter4PFTrackCountingHighEffBJetTags +
              akCsFilter4PFTrackCountingHighPurBJetTags +
@@ -95,6 +119,15 @@ akCsFilter4PFJetBtaggingIP       = cms.Sequence(akCsFilter4PFImpactParameterTagI
             )
             )
 
+akCsFilter4PFSubjetBtaggingIP       = cms.Sequence(akCsFilter4PFSubjetImpactParameterTagInfos *
+            (akCsFilter4PFSubjetTrackCountingHighEffBJetTags +
+             akCsFilter4PFSubjetTrackCountingHighPurBJetTags +
+             akCsFilter4PFSubjetJetProbabilityBJetTags +
+             akCsFilter4PFSubjetJetBProbabilityBJetTags
+            )
+            )
+
+
 akCsFilter4PFJetBtaggingSV = cms.Sequence(akCsFilter4PFImpactParameterTagInfos
             *
             akCsFilter4PFSecondaryVertexTagInfos
@@ -102,6 +135,16 @@ akCsFilter4PFJetBtaggingSV = cms.Sequence(akCsFilter4PFImpactParameterTagInfos
                 akCsFilter4PFSimpleSecondaryVertexHighPurBJetTags+
                 akCsFilter4PFCombinedSecondaryVertexBJetTags+
                 akCsFilter4PFCombinedSecondaryVertexV2BJetTags
+              )
+            )
+
+akCsFilter4PFSubjetBtaggingSV = cms.Sequence(akCsFilter4PFSubjetImpactParameterTagInfos
+            *
+            akCsFilter4PFSubjetSecondaryVertexTagInfos
+            * (akCsFilter4PFSubjetSimpleSecondaryVertexHighEffBJetTags+
+                akCsFilter4PFSubjetSimpleSecondaryVertexHighPurBJetTags+
+                akCsFilter4PFSubjetCombinedSecondaryVertexBJetTags+
+                akCsFilter4PFSubjetCombinedSecondaryVertexV2BJetTags
               )
             )
 
@@ -116,6 +159,19 @@ akCsFilter4PFJetBtaggingNegSV = cms.Sequence(akCsFilter4PFImpactParameterTagInfo
                 akCsFilter4PFPositiveCombinedSecondaryVertexV2BJetTags
               )
             )
+
+akCsFilter4PFSubjetBtaggingNegSV = cms.Sequence(akCsFilter4PFSubjetImpactParameterTagInfos
+            *
+            akCsFilter4PFSubjetSecondaryVertexNegativeTagInfos
+            * (akCsFilter4PFSubjetNegativeSimpleSecondaryVertexHighEffBJetTags+
+                akCsFilter4PFSubjetNegativeSimpleSecondaryVertexHighPurBJetTags+
+                akCsFilter4PFSubjetNegativeCombinedSecondaryVertexBJetTags+
+                akCsFilter4PFSubjetPositiveCombinedSecondaryVertexBJetTags+
+                akCsFilter4PFSubjetNegativeCombinedSecondaryVertexV2BJetTags+
+                akCsFilter4PFSubjetPositiveCombinedSecondaryVertexV2BJetTags
+              )
+            )
+
 
 akCsFilter4PFJetBtaggingMu = cms.Sequence(akCsFilter4PFSoftPFMuonsTagInfos * (akCsFilter4PFSoftPFMuonBJetTags
                 +
@@ -134,6 +190,12 @@ akCsFilter4PFJetBtagging = cms.Sequence(akCsFilter4PFJetBtaggingIP
             *akCsFilter4PFJetBtaggingNegSV
 #            *akCsFilter4PFJetBtaggingMu
             )
+
+akCsFilter4PFSubjetBtagging = cms.Sequence(akCsFilter4PFSubjetBtaggingIP
+            *akCsFilter4PFSubjetBtaggingSV
+            *akCsFilter4PFSubjetBtaggingNegSV
+)
+
 
 akCsFilter4PFpatJetsWithBtagging = patJets.clone(jetSource = cms.InputTag("akCsFilter4PFJets"),
         genJetMatch          = cms.InputTag("akCsFilter4PFmatch"),
@@ -171,6 +233,38 @@ akCsFilter4PFpatJetsWithBtagging = patJets.clone(jetSource = cms.InputTag("akCsF
         # embedPFCandidates = True
         )
 
+akCsFilter4PFpatSubjetsWithBtagging = patJets.clone(jetSource = cms.InputTag("akCsFilter4PFJets","Subjets"),
+        genJetMatch          = cms.InputTag("akCsFilter4PFmatch"),
+        genPartonMatch       = cms.InputTag("akCsFilter4PFparton"),
+        jetCorrFactorsSource = cms.VInputTag(cms.InputTag("")),
+        JetPartonMapSource   = cms.InputTag("akCsFilter4PFPatJetFlavourAssociation"),
+        JetFlavourInfoSource   = cms.InputTag("akCsFilter4PFPatJetFlavourAssociation"),
+        trackAssociationSource = cms.InputTag("akCsFilter4PFSubjetJetTracksAssociatorAtVertex"),
+        useLegacyJetMCFlavour = False,
+        discriminatorSources = cms.VInputTag(cms.InputTag("akCsFilter4PFSubjetSimpleSecondaryVertexHighEffBJetTags"),
+            cms.InputTag("akCsFilter4PFSubjetSimpleSecondaryVertexHighPurBJetTags"),
+            cms.InputTag("akCsFilter4PFSubjetCombinedSecondaryVertexBJetTags"),
+            cms.InputTag("akCsFilter4PFSubjetCombinedSecondaryVertexV2BJetTags"),
+            cms.InputTag("akCsFilter4PFSubjetJetBProbabilityBJetTags"),
+            cms.InputTag("akCsFilter4PFSubjetJetProbabilityBJetTags"),
+            cms.InputTag("akCsFilter4PFSubjetTrackCountingHighEffBJetTags"),
+            cms.InputTag("akCsFilter4PFSubjetTrackCountingHighPurBJetTags"),
+            ),
+        jetIDMap = cms.InputTag("akCsFilter4PFJetID"),
+        addBTagInfo = True,
+        addTagInfos = True,
+        addDiscriminators = True,
+        addAssociatedTracks = True,
+        addJetCharge = False,
+        addJetID = False,
+        getJetMCFlavour = True,
+        addGenPartonMatch = False,
+        addGenJetMatch = False,
+        embedGenJetMatch = False,
+        embedGenPartonMatch = False,
+        )
+
+
 akCsFilter4PFNjettiness = Njettiness.clone(
 		    src = cms.InputTag("akCsFilter4PFJets"),
            	    R0  = cms.double( 0.4)
@@ -200,8 +294,13 @@ akCsFilter4PFJetAnalyzer = inclusiveJetAnalyzer.clone(jetTag = cms.InputTag("akC
 							     doSubJets = cms.untracked.bool(True),
                                                              doGenSubJets = cms.untracked.bool(False),     
                                                              subjetGenTag = cms.untracked.InputTag("akFilter4GenJets"),
+							     doExtendedFlavorTagging = cms.untracked.bool(True),
+							     jetFlavourInfos = cms.InputTag("akCsFilter4PFPatJetFlavourAssociation"),
+							     subjetFlavourInfos = cms.InputTag("akCsFilter4PFPatJetFlavourAssociation","SubJets"),
+							     groomedJets = cms.InputTag("akCsFilter4PFJets"),
+							     isPythia6 = cms.untracked.bool(False),
                                                              doGenTaus = True
-                                                             )
+                                                            )
 
 akCsFilter4PFJetSequence_mc = cms.Sequence(
                                                   #akCsFilter4PFclean
@@ -229,6 +328,12 @@ akCsFilter4PFJetSequence_mc = cms.Sequence(
                                                   akCsFilter4PFpatJetsWithBtagging
                                                   *
                                                   akCsFilter4PFJetAnalyzer
+                                                  *
+                                                  akCsFilter4PFSubjetJetTracksAssociatorAtVertex
+                                                  *
+                                                  akCsFilter4PFSubjetBtagging
+                                                  *
+                                                  akCsFilter4PFpatSubjetsWithBtagging
                                                   )
 
 akCsFilter4PFJetSequence_data = cms.Sequence(akCsFilter4PFcorr

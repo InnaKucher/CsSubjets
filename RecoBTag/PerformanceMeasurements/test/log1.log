@@ -1,0 +1,2527 @@
+('Running on files ', ['file:qcd_99.root'])
+('Output file ', 'JetTree_qcd_numEvent1.root')
+('N events ', 1)
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+ATTENTION - NOT LIMITING THE MINIMUM TOWERS FRACTION
+Constructing BTagAnalyzerLegacy:btagana
+BTagAnalyzerLegacy:btagana constructed
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 7
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 7
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 5
+ varSV[TagVarCSV_jetNTracks]=7
+
+ varVV[TagVarCSV_trackSip3dSig_0]=1.2365
+ varVV[TagVarCSV_trackSip3dSig_1]=0.836122
+ varVV[TagVarCSV_trackSip3dSig_2]=-0.930672
+ varVV[TagVarCSV_trackSip3dSig_3]=-1.24162
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=1.01019
+
+ varVV[TagVarCSV_trackPtRel_0]=0.42397
+ varVV[TagVarCSV_trackPtRel_1]=0.197745
+ varVV[TagVarCSV_trackPtRel_2]=0.46894
+ varVV[TagVarCSV_trackPtRel_3]=1.13043
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.0398781
+ varVV[TagVarCSV_trackDeltaR_1]=0.0715006
+ varVV[TagVarCSV_trackDeltaR_2]=0.0293511
+ varVV[TagVarCSV_trackDeltaR_3]=0.0378621
+ varVV[TagVarCSV_trackPtRatio_0]=0.0171358
+ varVV[TagVarCSV_trackPtRatio_1]=0.0304804
+ varVV[TagVarCSV_trackPtRatio_2]=0.0122663
+ varVV[TagVarCSV_trackPtRatio_3]=0.0161992
+ varVV[TagVarCSV_trackJetDist_0]=-0.00181959
+ varVV[TagVarCSV_trackJetDist_1]=-0.00471786
+ varVV[TagVarCSV_trackJetDist_2]=-0.000854407
+ varVV[TagVarCSV_trackJetDist_3]=-0.00043353
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.185663
+ varVV[TagVarCSV_trackDecayLenVal_1]=0.014386
+ varVV[TagVarCSV_trackDecayLenVal_2]=0.115236
+ varVV[TagVarCSV_trackDecayLenVal_3]=0.149423
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.940001
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0195404
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 5 initJetNTracks = 7 and tag value = 0.082698
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 4
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 4
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=4
+
+ varVV[TagVarCSV_trackSip3dSig_0]=0.419884
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=0.419884
+
+ varVV[TagVarCSV_trackPtRel_0]=0.633834
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.179034
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.152278
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.000593947
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.00928005
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.226494
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.096353
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 4 and tag value = 0.67754
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 4
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 4
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 3
+ varSV[TagVarCSV_jetNTracks]=4
+
+ varVV[TagVarCSV_trackSip3dSig_0]=0.601478
+ varVV[TagVarCSV_trackSip3dSig_1]=-0.352234
+ varVV[TagVarCSV_trackSip3dSig_2]=0.825317
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-0.176981
+
+ varVV[TagVarCSV_trackPtRel_0]=0.540443
+ varVV[TagVarCSV_trackPtRel_1]=0.567594
+ varVV[TagVarCSV_trackPtRel_2]=0.292008
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.119901
+ varVV[TagVarCSV_trackDeltaR_1]=0.203368
+ varVV[TagVarCSV_trackDeltaR_2]=0.116446
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0912146
+ varVV[TagVarCSV_trackPtRatio_1]=0.167598
+ varVV[TagVarCSV_trackPtRatio_2]=0.0879953
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.00181295
+ varVV[TagVarCSV_trackJetDist_1]=-3.92161e-05
+ varVV[TagVarCSV_trackJetDist_2]=-0.00537459
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.0197265
+ varVV[TagVarCSV_trackDecayLenVal_1]=0.016186
+ varVV[TagVarCSV_trackDecayLenVal_2]=0.0253171
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=1.07048
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0293386
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 3 initJetNTracks = 4 and tag value = 0.142664
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 5
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 5
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 3
+ varSV[TagVarCSV_jetNTracks]=5
+
+ varVV[TagVarCSV_trackSip3dSig_0]=0.914197
+ varVV[TagVarCSV_trackSip3dSig_1]=-0.423662
+ varVV[TagVarCSV_trackSip3dSig_2]=-2.87478
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-2.87478
+
+ varVV[TagVarCSV_trackPtRel_0]=0.0948396
+ varVV[TagVarCSV_trackPtRel_1]=0.382471
+ varVV[TagVarCSV_trackPtRel_2]=0.773328
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.0477916
+ varVV[TagVarCSV_trackDeltaR_1]=0.12888
+ varVV[TagVarCSV_trackDeltaR_2]=0.257948
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0161958
+ varVV[TagVarCSV_trackPtRatio_1]=0.0466798
+ varVV[TagVarCSV_trackPtRatio_2]=0.0781799
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.00724371
+ varVV[TagVarCSV_trackJetDist_1]=-0.00228382
+ varVV[TagVarCSV_trackJetDist_2]=-0.0140728
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.144986
+ varVV[TagVarCSV_trackDecayLenVal_1]=0.00698945
+ varVV[TagVarCSV_trackDecayLenVal_2]=0.196478
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.940631
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0649017
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 3 initJetNTracks = 5 and tag value = 0.133592
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 4
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 4
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 3
+ varSV[TagVarCSV_jetNTracks]=4
+
+ varVV[TagVarCSV_trackSip3dSig_0]=1.51975
+ varVV[TagVarCSV_trackSip3dSig_1]=0.980032
+ varVV[TagVarCSV_trackSip3dSig_2]=1.01019
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=0.87992
+
+ varVV[TagVarCSV_trackPtRel_0]=0.0927457
+ varVV[TagVarCSV_trackPtRel_1]=0.490481
+ varVV[TagVarCSV_trackPtRel_2]=0.218458
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.0634607
+ varVV[TagVarCSV_trackDeltaR_1]=0.134925
+ varVV[TagVarCSV_trackDeltaR_2]=0.227939
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0211134
+ varVV[TagVarCSV_trackPtRatio_1]=0.0425585
+ varVV[TagVarCSV_trackPtRatio_2]=0.0803707
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.0100659
+ varVV[TagVarCSV_trackJetDist_1]=-0.00366474
+ varVV[TagVarCSV_trackJetDist_2]=-0.0104657
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.679341
+ varVV[TagVarCSV_trackDecayLenVal_1]=0.0572992
+ varVV[TagVarCSV_trackDecayLenVal_2]=0.0995937
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.903416
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0792764
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 3 initJetNTracks = 4 and tag value = 0.1563
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 4
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 4
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 3
+ varSV[TagVarCSV_jetNTracks]=4
+
+ varVV[TagVarCSV_trackSip3dSig_0]=1.22573
+ varVV[TagVarCSV_trackSip3dSig_1]=-1.27412
+ varVV[TagVarCSV_trackSip3dSig_2]=-0.973908
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.201238
+ varVV[TagVarCSV_trackPtRel_1]=0.246126
+ varVV[TagVarCSV_trackPtRel_2]=0.166097
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.147708
+ varVV[TagVarCSV_trackDeltaR_1]=0.0930454
+ varVV[TagVarCSV_trackDeltaR_2]=0.1009
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.067761
+ varVV[TagVarCSV_trackPtRatio_1]=0.0423032
+ varVV[TagVarCSV_trackPtRatio_2]=0.0469003
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.00670948
+ varVV[TagVarCSV_trackJetDist_1]=-0.00636921
+ varVV[TagVarCSV_trackJetDist_2]=-0.00302855
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.199281
+ varVV[TagVarCSV_trackDecayLenVal_1]=0.045932
+ varVV[TagVarCSV_trackDecayLenVal_2]=0.152518
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.885083
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0804123
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 3 initJetNTracks = 4 and tag value = 0.147291
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 2
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 2
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varVV[TagVarCSV_trackSip3dSig_0]=0.769267
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.284286
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.23811
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0475188
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.0172015
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.27028
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.284437
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.23811
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.639056
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 2
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 2
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varVV[TagVarCSV_trackSip3dSig_0]=0.503741
+ varVV[TagVarCSV_trackSip3dSig_1]=-0.842785
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.153211
+ varVV[TagVarCSV_trackPtRel_1]=0.150859
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.149688
+ varVV[TagVarCSV_trackDeltaR_1]=0.0655366
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.136654
+ varVV[TagVarCSV_trackPtRatio_1]=0.0594421
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.00364906
+ varVV[TagVarCSV_trackJetDist_1]=-0.00198852
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.033989
+ varVV[TagVarCSV_trackDecayLenVal_1]=0.0598065
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.803815
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.00692669
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 2 initJetNTracks = 2 and tag value = 0.154598
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 2
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 2
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.878494
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0295736
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 2 and tag value = 0.845034
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 3
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 3
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=3
+
+ varVV[TagVarCSV_trackSip3dSig_0]=-0.829464
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.168124
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.145901
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0827271
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.00843515
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.00909047
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.304691
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.145901
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 3 and tag value = 0.616182
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 2
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 2
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 2
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varVV[TagVarCSV_trackSip3dSig_0]=1.06759
+ varVV[TagVarCSV_trackSip3dSig_1]=0.98809
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.11407
+ varVV[TagVarCSV_trackPtRel_1]=0.28656
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.0846024
+ varVV[TagVarCSV_trackDeltaR_1]=0.174328
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0844684
+ varVV[TagVarCSV_trackPtRatio_1]=0.173408
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.00672658
+ varVV[TagVarCSV_trackJetDist_1]=-0.00872944
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.0670679
+ varVV[TagVarCSV_trackDecayLenVal_1]=0.00915933
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.963843
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0613219
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 2 initJetNTracks = 2 and tag value = 0.168598
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 2
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 2
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varVV[TagVarCSV_trackSip3dSig_0]=-0.526759
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.0788641
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.0387041
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0380223
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.00192421
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.0486919
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.731907
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0387041
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.55664
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 2
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 2
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=1.11885
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.194322
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 2 and tag value = 0.853964
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 3
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 3
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=3
+
+ varVV[TagVarCSV_trackSip3dSig_0]=0.176981
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-0.352234
+
+ varVV[TagVarCSV_trackPtRel_0]=0.111349
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.0412953
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0359912
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.00062797
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.0183753
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=1.07424
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0412953
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 3 and tag value = 0.553031
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 2
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 2
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varVV[TagVarCSV_trackSip3dSig_0]=-0.87992
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.144015
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.13255
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0656955
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.0111929
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.0117066
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.506085
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.13255
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.553102
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 2
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 2
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varVV[TagVarCSV_trackSip3dSig_0]=-1.83454
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.163344
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.112786
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.106098
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.0140434
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.0410299
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.747092
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.112786
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.564019
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 2
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 2
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=2.45438
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 2 and tag value = 0.958741
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 4
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 4
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=4
+
+ varVV[TagVarCSV_trackSip3dSig_0]=-0.290484
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-0.423662
+
+ varVV[TagVarCSV_trackPtRel_0]=0.522985
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.294354
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.149723
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.00172964
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.0117827
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.884938
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.294354
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 4 and tag value = 0.56108
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 3
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 3
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=3
+
+ varVV[TagVarCSV_trackSip3dSig_0]=1.09871
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.0577704
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.0404467
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.031034
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.000841065
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.260319
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.807685
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0404467
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 3 and tag value = 0.563876
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 2
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 2
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varVV[TagVarCSV_trackSip3dSig_0]=0.289804
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.110121
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.0539251
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0126075
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.00060226
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.201315
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=1.34201
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0539251
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.530472
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 3
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 3
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=3
+
+ varVV[TagVarCSV_trackSip3dSig_0]=-1.61757
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.084539
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.0684688
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0678736
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.00274312
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.175764
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.85359
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.0684688
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 3 and tag value = 0.567915
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 2
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 2
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 1
+ varSV[TagVarCSV_jetNTracks]=2
+
+ varVV[TagVarCSV_trackSip3dSig_0]=0.874561
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.161922
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.159459
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0463628
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.012198
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.0448699
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=0.856246
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.159459
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 1 initJetNTracks = 2 and tag value = 0.556362
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 3
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 3
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 2
+ varSV[TagVarCSV_jetNTracks]=3
+
+ varVV[TagVarCSV_trackSip3dSig_0]=2.87478
+ varVV[TagVarCSV_trackSip3dSig_1]=3.81211
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-1
+
+ varVV[TagVarCSV_trackPtRel_0]=0.75836
+ varVV[TagVarCSV_trackPtRel_1]=0.0311736
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=0.299163
+ varVV[TagVarCSV_trackDeltaR_1]=0.028967
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=0.0766667
+ varVV[TagVarCSV_trackPtRatio_1]=0.00720115
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.0042414
+ varVV[TagVarCSV_trackJetDist_1]=-0.0550466
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=0.265925
+ varVV[TagVarCSV_trackDecayLenVal_1]=2.3559
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=3.34226
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=0.218802
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 2 initJetNTracks = 3 and tag value = 0.739114
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+INNA TEST :: vars.get(reco::btau::jetNTracks,true) = 1
+INNA TEST :: vars.get(reco::btau::jetNTracks,false) = 0
+INNA TEST :: vars.getList(reco::btau::trackSip2dSig,false).size() = 0
+ varSV[TagVarCSV_jetNTracks]=-0.1
+
+! Event is not taggable 
+ varVV[TagVarCSV_trackSip3dSig_0]=-100
+ varVV[TagVarCSV_trackSip3dSig_1]=-100
+ varVV[TagVarCSV_trackSip3dSig_2]=-100
+ varVV[TagVarCSV_trackSip3dSig_3]=-100
+ varSV[TagVarCSV_trackSip3dSigAboveCharm]=-999
+
+ varVV[TagVarCSV_trackPtRel_0]=-1
+ varVV[TagVarCSV_trackPtRel_1]=-1
+ varVV[TagVarCSV_trackPtRel_2]=-1
+ varVV[TagVarCSV_trackPtRel_3]=-1
+ varVV[TagVarCSV_trackEtaRel_0]=-1
+ varVV[TagVarCSV_trackEtaRel_1]=-1
+ varVV[TagVarCSV_trackEtaRel_2]=-1
+ varVV[TagVarCSV_trackEtaRel_3]=-1
+ varVV[TagVarCSV_trackDeltaR_0]=-0.1
+ varVV[TagVarCSV_trackDeltaR_1]=-0.1
+ varVV[TagVarCSV_trackDeltaR_2]=-0.1
+ varVV[TagVarCSV_trackDeltaR_3]=-0.1
+ varVV[TagVarCSV_trackPtRatio_0]=-0.1
+ varVV[TagVarCSV_trackPtRatio_1]=-0.1
+ varVV[TagVarCSV_trackPtRatio_2]=-0.1
+ varVV[TagVarCSV_trackPtRatio_3]=-0.1
+ varVV[TagVarCSV_trackJetDist_0]=-0.1
+ varVV[TagVarCSV_trackJetDist_1]=-0.1
+ varVV[TagVarCSV_trackJetDist_2]=-0.1
+ varVV[TagVarCSV_trackJetDist_3]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_0]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_1]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_2]=-0.1
+ varVV[TagVarCSV_trackDecayLenVal_3]=-0.1
+ varSV[TagVarCSV_trackSumJetEtRatio]=-0.1
+
+ varSV[TagVarCSV_trackSumJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_vertexMass]=-0.1
+
+ varSV[TagVarCSV_vertexNTracks]=0
+
+ varSV[TagVarCSV_vertexEnergyRatio]=-10
+
+ varSV[TagVarCSV_vertexJetDeltaR]=-0.1
+
+ varSV[TagVarCSV_flightDistance2dSig]=-1
+
+ varSV[TagVarCSV_jetNSecondaryVertices]=0
+
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and tag value = 0.964993
+ --- jet not taggable
+CSV scikit tagger :: jetntracks = 0 initJetNTracks = 0 and  tag value now = -1
+BTagAnalyser:: ntagtracks = 7
+BTagAnalyser:: CSV jetNTracks = 5
+BTagAnalyser:: ntagtracks = 4
+BTagAnalyser:: CSV jetNTracks = 1
